@@ -1,10 +1,11 @@
 const express = require('express');
-const session = require('express-session');
 const handlebars = require('express-handlebars');
 const handlebarshelpers = require('handlebars-helpers')();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
+const steam = require('steam-login');
+require('dotenv').config()
 const app = express();
 const rateLimit = require("express-rate-limit");
 
@@ -42,11 +43,28 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
-app.use(session({
-	secret: 'keyboard cat',
-	resave: false,
-	saveUninitialized: false
-}));
+app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }));
+app.use(steam.middleware({
+	realm: 'http://localhost:80/',
+	verify: 'http://localhost:80/verify',
+	apiKey: process.env.STEAM_KEY
+}
+));
+
+// app.get('/', function (req, res) {
+// 	res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
+// });
+
+app.get('/authenticate', steam.authenticate(), function (req, res) {
+	res.redirect('/');
+});
+app.get('/verify', steam.verify(), function(req, res) {
+    res.redirect('/');
+});
+app.get('/logout', steam.enforceLogin('/'), function (req, res) {
+	req.logout();
+	res.redirect('/');
+});
 
 app.use('/', index);
 app.use('/guides', guides);
