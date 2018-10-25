@@ -7,10 +7,18 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 
+//global static
+const gstatic = {};
+gstatic.link = {
+	css: '/css/bootstrap.css',
+	js: '/js/bootstrap.js'
+};
+gstatic.desc = 'MS2World is the best fansite of Maple Story 2 for find builds, guides, music beats and more!';//temp
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({
-	limit: '50mb',
+	limit: '10mb',
 	extended: false
 }));
 
@@ -34,10 +42,12 @@ app.use(session({
 	saveUninitialized: false
 }));
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-  });
-  
-  app.listen(80, function () {
-    console.log('app listening on port 80');
-  });
+app.get('/', (req, res) => {
+	res.render('index', {
+		gstatic: gstatic
+	});
+});
+
+app.listen(80, () => {
+	console.log('app runnig on port 80');
+});
