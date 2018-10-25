@@ -14,6 +14,7 @@ gstatic.link = {
 	js: '/js/bootstrap.js'
 };
 gstatic.desc = 'MS2World is the best fansite of Maple Story 2 for find builds, guides, music beats and more!';//temp
+gstatic.keyword = 'ms2, maple, story, 2, maple story 2, guides, guide, beat, beats, music, maple story 2 guides, maple story 2 guide, maple story 2 beat, maple story 2 beats, mmlms2 files';//temp
 
 app.use(bodyParser.json());
 
