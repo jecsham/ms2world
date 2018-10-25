@@ -4,7 +4,12 @@
   "description": "ms2world core fan site",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "handlebars-helpers": "^0.10.0"
   },
   "devDependencies": {},
   "scripts": {
