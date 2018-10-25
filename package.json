@@ -1,0 +1,22 @@
+{
+  "name": "ms2world",
+  "version": "1.0.0",
+  "description": "ms2world core fan site",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "maple",
+    "story",
+    "2",
+    "fan",
+    "site"
+  ],
+  "author": "jecsham",
+  "license": "ISC"
+}
