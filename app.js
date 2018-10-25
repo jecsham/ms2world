@@ -21,6 +21,7 @@ app.use(limiter);
 // routes
 const index = require('./routes/index.js');
 const guides = require('./routes/guides.js');
+const error = require('./routes/404.js');
 
 app.use(bodyParser.json());
 
@@ -43,6 +44,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
+// session stuffs
 app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }));
 app.use(steam.middleware({
 	realm: 'http://localhost:80/',
@@ -50,12 +52,7 @@ app.use(steam.middleware({
 	apiKey: process.env.STEAM_KEY
 }
 ));
-
-// app.get('/', function (req, res) {
-// 	res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
-// });
-
-app.get('/authenticate', steam.authenticate(), function (req, res) {
+app.get('/login', steam.authenticate(), function (req, res) {
 	res.redirect('/');
 });
 app.get('/verify', steam.verify(), function(req, res) {
@@ -66,8 +63,10 @@ app.get('/logout', steam.enforceLogin('/'), function (req, res) {
 	res.redirect('/');
 });
 
+// routes use
 app.use('/', index);
 app.use('/guides', guides);
+app.use(error);
 
 app.listen(80, () => {
 	console.log('app runnig on port 80');

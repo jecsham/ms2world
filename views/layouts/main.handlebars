@@ -19,7 +19,6 @@
     <div class="p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h5 class="my-0 font-weight-normal text-center">MS2WORLD</h5>
         <div class="container">
-            <br>
             <nav class="my-2 my-md-0 d-flex justify-content-center align-items-center">
                 <a class="pr-3 text-dark" href="/home">Home</a>
                 <a class="pr-3 text-dark" href="/guides">Guides</a>
@@ -32,14 +31,14 @@
                         {{user.username}}
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item">Action</a>
-                        <a class="dropdown-item">Another action</a>
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a href="/logout" class="dropdown-item" >Logout</a>
                     </div>
                 </div>
                 {{else}}
-                <a href="/authenticate" class="btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam" style="font-size: 17px;"></span>
+                <a href="/login" class="btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam" style="font-size: 17px;"></span>
                     Login</a>
                 {{/if}}
             </nav>
