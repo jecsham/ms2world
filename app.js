@@ -22,6 +22,8 @@ app.use(limiter);
 const index = require('./routes/index.js');
 const guides = require('./routes/guides.js');
 const error = require('./routes/404.js');
+const beats = require('./routes/beats.js');
+const test = require('./routes/test.js');
 
 app.use(bodyParser.json());
 
@@ -66,6 +68,8 @@ app.get('/logout', steam.enforceLogin('/'), function (req, res) {
 // routes use
 app.use('/', index);
 app.use('/guides', guides);
+app.use('/beats', beats);
+app.use('/test', test);
 app.use(error);
 
 app.listen(80, () => {

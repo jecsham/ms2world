@@ -1,9 +1,9 @@
 const constants = require("./constants.js");
 
-constants.router.get('/guides', (req, res) => {
-    res.render('guides', {
+constants.router.get('/beats', (req, res) => {
+    res.render('beats', {
         gstatic: constants.gstatic,
-        title: 'Music - MS2World.com'
+        title: 'Beats - MS2World.com'
     });
 });
 

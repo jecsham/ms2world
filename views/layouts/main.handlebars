@@ -13,6 +13,11 @@
     {{!-- MDIcons --}}
     <link rel="stylesheet" href="{{gstatic.public.mdi}}">
     <title>{{title}}</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="{{gstatic.public.js}}"></script>
 </head>
 
 <body>
@@ -24,6 +29,7 @@
                 <a class="pr-3 text-dark" href="/guides">Guides</a>
                 <a class="pr-3 text-dark" href="#">Builds</a>
                 <a class="pr-3 text-dark" href="#">Beats</a>
+                <a class="pr-3 text-dark" href="/test">Test</a>
                 {{#if user}}
                 <div class="btn-group ml-auto">
                     <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
@@ -52,7 +58,7 @@
             <div class="row">
                 <div class="col-12 col-md">
                     <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                    <small class="d-block mb-3 text-muted">&copy; 2018 - Maded with ♥ by Jecsham</small>
+                    <small class="d-block mb-3 text-muted">&copy; 2018 - Maded with ❤ by Jecsham</small>
                 </div>
                 <div class="col-6 col-md">
                     <h5>Features</h5>
@@ -86,13 +92,6 @@
             </div>
         </footer>
     </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="{{gstatic.public.js}}"></script>
 </body>
 
 </html>
