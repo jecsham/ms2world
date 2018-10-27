@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/css/simplemde.css">
-<script src="/js/simplemde.js"></script>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -16,6 +14,8 @@
                         marked('# Marked in the browser\n\nRendered by **marked**.');
                 </script> --}}
                 <textarea name="editor-content" id="editor" cols="30" rows="10"></textarea>
+                <button class="btn btn-success btn-sm">Publicate</button>
+                <button class="btn btn-secoundary btn-sm">Save</button>
                 <script>
                     var simplemde = new SimpleMDE({
                         element: $("#editor")[0],

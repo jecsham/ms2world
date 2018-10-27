@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
 const steam = require('steam-login');
-require('dotenv').config()
+require('dotenv').config();
 const app = express();
 const rateLimit = require("express-rate-limit");
 
@@ -70,6 +70,7 @@ app.use('/', index);
 app.use('/guides', guides);
 app.use('/beats', beats);
 app.use('/test', test);
+
 app.use(error);
 
 app.listen(80, () => {

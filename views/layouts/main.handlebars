@@ -8,16 +8,21 @@
     <meta name="keywords" content="{{gstatic.keywords}}">
     <meta name="robots" content="noindex" />
     <meta http-equiv="X-UA-Compatible">
-    {{!-- Main CSS --}}
-    <link rel="stylesheet" href="{{gstatic.public.css}}">
-    {{!-- MDIcons --}}
-    <link rel="stylesheet" href="{{gstatic.public.mdi}}">
     <title>{{title}}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- MDI CSS -->
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.8.94/css/materialdesignicons.min.css">
+    <!-- jQuery slim 3.3.1 -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="{{gstatic.public.js}}"></script>
+    <!-- Bootstrap JS -->
+    <script src="/js/bootstrap.js"></script>
+    {{#if cstatic}} 
+    {{#each cstatic}}
+    {{head}}
+    {{/each}}
+    {{/if}}
 </head>
 
 <body>
@@ -40,7 +45,7 @@
                         <a href="#" class="dropdown-item">Action</a>
                         <a href="#" class="dropdown-item">Another action</a>
                         <div class="dropdown-divider"></div>
-                        <a href="/logout" class="dropdown-item" >Logout</a>
+                        <a href="/logout" class="dropdown-item">Logout</a>
                     </div>
                 </div>
                 {{else}}
