@@ -18,9 +18,10 @@
         crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="/js/bootstrap.js"></script>
-    {{#if cstatic}} 
+
+    {{#if cstatic}}
     {{#each cstatic}}
-    {{head}}
+    {{this}}
     {{/each}}
     {{/if}}
 </head>
