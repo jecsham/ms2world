@@ -10,15 +10,19 @@
                         <tbody>
                             {{#each news}}
                             <tr>
-                                <td class="text-center">
-                                    <figure class="m-0 d-inline-block"><img src="{{img}}" class="rounded" alt="" width="50"></figure>
+                                <td class="text-center align-middle py-0">
+                                    <a href="http://maplestory2.nexon.net{{{url}}}">
+                                        <figure class="m-0 d-inline-block"><img src="{{img}}" class="rounded" alt="{{tag}}"
+                                                width="60"></figure>
+                                    </a>
                                 </td>
                                 <td class="small align-middle"><a href="http://maplestory2.nexon.net{{{url}}}" target="blanc">{{{title}}}
                                         <span class="mdi mdi-open-in-new" title="See in Nexon official site" style="font-size: 11px;"></span></a></td>
-                                <td class="text-muted small text-right align-middle">{{tag}}<br>
+                                <td class="text-muted small text-right align-middle"><a href="http://maplestory2.nexon.net/en/news/{{ lowercase tag}}" class="text-muted" target="blanc">{{pascalcase tag}}</a>
+                                <br>
                                     <time id="time{{@index}}" title="{{date_create}}"></time></td>
                                 <script>
-                                    var date = jQuery.timeago(new Date("{{{date_create}}}")); 
+                                    var date = jQuery.timeago(new Date("{{{date_create}}}"));
                                     $('#time{{@index}}').text(date);
                                 </script>
                             </tr>
@@ -26,7 +30,7 @@
                         </tbody>
                     </table>
                     <div class="text-right pb-1 small">
-                        <a href="#">Show more...</a>
+                        <a href="http://maplestory2.nexon.net/en/news/all" target="blanc">Show more...</a>
                     </div>
                 </div>
             </div>

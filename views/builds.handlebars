@@ -8,48 +8,15 @@
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <tbody>
+                            {{#each classes}}
                             <tr>
                                 <td class="text-center">
-                                    <figure class="m-0 d-inline-block"><img src="/temp/img.jpg" class="rounded-circle" alt="" width="50"></figure>
+                                    <figure class="m-0 d-inline-block"><img src="{{img}}" class="rounded-circle" alt="" width="35"></figure>
                                 </td>
-                                <td class="font-weight-normal align-middle text-left" style="width:100%"><a href="/builds/Runeblade">Runeblade</a></td>
+                                <td class="font-weight-normal align-middle text-left" style="width:100%"><a href="/builds/{{lowercase name}}">{{name}}</a></td>
                                 <td class="text-muted small text-right align-middle">212 builds</td>
                             </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <figure class="m-0 d-inline-block"><img src="/temp/img.jpg" class="rounded-circle" alt="" width="50"></figure>
-                                </td>
-                                <td class="font-weight-normal align-middle text-left" style="width:100%"><a href="/builds/runeblade">Thieft</a></td>
-                                <td class="text-muted small text-right align-middle">212 builds</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <figure class="m-0 d-inline-block"><img src="/temp/img.jpg" class="rounded-circle" alt="" width="50"></figure>
-                                </td>
-                                <td class="font-weight-normal align-middle text-left" style="width:100%"><a href="/builds/runeblade">Heavy Gunner</a></td>
-                                <td class="text-muted small text-right align-middle">212 builds</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <figure class="m-0 d-inline-block"><img src="/temp/img.jpg" class="rounded-circle" alt="" width="50"></figure>
-                                </td>
-                                <td class="font-weight-normal align-middle text-left" style="width:100%"><a href="/builds/runeblade">Priest</a></td>
-                                <td class="text-muted small text-right align-middle">212 builds</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <figure class="m-0 d-inline-block"><img src="/temp/img.jpg" class="rounded-circle" alt="" width="50"></figure>
-                                </td>
-                                <td class="font-weight-normal align-middle text-left" style="width:100%"><a href="/builds/runeblade">Assasin</a></td>
-                                <td class="text-muted small text-right align-middle">212 builds</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <figure class="m-0 d-inline-block"><img src="/temp/img.jpg" class="rounded-circle" alt="" width="50"></figure>
-                                </td>
-                                <td class="font-weight-normal align-middle text-left" style="width:100%"><a href="/builds/runeblade">Berseker</a></td>
-                                <td class="text-muted small text-right align-middle">212 builds</td>
-                            </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>

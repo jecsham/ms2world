@@ -37,11 +37,16 @@ const Ms2_new =  mongoose.model('Ms2_new', {
     img: String,
     date_create: Date
 });
+const Ms2_class =  mongoose.model('Ms2_class', {
+    name: String,
+    img: String
+});
 module.exports = {
     router: router,
     User_account: User_account,
     Post_guide: Post_guide,
     Post_build: Post_build,
-    Ms2_new: Ms2_new
+    Ms2_new: Ms2_new,
+    Ms2_class: Ms2_class
 
 };

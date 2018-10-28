@@ -16,7 +16,7 @@
     <!-- jQuery slim 3.3.1 -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-        <!-- PopperJS -->
+    <!-- PopperJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
@@ -40,35 +40,41 @@
                 <img src="/temp/ms2world_logo.svg" alt="" width="120">
             </a>
         </div>
-        <div class="p-3 bg-white border-bottom shadow-sm p-0 header" id="header">
-            <div class="container py-0">
-                
-                <nav class="my-2 my-md-0 d-flex justify-content-center align-items-center">
-                    <a class="pr-3 text-dark" href="/home">Home</a>
-                    <a class="pr-3 text-dark" href="/guides">Guides</a>
-                    <a class="pr-3 text-dark" href="/builds">Builds</a>
-                    <a class="pr-3 text-dark" href="#">Beats</a>
-                    <a class="pr-3 text-dark" href="/test">Test</a>
-                    {{#if user}}
-                    <div class="btn-group ml-auto">
-                        <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            {{user.username}}
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#" class="dropdown-item">Action</a>
-                            <a href="#" class="dropdown-item">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="/logout" class="dropdown-item">Logout</a>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm" id="header">
+            <div class="container">
+                <button class="btn btn-dark btn-sm d-sm-none" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar">
+                    <div class="d-flex justify-content-center align-items-center w-100 flex-column flex-sm-row">
+                        <a class="pr-3 text-dark" href="/home">Home</a>
+                        <a class="pr-3 text-dark" href="/guides">Guides</a>
+                        <a class="pr-3 text-dark" href="/builds">Builds</a>
+                        <a class="pr-3 text-dark" href="#">Beats</a>
+                        <a class="pr-3 text-dark" href="/test">Test</a>
+                        {{#if user}}
+                        <div class="btn-group ml-auto">
+                            <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                {{user.username}}
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#" class="dropdown-item">Action</a>
+                                <a href="#" class="dropdown-item">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/logout" class="dropdown-item">Logout</a>
+                            </div>
                         </div>
+                        {{else}}
+                        <a href="/login" class="btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam" style="font-size: 17px;"></span>
+                            Login</a>
+                        {{/if}}
                     </div>
-                    {{else}}
-                    <a href="/login" class="btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam" style="font-size: 17px;"></span>
-                        Login</a>
-                    {{/if}}
-                </nav>
+                </div>
             </div>
-        </div>
+        </nav>
     </header>
 
     {{{body}}}
@@ -76,7 +82,7 @@
     <div class="container">
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
             <div class="row">
-                <div class="col-12 col-md">
+                <div class="col-12 col-md text-cenetr my-auto">
                     <small class="d-block mb-3 text-muted">&copy; {{year}} - Maded with ❤ by Jecsham</small>
                 </div>
                 <div class="col-6 col-md">

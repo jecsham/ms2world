@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div id="maincard">
+                <div>
+                    <p>New Guide</p>
+                </div>
+                Title
+                <input type="text" class="form-control mb-4">
+                <textarea name="editor-content" id="editor" cols="30" rows="10"></textarea>
+                <button class="btn btn-success btn-sm">Publicate</button>
+                <button class="btn btn-secoundary btn-sm">Save</button>
+                <script>
+                    var simplemde = new SimpleMDE({
+                        element: $("#editor")[0],
+                        autosave: {
+                            enabled: true,
+                            uniqueId: "521048",
+                            delay: 1000,
+                        },
+                        spellChecker: false
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
