@@ -8,6 +8,7 @@ const steam = require('steam-login');
 require('dotenv').config();
 const app = express();
 const rateLimit = require("express-rate-limit");
+const chalk = require('chalk');
 
 app.enable("trust proxy");
 const limiter = rateLimit({
@@ -19,11 +20,14 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // routes
+const constants = require('./routes/constants.js')
+
 const index = require('./routes/index.js');
 const guides = require('./routes/guides.js');
 const error = require('./routes/404.js');
 const beats = require('./routes/beats.js');
 const test = require('./routes/test.js');
+const builds = require('./routes/builds.js');
 
 app.use(bodyParser.json());
 
@@ -47,6 +51,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
 // session stuffs
+
 app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }));
 app.use(steam.middleware({
 	realm: 'http://localhost:80/',
@@ -57,8 +62,14 @@ app.use(steam.middleware({
 app.get('/login', steam.authenticate(), function (req, res) {
 	res.redirect('/');
 });
-app.get('/verify', steam.verify(), function(req, res) {
-    res.redirect('/');
+app.get('/verify', steam.verify(), function (req, res) {
+	var query = {
+		'sid': req.user.steamid
+	}
+	constants.User_account.findOneAndUpdate(query, { $set: { 'name': req.user.username } }, { upsert: true }, (err, doc) => {
+		if (err) return res.redirect('/logout');
+		return res.redirect('/');
+	});
 });
 app.get('/logout', steam.enforceLogin('/'), function (req, res) {
 	req.logout();
@@ -70,10 +81,11 @@ app.use('/', index);
 app.use('/guides', guides);
 app.use('/beats', beats);
 app.use('/test', test);
+app.use('/builds', builds);
 
 app.use(error);
 
-app.listen(80, () => {
-	console.log('app runnig on port 80');
+app.listen(process.env.PORT || 80, () => {
+	console.log(chalk.green('Server ready'));
 });
 

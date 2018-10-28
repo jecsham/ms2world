@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
@@ -12,6 +13,7 @@
     "express-rate-limit": "^3.2.1",
     "express-session": "^1.15.6",
     "handlebars-helpers": "^0.10.0",
+    "mongoose": "^5.3.7",
     "steam-login": "^0.1.7"
   },
   "devDependencies": {},
