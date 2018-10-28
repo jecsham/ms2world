@@ -29,6 +29,7 @@ const error = require('./routes/404.js');
 const beats = require('./routes/beats.js');
 const test = require('./routes/test.js');
 const builds = require('./routes/builds.js');
+const create = require('./routes/create.js');
 
 app.use(bodyParser.json());
 
@@ -83,6 +84,7 @@ app.use('/guides', guides);
 app.use('/beats', beats);
 app.use('/test', test);
 app.use('/builds', builds);
+app.use('/create', builds);
 
 app.use(error);
 

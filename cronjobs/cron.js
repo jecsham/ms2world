@@ -4,7 +4,7 @@ const scrapeIt = require("scrape-it")
 
 
 // get news
-module.exports = new CronJob('* * * * *', function () {
+module.exports = new CronJob('* 1 * * *', function () {
 
   scrapeIt("http://maplestory2.nexon.net/en/news/all", {
     articles: {
@@ -44,7 +44,7 @@ module.exports = new CronJob('* * * * *', function () {
 
 
 // get classes
-module.exports = new CronJob('* * * * *', function () {
+module.exports = new CronJob('* 1 * * *', function () {
 
   scrapeIt("http://maplestory2.nexon.net/en/game/classes", {
     classes: {
