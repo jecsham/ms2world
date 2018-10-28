@@ -8,51 +8,25 @@
                 <div class="table-responsive">
                     <table class="table table-hover mb-1">
                         <tbody>
+                            {{#each news}}
                             <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide ever [EPICchest guide ever [EPIC] [] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecshasssssssssssm</a><br>
-                                    7 days ago</td>
+                                <td class="text-center">
+                                    <figure class="m-0 d-inline-block"><img src="{{img}}" class="rounded" alt="" width="50"></figure>
+                                </td>
+                                <td class="small align-middle"><a href="http://maplestory2.nexon.net{{{url}}}" target="blanc">{{{title}}}
+                                        <span class="mdi mdi-open-in-new" title="See in Nexon official site" style="font-size: 11px;"></span></a></td>
+                                <td class="text-muted small text-right align-middle">{{tag}}<br>
+                                    <time id="time{{@index}}" title="{{date_create}}"></time></td>
+                                <script>
+                                    var date = jQuery.timeago(new Date("{{{date_create}}}")); 
+                                    $('#time{{@index}}').text(date);
+                                </script>
                             </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide eveqwqwqwqwr [EPIC] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chestchest guide ever [EPIC] [chest guide ever [EPIC] [ guide ever [EPIC] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guasaside ever [EPIC] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guasasasasaschest guide ever [EPIC] [ide ever [EPIC] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide ever [EPIC] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                     <div class="text-right pb-1 small">
-                    <a href="#">Show more...</a>
+                        <a href="#">Show more...</a>
                     </div>
                 </div>
             </div>
@@ -66,41 +40,47 @@
                     <table class="table table-hover mb-1">
                         <tbody>
                             <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide ever [EPICchest guide ever [EPIC] [] [Runeblade
+                                <td class="small align-middle"><a href="#">Get all golden chest guide ever [EPICchest
+                                        guide ever [EPIC] [] [Runeblade
                                         recomedable]</a></td>
                                 <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecshasssssssssssm</a><br>
                                     7 days ago</td>
                             </tr>
                             <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide eveqwqwqwqwr [EPIC] [Runeblade
+                                <td class="small align-middle"><a href="#">Get all golden chest guide eveqwqwqwqwr
+                                        [EPIC] [Runeblade
                                         recomedable]</a></td>
                                 <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
                                     • 7
                                     days ago</td>
                             </tr>
                             <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chestchest guide ever [EPIC] [chest guide ever [EPIC] [ guide ever [EPIC] [Runeblade
+                                <td class="small align-middle"><a href="#">Get all golden chestchest guide ever [EPIC]
+                                        [chest guide ever [EPIC] [ guide ever [EPIC] [Runeblade
                                         recomedable]</a></td>
                                 <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
                                     • 7
                                     days ago</td>
                             </tr>
                             <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guasaside ever [EPIC] [Runeblade
+                                <td class="small align-middle"><a href="#">Get all golden chest guasaside ever [EPIC]
+                                        [Runeblade
                                         recomedable]</a></td>
                                 <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
                                     • 7
                                     days ago</td>
                             </tr>
                             <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guasasasasaschest guide ever [EPIC] [ide ever [EPIC] [Runeblade
+                                <td class="small align-middle"><a href="#">Get all golden chest guasasasasaschest guide
+                                        ever [EPIC] [ide ever [EPIC] [Runeblade
                                         recomedable]</a></td>
                                 <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
                                     • 7
                                     days ago</td>
                             </tr>
                             <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide ever [EPIC] [Runeblade
+                                <td class="small align-middle"><a href="#">Get all golden chest guide ever [EPIC]
+                                        [Runeblade
                                         recomedable]</a></td>
                                 <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
                                     • 7
@@ -109,7 +89,7 @@
                         </tbody>
                     </table>
                     <div class="text-right pb-1 small">
-                    <a href="#">Show more...</a>
+                        <a href="#">Show more...</a>
                     </div>
                 </div>
             </div>

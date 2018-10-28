@@ -19,8 +19,9 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+const constants = require('./routes/constants.js');
+require('./cronjobs/cron.js');
 // routes
-const constants = require('./routes/constants.js')
 
 const index = require('./routes/index.js');
 const guides = require('./routes/guides.js');
@@ -85,7 +86,8 @@ app.use('/builds', builds);
 
 app.use(error);
 
+
 app.listen(process.env.PORT || 80, () => {
-	console.log(chalk.green('Server ready'));
+	console.log(chalk.green('Server loaded'));
 });
 

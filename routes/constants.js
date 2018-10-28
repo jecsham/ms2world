@@ -30,10 +30,18 @@ const Post_build =  mongoose.model('Post_build', {
     class_id: Number,
     last_edit_date: Date
 });
+const Ms2_new =  mongoose.model('Ms2_new', {
+    title: String,
+    tag: String,
+    url: String,
+    img: String,
+    date_create: Date
+});
 module.exports = {
     router: router,
     User_account: User_account,
     Post_guide: Post_guide,
-    Post_build: Post_build
+    Post_build: Post_build,
+    Ms2_new: Ms2_new
 
 };
