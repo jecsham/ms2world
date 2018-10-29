@@ -18,6 +18,7 @@
                     </div>
                     <textarea name="editor_content" id="content" cols="30" rows="10"></textarea>
                     <button id="submitbtn" type="submit" class="btn btn-success btn-sm">Publicate</button>
+                    <div id="status"></div>
                 </form>
                 <script>
                     'use strict'
@@ -34,6 +35,7 @@
                     $(document).ready(function () {
                         $('#create-guide').submit(function (event) {
                             $('#submitbtn').attr('disabled', 'disabled');
+                            $('#status').html('<p class="text-success">Please wait... 😀<p>');
                             var formData = {
                                 'title': $('input[name=title]').val(),
                                 'description': $('input[name=description]').val(),
@@ -44,16 +46,17 @@
                                 url: '/create-guide/submit',
                                 data: formData,
                                 dataType: 'json',
-                                encode: true
-                            })
-                                .done(function (data) {
-                                    console.log('yup')
-                                    $('#submitbtn').removeAttr("disabled");
-                                    console.log(data);
-                                })
-                                .fail(function (data) {
-                                    console.log('error');
-                                });
+                                encode: true,
+                                success: function (data) {
+                                    $('#status').html('<p class="text-success">Submited! Redirecting to your post...<p>');
+                                    var timer = setTimeout(() => {
+                                        window.location = '/guides';
+                                    }, 3000);
+                                },
+                                error: function () {
+                                    console.log('process error');
+                                },
+                            });
                             event.preventDefault();
                         });
                     });
