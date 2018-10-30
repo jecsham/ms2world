@@ -17,11 +17,16 @@
                         <small id="titleHelp" class="form-text text-muted">Max 300 characters</small>
                     </div>
                     <textarea name="editor_content" id="content" cols="30" rows="10"></textarea>
+                    <div class="form-group">
+                        <input name="tags" id="tags" class='' placeholder='Write some tags, separe by commas' required>
+                        <small id="titleHelp" class="form-text text-muted">Min 1 - Max 20 tags</small>
+                    </div>
                     <button id="submitbtn" type="submit" class="btn btn-success btn-sm">Publicate</button>
                     <div id="status"></div>
                 </form>
                 <script>
                     'use strict'
+
                     var simplemde = new SimpleMDE({
                         element: $("#content")[0],
                         autosave: {
@@ -59,6 +64,14 @@
                             });
                             event.preventDefault();
                         });
+
+                        $('#tags')
+                            .tagify({
+                                maxTags: 20
+                            })
+                            .on('add', function (e, tagName) {
+                                console.log($('#tags').val())
+                            });
                     });
                 </script>
             </div>

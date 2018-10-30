@@ -1,6 +1,4 @@
-const constants = require("./constants.js");
-
-module.exports = (req, res, next) => {
+module.exports = (req, res, constants) => {
     var error = new Error();
     error.status = 404;
     res.render('404', {

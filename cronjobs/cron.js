@@ -1,7 +1,6 @@
-const constants = require('../routes/constants.js');
+const constants = require('../constants/constants.js');
 const CronJob = require('cron').CronJob;
 const scrapeIt = require("scrape-it")
-
 
 // get news
 module.exports = new CronJob('* 1 * * *', function () {
@@ -38,10 +37,8 @@ module.exports = new CronJob('* 1 * * *', function () {
         return console.log('Cronjob 1 completed')
       });
     });
-
   });
 }, null, true, 'America/Los_Angeles');
-
 
 // get classes
 module.exports = new CronJob('* 1 * * *', function () {

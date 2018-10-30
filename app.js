@@ -4,32 +4,26 @@ const handlebarshelpers = require('handlebars-helpers')();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
-const steam = require('steam-login');
 require('dotenv').config();
 const app = express();
 const rateLimit = require("express-rate-limit");
 const chalk = require('chalk');
+var favicon = require('serve-favicon');
 
 app.enable("trust proxy");
+
 const limiter = rateLimit({
 	windowMs: 1500,
 	max: 30,
 	delayMs: 0,
 	message: "{}"
 });
+
 app.use(limiter);
 
-const constants = require('./routes/constants.js');
-require('./cronjobs/cron.js');
-// routes
+app.use(favicon(path.join(__dirname, 'public/assets', 'favicon.ico')));
 
-const index = require('./routes/index.js');
-const guides = require('./routes/guides.js');
-const error = require('./routes/404.js');
-const beats = require('./routes/beats.js');
-const test = require('./routes/test.js');
-const builds = require('./routes/builds.js');
-const create = require('./routes/create.js');
+require('./cronjobs/cron.js');
 
 app.use(bodyParser.json());
 
@@ -52,42 +46,9 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
-// session stuffs
-
-app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }));
-app.use(steam.middleware({
-	realm: 'http://localhost:80/',
-	verify: 'http://localhost:80/verify',
-	apiKey: process.env.STEAM_KEY
-}
-));
-app.get('/login', steam.authenticate(), function (req, res) {
-	res.redirect('/');
-});
-app.get('/verify', steam.verify(), function (req, res) {
-	var query = {
-		'sid': req.user.steamid
-	}
-	constants.User_account.findOneAndUpdate(query, { $set: { 'name': req.user.username } }, { upsert: true }, (err, doc) => {
-		if (err) return res.redirect('/logout');
-		return res.redirect('/');
-	});
-});
-app.get('/logout', steam.enforceLogin('/'), function (req, res) {
-	req.logout();
-	res.redirect('/');
-});
-
-// routes use
-app.use('/', index);
-app.use('/guides', guides);
-app.use('/beats', beats);
-app.use('/test', test);
-app.use('/builds', builds);
-app.use('/create', builds);
-
-app.use(error);
-
+// routes
+const constants = require("./constants/constants.js");
+require('./routes')(app, constants);
 
 app.listen(process.env.PORT || 80, () => {
 	console.log(chalk.green('Server loaded'));

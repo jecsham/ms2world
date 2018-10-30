@@ -1,5 +1,3 @@
-const express = require("express");
-const router = express.Router();
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 mongoose.connect(process.env.MDB, { useNewUrlParser: true });
@@ -10,6 +8,11 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log(chalk.green('MongoDB connected'));
 });
+
+//Global statics
+var gstatics = {}
+gstatics.description = 'MS2World.net is the best MapleStory2 fan site to find Guides, Builds, Beats, News and More! Join now our community!';
+
 
 // MDB Models
 const User_account =  mongoose.model('User_account', {
@@ -42,7 +45,7 @@ const Ms2_class =  mongoose.model('Ms2_class', {
     img: String
 });
 module.exports = {
-    router: router,
+    gstatics: gstatics,
     User_account: User_account,
     Post_guide: Post_guide,
     Post_build: Post_build,

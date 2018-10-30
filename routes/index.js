@@ -1,18 +1,9 @@
-const constants = require("./constants.js");
-
-constants.router.get(['/', '/index', '/home'], (req, res) => {
-    constants.Ms2_new.find({}, null, {sort: {date_create: -1}}, (err, news) => {
-        var newsMap = {};
-        news.forEach((element) => {
-            newsMap[element._id] = element;
-        });
-        res.render('index', {
-            gstatic: constants.gstatic,
-            title: 'Home - MS2World.com',
-            user: req.user,
-            news: newsMap
-        });
-    });
-});
-
-module.exports = constants.router;
+module.exports = (app, constants) => {
+  require('./login')(app, constants)
+    require('./beats')(app, constants)
+    require('./builds')(app, constants)
+    require('./create')(app, constants)
+    require('./guides')(app, constants)
+    require('./home')(app, constants)
+    app.use(require('./404'))
+  }
