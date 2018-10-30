@@ -31,7 +31,8 @@ const Post_guide =  mongoose.model('Post_guide ', {
     sid: String,
     title: String,
     content: String,
-    tags: [{}],
+    description: String,
+    tags: [Object],
     date_create: Date,
     last_edit_date: Date
 });
