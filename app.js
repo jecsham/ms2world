@@ -1,6 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
-const handlebarshelpers = require('handlebars-helpers')();
+const helpers = require('handlebars-helpers')();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -8,7 +8,9 @@ require('dotenv').config();
 const app = express();
 const rateLimit = require("express-rate-limit");
 const chalk = require('chalk');
+const AllErrorHandler = require("all-error-handler");
 var favicon = require('serve-favicon');
+
 
 app.enable("trust proxy");
 
@@ -23,8 +25,6 @@ app.use(limiter);
 
 app.use(favicon(path.join(__dirname, 'public/assets', 'favicon.ico')));
 
-require('./cronjobs/cron.js');
-
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({
@@ -37,7 +37,7 @@ app.use(cookieParser());
 app.engine('handlebars', handlebars({
 	defaultLayout: 'main',
 	layoutsDir: `${__dirname}/views/layouts/`,
-	helpers: handlebarshelpers
+	helpers: helpers
 }));
 
 app.set('views', path.join(__dirname, 'views'));
@@ -50,6 +50,10 @@ app.use(express.static('public'));
 const constants = require("./constants/constants.js");
 require('./routes')(app, constants);
 
+require('./cronjobs/cron.js');
+var errorHandler = new AllErrorHandler(err => {
+    console.log(`Errorsote occured - ${err}`);
+});
 app.listen(process.env.PORT || 80, () => {
 	console.log(chalk.green('Server loaded'));
 });

@@ -15,15 +15,15 @@ module.exports = (app, constants) => {
     });
 
     app.post('/create-guide/submit', (req, res) => {
-        if (req.user && req.body.title.length <= 150 && req.body.description.length <= 300) {
+        if (req.user && req.body.title.length <= 150 && req.body.description.length <= 300 && req.body.tags[0].length <= 20) {
             var data = {};
 
-            data.title = escape(req.body.title.length);
-            data.description = escape(req.body.description);
-            data.content = escape(req.body.content);
-            data.sid = req.user.steamid;
+            data.title = constants.sanitize(req.body.title);
+            data.description = constants.sanitize(req.body.description);
+            data.content = constants.sanitize(req.body.content);
+            data.sid = constants.sanitize(req.user.steamid);
+            data.tags = req.body.tags;
             data.date_create = new Date();
-
             constants.Post_guide.create(data, (err) => {
                 if (err) return res.status(500);
             });

@@ -3,7 +3,7 @@ const CronJob = require('cron').CronJob;
 const scrapeIt = require("scrape-it")
 
 // get news
-module.exports = new CronJob('* 1 * * *', function () {
+module.exports = new CronJob('0 * * * *', function () {
 
   scrapeIt("http://maplestory2.nexon.net/en/news/all", {
     articles: {
@@ -26,7 +26,7 @@ module.exports = new CronJob('* 1 * * *', function () {
       }
     }
   }, (err, { data }) => {
-    var news = data.articles;
+    var news = constants.sanitize(data.articles);
     news.forEach((element, index) => {
      news[index].img = element.img.match(/(http:\/\/.*\.(jpg|png))/g);
     });
@@ -41,7 +41,7 @@ module.exports = new CronJob('* 1 * * *', function () {
 }, null, true, 'America/Los_Angeles');
 
 // get classes
-module.exports = new CronJob('* 1 * * *', function () {
+module.exports = new CronJob('0 * * * *', function () {
 
   scrapeIt("http://maplestory2.nexon.net/en/game/classes", {
     classes: {
