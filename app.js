@@ -51,9 +51,7 @@ const constants = require("./constants/constants.js");
 require('./routes')(app, constants);
 
 require('./cronjobs/cron.js');
-var errorHandler = new AllErrorHandler(err => {
-    console.log(`Errorsote occured - ${err}`);
-});
+
 app.listen(process.env.PORT || 80, () => {
 	console.log(chalk.green('Server loaded'));
 });

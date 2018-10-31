@@ -1,13 +1,17 @@
 module.exports = (app, constants) => {
     app.get('/guides', (req, res) => {
-        constants.Post_guide.find({},null,{limit:10}, (err, data) => {
+        constants.Post_guide.paginate({}, {select: 'title author', page: 1, limit: 10, sort: { _id: -1 },}, function(err, data) {
+            // result.docs
+            // result.total
+            // result.limit - 10
+            // result.page - 3
+            // result.pages
             if(err) return res.render('error')
-
             res.render('guides', {
                 gstatic: constants.gstatic,
                 title: 'Guides - MS2World.com',
                 user: req.user,
-                guides: data
+                guides: data.docs
             });
         });
     });

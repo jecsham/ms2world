@@ -5,5 +5,6 @@ module.exports = (app, constants) => {
     require('./create')(app, constants)
     require('./guides')(app, constants)
     require('./home')(app, constants)
+    require('./delete')(app, constants)
     app.use(require('./404'))
   }

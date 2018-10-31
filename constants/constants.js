@@ -15,7 +15,15 @@ db.once('open', () => {
     console.log(chalk.green('MongoDB connected'));
 });
 
-//Global statics
+// Error strings
+var es = {
+    internal: "An internal server error has occurred. Please contact an administrator or try later.",
+    login: "You must be login.",
+    steam_id_match: "User Steam ID don't match. You aren't the post owner.",
+    big_content: "The content is too big. Please verify that you are within the limit of allowed characters (800000 max)"
+}
+
+// Global statics
 var gstatics = {}
 gstatics.description = 'MS2World.net is the best MapleStory2 fan site to find Guides, Builds, Beats, News and More! Join now our community!';
 
@@ -59,6 +67,8 @@ var classSchema = new mongoose.Schema({
     img: String
 });
 
+guideSchema.plugin(mongoosePaginate);
+
 // Models
 var User_account = mongoose.model('User_account', userSchema);
 
@@ -78,6 +88,7 @@ module.exports = {
     Ms2_new: Ms2_new,
     Ms2_class: Ms2_class,
     sanitize: sanitize,
-    steamapi: steamapi
+    steamapi: steamapi,
+    es: es
 
 };
