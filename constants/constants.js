@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 const chalk = require('chalk');
 const sanitize = require('mongo-sanitize');
 const mSteamAPI = require('steamapi');
@@ -11,23 +12,22 @@ var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log(chalk.green('MongoDB connected'));
+    console.log(chalk.green('MongoDB connected'));
 });
 
 //Global statics
 var gstatics = {}
 gstatics.description = 'MS2World.net is the best MapleStory2 fan site to find Guides, Builds, Beats, News and More! Join now our community!';
 
-
-// MDB Models
-const User_account =  mongoose.model('User_account', {
+// Schemas
+var userSchema = new mongoose.Schema({
     name: String,
     sid: String,
     date_create: Date,
     date_last_login: Date
 });
 
-const Post_guide =  mongoose.model('Post_guide ', {
+var guideSchema = new mongoose.Schema({
     sid: String,
     title: String,
     content: String,
@@ -37,7 +37,7 @@ const Post_guide =  mongoose.model('Post_guide ', {
     last_edit_date: Date
 });
 
-const Post_build =  mongoose.model('Post_build', {
+var buildSchema = new mongoose.Schema({
     sid: String,
     title: String,
     content: String,
@@ -46,18 +46,29 @@ const Post_build =  mongoose.model('Post_build', {
     last_edit_date: Date
 });
 
-const Ms2_new =  mongoose.model('Ms2_new', {
+var newSchema = new mongoose.Schema({
     title: String,
-    tag:  String,
+    tag: String,
     url: String,
     img: String,
     date_create: Date
 });
 
-const Ms2_class =  mongoose.model('Ms2_class', {
+var classSchema = new mongoose.Schema({
     name: String,
     img: String
 });
+
+// Models
+var User_account = mongoose.model('User_account', userSchema);
+
+var Post_guide = mongoose.model('Post_guide ', guideSchema);
+
+var Post_build = mongoose.model('Post_build', buildSchema);
+
+var Ms2_new = mongoose.model('Ms2_new', newSchema);
+
+var Ms2_class = mongoose.model('Ms2_class', classSchema);
 
 module.exports = {
     gstatics: gstatics,

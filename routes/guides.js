@@ -1,9 +1,14 @@
 module.exports = (app, constants) => {
     app.get('/guides', (req, res) => {
-        res.render('guides', {
-            gstatic: constants.gstatic,
-            title: 'Guides - MS2World.com',
-            user: req.user
+        constants.Post_guide.find({},null,{limit:10}, (err, data) => {
+            if(err) return res.render('error')
+
+            res.render('guides', {
+                gstatic: constants.gstatic,
+                title: 'Guides - MS2World.com',
+                user: req.user,
+                guides: data
+            });
         });
     });
 
