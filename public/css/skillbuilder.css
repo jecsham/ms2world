@@ -1,0 +1,266 @@
+.skill_cell {
+    width: 110px;
+    height: 90px;
+    text-align: center;
+}
+
+.line_v {
+    background-image: url('https://ms2codex.com/images/line_v.png');
+    background-repeat: no-repeat;
+    background-position: 1px 0
+}
+
+.line_v_sp {
+    background-image: url('https://ms2codex.com/images/line_v.png');
+    background-repeat: no-repeat;
+    background-position: -29px 0
+}
+
+.line_vd {
+    background-image: url('https://ms2codex.com/images/line_v.png');
+    background-repeat: no-repeat;
+    background-position: 1px 40px
+}
+
+.line_vu {
+    background-image: url('https://ms2codex.com/images/line_v.png');
+    background-repeat: no-repeat;
+    background-position: 1px -60px
+}
+
+.line_h {
+    background-image: url('https://ms2codex.com/images/line_h.png');
+    background-repeat: no-repeat;
+    background-position: center
+}
+
+.line_hl {
+    background-image: url('https://ms2codex.com/images/line_h.png');
+    background-repeat: no-repeat;
+    background-position: -40px 26px
+}
+
+.line_hr {
+    background-image: url('https://ms2codex.com/images/line_h.png');
+    background-repeat: no-repeat;
+    background-position: +40px 28px
+}
+
+.line_3 {
+    background-image: url('https://ms2codex.com/images/line_3.png');
+    background-position: 0 -25px;
+    background-repeat: no-repeat
+}
+
+.line_6 {
+    background-image: url('https://ms2codex.com/images/line_6.png');
+    background-position: 0 -27px;
+    background-repeat: no-repeat
+}
+
+.line_9 {
+    background-image: url('https://ms2codex.com/images/line_9.png');
+    background-position: 0 -25px;
+    background-repeat: no-repeat
+}
+
+.line_9_m {
+    background-image: url('https://ms2codex.com/images/line_9_m.png');
+    background-position: 0 -2px;
+    background-repeat: no-repeat
+}
+
+.line_123 {
+    background-image: url('https://ms2codex.com/images/line_123.png');
+    background-position: 0 -11px;
+    background-repeat: no-repeat
+}
+
+.line_123_sp {
+    background-image: url('https://ms2codex.com/images/line_123.png');
+    background-position: -30px -11px;
+    background-repeat: no-repeat
+}
+
+.line_129 {
+    background-image: url('https://ms2codex.com/images/line_129.png');
+    background-position: -1px -20px;
+    background-repeat: no-repeat
+}
+
+.line_129_sp {
+    background-image: url('https://ms2codex.com/images/line_129.png');
+    background-position: -30px -9px;
+    background-repeat: no-repeat
+}
+
+.line_129_m {
+    background-image: url('https://ms2codex.com/images/line_129.png');
+    background-position: 0 -11px;
+    background-repeat: no-repeat
+}
+
+.line_63 {
+    background-image: url('https://ms2codex.com/images/line_63.png');
+    background-position: 3px 0;
+    background-repeat: no-repeat
+}
+
+.line_63_sp {
+    background-image: url('https://ms2codex.com/images/line_63.png');
+    background-position: -27px -16px;
+    background-repeat: no-repeat
+}
+
+.line_63_m {
+    background-image: url('https://ms2codex.com/images/line_63_m.png');
+    background-position: -30px 4px;
+    background-repeat: no-repeat
+}
+
+.line_96 {
+    background-image: url('https://ms2codex.com/images/line_96.png');
+    background-position: 0 -25px;
+    background-repeat: no-repeat
+}
+
+.line_96_sp {
+    background-image: url('https://ms2codex.com/images/line_96.png');
+    background-position: -30px -25px;
+    background-repeat: no-repeat
+}
+
+.line_96_m {
+    background-image: url('https://ms2codex.com/images/line_96_m.png');
+    background-position: -30px 4px;
+    background-repeat: no-repeat
+}
+
+.empty_cell {
+    width: 110px;
+    height: 80px
+}
+
+.empty_cell_sp {
+    width: 50px;
+    height: 30px
+}
+
+.skill_points {
+    background-color: rgba(98, 103, 105, 0.4);
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 11px;
+    cursor: default
+}
+
+.skill_wrapper {
+    position: relative
+}
+
+.faded {
+    opacity: .4
+}
+
+.classes_panel {
+    width: 100%;
+    margin: 5px;
+    text-align: center
+}
+
+.class_cell {
+    display: inline
+}
+
+.class_icon {
+    width: 60px;
+    height: 68px;
+    -webkit-filter: contrast(120%);
+    -webkit-filter: brightness(150%)
+}
+
+.class_name {
+    font-weight: bold
+}
+
+.class_msg, .calc_header {
+    font-size: 1.05rem;
+    text-align: center
+}
+
+.build_title {
+    display: inline;
+    max-width: 500px
+}
+
+.max_level {
+    display: inline;
+    width: 50px;
+    text-align: center;
+    font-weight: bold
+}
+
+.selected_skill {
+    border-color: #044864
+}
+
+.fs_header {
+    background-color: #3f398c;
+    padding-left: 5px
+}
+
+.spacer_row {
+    height: 30px
+}
+
+.skill_lv_plus, .skill_lv_minus {
+    min-width: 30px
+}
+
+.lv_value {
+    padding-left: 2px;
+    padding-right: 2px
+}
+
+.buttons_cell {
+    text-align: center;
+    vertical-align: top;
+    position: relative
+}
+
+.level_cell {
+    width: 80px;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.level_cell_sp {
+    width: 80px;
+    height: 30px;
+}
+
+.lock_state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 60px
+}
+
+.locked {
+    background-image: url('https://ms2codex.com/images/icon_lock.png');
+    background-repeat: no-repeat;
+    background-position: 32px 4px
+}
+
+.skill_builder_table {
+    width: 671px;
+    height: 691px;
+    border-collapse: collapse
+}
+
+.skill_builder_card {
+    min-width: 680px
+}

@@ -35,4 +35,17 @@ module.exports = (app, constants) => {
             res.status(500).send({ error: constants.es.login });
         }
     });
+
+    app.get('/create-build/:class', (req, res) => {
+        if (req.user) {
+            res.render('create-build', {
+                gstatic: constants.gstatic,
+                title: 'Create - MS2World.com',
+                user: req.user,
+                cstatic: cstatic
+            });
+        } else {
+            res.redirect('/');
+        }
+    });
 }

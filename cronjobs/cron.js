@@ -41,28 +41,30 @@ module.exports = new CronJob('0 * * * *', function () {
 }, null, true, 'America/Los_Angeles');
 
 // get classes
-module.exports = new CronJob('0 * * * *', function () {
+// module.exports = new CronJob('* * * * * *', function () {
 
-  scrapeIt("http://maplestory2.nexon.net/en/game/classes", {
-    classes: {
-      listItem: ".class-item",
-      data: {
-        name: "h2",
-        img: {
-          selector: ".class-image img",
-          attr: "src"
-        }
-      }
-    }
-  }, (err, { data }) => {
-    var classes = data.classes;
-     constants.Ms2_class.deleteMany({}, (err) => {
-       if (err) return console.log('Error trying remove model at cronjob 2');
-       constants.Ms2_class.create(classes, (err) => {
-         if (err) return console.log('Error trying add classes at cronjob 2');
-         return console.log('Cronjob 2 completed')
-       });
-     });
-
-  });
-}, null, true, 'America/Los_Angeles');
+//   scrapeIt("https://ms2codex.com/us/skillbuilder/", {
+//     classes: {
+//       listItem: ".class_cell",
+//       data: {
+//         name: {
+//           selector: ".class_icon",
+//           attr: "oldtitle"
+//         },
+//         img: {
+//           selector: ".class_icon",
+//           attr: "src"
+//         }
+//       }
+//     }
+//   }, (err, { data }) => {
+//     var classes = data.classes;
+//      constants.Ms2_class.deleteMany({}, (err) => {
+//        if (err) return console.log('Error trying remove model at cronjob 2');
+//        constants.Ms2_class.create(classes, (err) => {
+//          if (err) return console.log('Error trying add classes at cronjob 2');
+//          return console.log('Cronjob 2 completed')
+//        });
+//      });
+//   });
+// }, null, true, 'America/Los_Angeles');
