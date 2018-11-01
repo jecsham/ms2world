@@ -17,7 +17,7 @@
     "handlebars-helpers": "^0.10.0",
     "mongo-sanitize": "^1.0.0",
     "mongoose": "^5.3.7",
-    "mongoose-paginate": "^5.0.3",
+    "mongoose-paginate-v2": "^1.0.12",
     "scrape-it": "^5.1.0",
     "serve-favicon": "^2.5.0",
     "steam-login": "^0.1.7",

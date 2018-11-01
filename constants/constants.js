@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate');
+var mongoosePaginate = require('mongoose-paginate-v2');
 const chalk = require('chalk');
 const sanitize = require('mongo-sanitize');
 const mSteamAPI = require('steamapi');
