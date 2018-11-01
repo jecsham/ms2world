@@ -41,8 +41,8 @@
         </div>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm" id="header">
             <div class="container">
-                <button class="btn btn-dark btn-sm d-sm-none" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="btn btn-dark btn-sm d-sm-none" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="mdi mdi-menu"></span>
                 </button>
 
@@ -60,14 +60,15 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="/create-guide" class="dropdown-item">Create guide</a>
-                                <a href="#" class="dropdown-item">Another action</a>
+                                <a href="/create-build/some" class="dropdown-item">Create build</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="/logout" class="dropdown-item">Logout</a>
                             </div>
                         </div>
                         {{else}}
-                        <a href="/login" class="btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam" style="font-size: 17px;"></span>
-                            Login</a>
+                        <button id="loginbtn" data-url="/login" class="btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam"
+                                style="font-size: 17px;"></span>
+                            Login</button>
                         {{/if}}
                     </div>
                 </div>
@@ -114,6 +115,21 @@
                 </div>
             </div>
         </footer>
+    </div>
+    <div id="cookie-notice" class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-info alert-dismissible fade show" role="alert"><strong>Cookies Notice 🍪!
+                    </strong> We use cookies and other tracking technologies to improve your browsing
+                    experience on our website, to show you personalized content and targeted ads, to analyze our
+                    website traffic, and to understand where our visitors are coming from. By browsing our website, you
+                    consent to our use of cookies and other tracking technologies.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">OK</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="/js/global.js"></script>
 </body>

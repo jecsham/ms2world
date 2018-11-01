@@ -1,6 +1,7 @@
 // skills
 // Runeblade"de
 var knight = {
+    "max_points": 58,
     "10100001": {
         "title": "Cross Cut",
         "level": "10",
@@ -1620,42 +1621,47 @@ var runeblade = {
         "lines": ['']
     }
 }
-var max_points = 58;
-var buildTemplate = JSON.parse(JSON.stringify(knight))
 
-loadBuild();
-$("[name='btn']").click((event) => addPoints(event.target.getAttribute('data-skillid')));
-$("[name='-btn']").click((event) => removePoints(event.target.getAttribute('data-skillid')));
+var buildTemplate;
 
-$(document).ready(()=>{
+if (Cookies.get('ms2-build'))
+    buildTemplate = JSON.parse(Cookies.get('ms2-build'))
+else
+    buildTemplate = JSON.parse(JSON.stringify(knight))
+
+
+$("[name='btn']").click(event => addPoints(event.target.getAttribute('data-skillid')));
+$("[name='-btn']").click(event => removePoints(event.target.getAttribute('data-skillid')));
+$("#resetbuildbtn").click(() => resetBuild());
+
+$(document).ready(() => {
     $('.level_cell, .level_cell_sp').addClass('bg-light');
+    loadBuild();
 })
 
 function loadBuild() {
     $.each(buildTemplate, (index, value) => {
-        $('#max-points').text(max_points);
-        $('#point-' + index).text(buildTemplate[index].min);
-        $('#point-max-' + index).text(buildTemplate[index].max);
+        $('#max-points').text(buildTemplate.max_points);
+        $('#point-' + index).text(" " + buildTemplate[index].min);
+        $('#point-max-' + index).text(buildTemplate[index].max + " ");
         if (buildTemplate[index].locked) lockSkill(index);
     });
+    saveInCookie();
 }
+
 function addPoints(skillid) {
-    if (buildTemplate[skillid].min < knight[skillid].max && max_points > 0) {
+    if (buildTemplate[skillid].min < knight[skillid].max && buildTemplate.max_points > 0) {
         buildTemplate[skillid].min++;
         removeMaxPoints(1);
-        checkLocks(skillid);
-        checkLocksAll()
-        loadBuild()
+        pointsAction(skillid);
     }
 }
 
 function removePoints(skillid) {
-    if (buildTemplate[skillid].min > knight[skillid].min && max_points <= 58) {
+    if (buildTemplate[skillid].min > knight[skillid].min && buildTemplate.max_points <= 58) {
         buildTemplate[skillid].min--;
         addMaxPoints(1);
-        checkLocks(skillid);
-        checkLocksAll()
-        loadBuild()
+        pointsAction(skillid)
     }
 }
 
@@ -1664,8 +1670,8 @@ function checkLocks(skillid) {
         $.each(buildTemplate[skillid].unlockAt, (index, value) => {
             if (buildTemplate[index].min >= value) {
             } else {
+                removeMaxPoints(Math.abs(buildTemplate[index].min - value))
                 buildTemplate[index].min = value;
-                removeMaxPoints(value)
                 unlockSkill(index);
             }
         });
@@ -1697,16 +1703,33 @@ function lockSkill(skillid) {
     buildTemplate[skillid].min = 0;
     $('#lock-' + skillid).addClass('locked');
 }
+
 function unlockSkill(skillid) {
     buildTemplate[skillid].locked = false;
     $('#lock-' + skillid).removeClass('locked');
 }
+
 function removeMaxPoints(points) {
-    max_points -= points;
-    $('#max-points').text(max_points);
-    console.log(max_points)
+    buildTemplate.max_points -= points;
+    $('#max-points').text(buildTemplate.max_points);
 }
+
 function addMaxPoints(points) {
-    max_points += points;
-    $('#max-points').text(max_points);
+    buildTemplate.max_points += points;
+    $('#max-points').text(buildTemplate.max_points);
+}
+
+function pointsAction(skillid) {
+    checkLocks(skillid);
+    checkLocksAll();
+    loadBuild();
+}
+
+function resetBuild() {
+    buildTemplate = JSON.parse(JSON.stringify(knight))
+    loadBuild()
+}
+
+function saveInCookie() {
+    Cookies.set("ms2-build", JSON.stringify(buildTemplate));
 }

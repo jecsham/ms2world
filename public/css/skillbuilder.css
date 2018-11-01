@@ -5,133 +5,133 @@
 }
 
 .line_v {
-    background-image: url('https://ms2codex.com/images/line_v.png');
+    background-image: url('../assets/lines/line_v.png');
     background-repeat: no-repeat;
-    background-position: 1px 0
+    background-position: 1px 0;
 }
 
 .line_v_sp {
-    background-image: url('https://ms2codex.com/images/line_v.png');
+    background-image: url('../assets/lines/line_v.png');
     background-repeat: no-repeat;
-    background-position: -29px 0
+    background-position: -29px 0;
 }
 
 .line_vd {
-    background-image: url('https://ms2codex.com/images/line_v.png');
+    background-image: url('../assets/lines/line_v.png');
     background-repeat: no-repeat;
     background-position: 1px 40px
 }
 
 .line_vu {
-    background-image: url('https://ms2codex.com/images/line_v.png');
+    background-image: url('../assets/lines/line_v.png');
     background-repeat: no-repeat;
     background-position: 1px -60px
 }
 
 .line_h {
-    background-image: url('https://ms2codex.com/images/line_h.png');
+    background-image: url('../assets/lines/line_h.png');
     background-repeat: no-repeat;
     background-position: center
 }
 
 .line_hl {
-    background-image: url('https://ms2codex.com/images/line_h.png');
+    background-image: url('../assets/lines/line_h.png');
     background-repeat: no-repeat;
     background-position: -40px 26px
 }
 
 .line_hr {
-    background-image: url('https://ms2codex.com/images/line_h.png');
+    background-image: url('../assets/lines/line_h.png');
     background-repeat: no-repeat;
     background-position: +40px 28px
 }
 
 .line_3 {
-    background-image: url('https://ms2codex.com/images/line_3.png');
+    background-image: url('../assets/lines/line_3.png');
     background-position: 0 -25px;
     background-repeat: no-repeat
 }
 
 .line_6 {
-    background-image: url('https://ms2codex.com/images/line_6.png');
+    background-image: url('../assets/lines/line_6.png');
     background-position: 0 -27px;
     background-repeat: no-repeat
 }
 
 .line_9 {
-    background-image: url('https://ms2codex.com/images/line_9.png');
+    background-image: url('../assets/lines/line_9.png');
     background-position: 0 -25px;
     background-repeat: no-repeat
 }
 
 .line_9_m {
-    background-image: url('https://ms2codex.com/images/line_9_m.png');
+    background-image: url('../assets/lines/line_9_m.png');
     background-position: 0 -2px;
     background-repeat: no-repeat
 }
 
 .line_123 {
-    background-image: url('https://ms2codex.com/images/line_123.png');
+    background-image: url('../assets/lines/line_123.png');
     background-position: 0 -11px;
     background-repeat: no-repeat
 }
 
 .line_123_sp {
-    background-image: url('https://ms2codex.com/images/line_123.png');
+    background-image: url('../assets/lines/line_123.png');
     background-position: -30px -11px;
     background-repeat: no-repeat
 }
 
 .line_129 {
-    background-image: url('https://ms2codex.com/images/line_129.png');
+    background-image: url('../assets/lines/line_129.png');
     background-position: -1px -20px;
     background-repeat: no-repeat
 }
 
 .line_129_sp {
-    background-image: url('https://ms2codex.com/images/line_129.png');
+    background-image: url('../assets/lines/line_129.png');
     background-position: -30px -9px;
     background-repeat: no-repeat
 }
 
 .line_129_m {
-    background-image: url('https://ms2codex.com/images/line_129.png');
+    background-image: url('../assets/lines/line_129.png');
     background-position: 0 -11px;
     background-repeat: no-repeat
 }
 
 .line_63 {
-    background-image: url('https://ms2codex.com/images/line_63.png');
+    background-image: url('../assets/lines/line_63.png');
     background-position: 3px 0;
     background-repeat: no-repeat
 }
 
 .line_63_sp {
-    background-image: url('https://ms2codex.com/images/line_63.png');
+    background-image: url('../assets/lines/line_63.png');
     background-position: -27px -16px;
     background-repeat: no-repeat
 }
 
 .line_63_m {
-    background-image: url('https://ms2codex.com/images/line_63_m.png');
+    background-image: url('../assets/lines/line_63_m.png');
     background-position: -30px 4px;
     background-repeat: no-repeat
 }
 
 .line_96 {
-    background-image: url('https://ms2codex.com/images/line_96.png');
+    background-image: url('../assets/lines/line_96.png');
     background-position: 0 -25px;
     background-repeat: no-repeat
 }
 
 .line_96_sp {
-    background-image: url('https://ms2codex.com/images/line_96.png');
+    background-image: url('../assets/lines/line_96.png');
     background-position: -30px -25px;
     background-repeat: no-repeat
 }
 
 .line_96_m {
-    background-image: url('https://ms2codex.com/images/line_96_m.png');
+    background-image: url('../assets/lines/line_96_m.png');
     background-position: -30px 4px;
     background-repeat: no-repeat
 }
@@ -177,8 +177,6 @@
 .class_icon {
     width: 60px;
     height: 68px;
-    -webkit-filter: contrast(120%);
-    -webkit-filter: brightness(150%)
 }
 
 .class_name {
@@ -197,7 +195,6 @@
 
 .max_level {
     display: inline;
-    width: 50px;
     text-align: center;
     font-weight: bold
 }
@@ -234,11 +231,23 @@
     width: 80px;
     padding: 5px;
     vertical-align: top;
+    border-right: 1px solid #ced4da;
 }
 
 .level_cell_sp {
     width: 80px;
     height: 30px;
+    border-right: 1px solid #ced4da;
+}
+
+.skill_btn {
+    border: 1px;
+    cursor: pointer;
+}
+.skill_btn[disabled] {
+    background: transparent;
+    cursor: none;
+    color: grey;
 }
 
 .lock_state {
@@ -250,7 +259,7 @@
 }
 
 .locked {
-    background-image: url('https://ms2codex.com/images/icon_lock.png');
+    background-image: url('../assets/lines/icon_lock.png');
     background-repeat: no-repeat;
     background-position: 32px 4px
 }
@@ -258,7 +267,8 @@
 .skill_builder_table {
     width: 671px;
     height: 691px;
-    border-collapse: collapse
+    border-collapse: collapse;
+    border: 1px solid #ced4da;
 }
 
 .skill_builder_card {

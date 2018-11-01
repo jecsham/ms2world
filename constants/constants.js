@@ -20,7 +20,7 @@ var es = {
     internal: "An internal server error has occurred. Please contact an administrator or try later.",
     login: "You must be login.",
     steam_id_match: "User Steam ID don't match. You aren't the post owner.",
-    big_content: "The content is too big. Please verify that you are within the limit of allowed characters (800000 max)"
+    big_content: "The content is too big. Please verify that you are within the limit of allowed characters (800,000 max)"
 }
 
 // Global statics
