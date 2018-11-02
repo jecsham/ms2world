@@ -1643,7 +1643,7 @@ $(document).ready(() => {
 
 function renderCanvas() {
     html2canvas(document.querySelector("#render-skill-pane"), { width: 671, onclone: canvasPNG => disappearElements(canvasPNG) }).then(canvas => {
-        dlCanvas(canvas)
+        document.body.appendChild(canvas);
     });
 }
 
