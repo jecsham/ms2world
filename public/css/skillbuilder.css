@@ -245,8 +245,7 @@
     cursor: pointer;
 }
 .skill_btn[disabled] {
-    background: transparent;
-    cursor: none;
+    background: #f8f9fa;
     color: grey;
 }
 

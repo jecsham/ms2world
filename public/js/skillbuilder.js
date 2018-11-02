@@ -1633,12 +1633,24 @@ else
 $("[name='btn']").click(event => addPoints(event.target.getAttribute('data-skillid')));
 $("[name='-btn']").click(event => removePoints(event.target.getAttribute('data-skillid')));
 $("#resetbuildbtn").click(() => resetBuild());
+$("#dl").click(() => renderCanvas());
 
 $(document).ready(() => {
     $('.level_cell, .level_cell_sp').addClass('bg-light');
     loadBuild();
+
 })
 
+function renderCanvas() {
+    html2canvas(document.querySelector("#render-skill-pane"), { width: 671, onclone: canvasPNG => disappearElements(canvasPNG) }).then(canvas => {
+        dlCanvas(canvas)
+    });
+}
+
+function dlCanvas(canvas) {
+    var dt = canvas.toDataURL('image/png');
+    this.href = dt.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+};
 function loadBuild() {
     $.each(buildTemplate, (index, value) => {
         $('#max-points').text(buildTemplate.max_points);
@@ -1646,6 +1658,7 @@ function loadBuild() {
         $('#point-max-' + index).text(buildTemplate[index].max + " ");
         if (buildTemplate[index].locked) lockSkill(index);
     });
+    toggleButtons();
     saveInCookie();
 }
 
@@ -1725,6 +1738,28 @@ function pointsAction(skillid) {
     loadBuild();
 }
 
+function toggleButtons() {
+    $.each(buildTemplate, (index, value) => {
+        if (buildTemplate[index].min === knight[index].min && buildTemplate[index].min === knight[index].max) {
+            $('button[name="btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
+            $('button[name="-btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
+        } else if (buildTemplate[index].min === knight[index].min) {
+            $('button[name="btn"][data-skillid="' + index + '"]').removeAttr("disabled");
+            $('button[name="-btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
+        } else if (buildTemplate[index].min === knight[index].max) {
+            $('button[name="-btn"][data-skillid="' + index + '"]').removeAttr("disabled");
+            $('button[name="btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
+        } else {
+            $('button[name="-btn"][data-skillid="' + index + '"]').removeAttr("disabled");
+            $('button[name="btn"][data-skillid="' + index + '"]').removeAttr("disabled", "disabled");
+        }
+    })
+    if (buildTemplate.max_points === 0) {
+        $('[name="btn"]').attr("disabled", "disabled");
+    }
+
+}
+
 function resetBuild() {
     buildTemplate = JSON.parse(JSON.stringify(knight))
     loadBuild()
@@ -1732,4 +1767,12 @@ function resetBuild() {
 
 function saveInCookie() {
     Cookies.set("ms2-build", JSON.stringify(buildTemplate));
+}
+
+function disappearElements(canvasPNG) {
+    var btns = canvasPNG.getElementsByClassName('skill_btn');
+    var url = canvasPNG.getElementById('as');
+    $(btns).hide()
+    $(url).text('MS2WORLD.NET').removeClass('text-muted').addClass('font-weight-bold ml-3')
+
 }

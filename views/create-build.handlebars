@@ -35,13 +35,14 @@
                             PvE
                         </label>
                     </div>
-                    <button id="submitbtn" type="submit" class="btn btn-success btn-sm">Publicate</button>
+                    <button id="submitbtn" type="submit" class="btn btn-success btn-sm">Publicate</button> <a class="btn btn-info btn-sm" download="build.png" id="dl" href="#">Download as PNG</a>
                     <div id="status" class="mt-3"></div>
                 </form>
+                <div id="render-skill-pane"></div>
                 <h5>Knight Build - This is a title</h5>
                 <p>A desc</p>
                 <link rel="stylesheet" href="/css/skillbuilder.css">
-                <h6>Remaining points: <strong id="max-points"></strong> <button class="btn btn-secundary btn-sm" id="resetbuildbtn">Reset</button></h6> 
+                <h6>Remaining points: <strong id="max-points"></strong> <button class="btn btn-secundary btn-sm" id="resetbuildbtn">Reset</button></h6>
                 <div id="skill_pane" class="table-responsive">
                     <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" class="skill_builder_table">
                         <tbody>
@@ -79,10 +80,10 @@
                                         <div class="lock_state" id="lock-10100091"></div>
                                     </div>
                                     <div class="skill_buttons" data-id="10100091" data-max_level="1"><button class="skill_btn"
-                                            data-skillid="10100011" name="-btn">-</button>
+                                            data-skillid="10100091" name="-btn">-</button>
                                         <span class="skill_level lv_value" data-lv="1" id="point-10100091"></span>/<span
                                             class="lv_value" id="point-max-10100091"></span><button class="skill_btn"
-                                            data-skillid="10100011" name="btn">+</button></div>
+                                            data-skillid="10100091" name="btn">+</button></div>
                                 </td>
                             </tr>
                             <tr>
@@ -327,11 +328,13 @@
                             </tr>
                         </tbody>
                     </table>
-                    <small class="text-muted">Autosave locally enabled 😀</small>
+                    <small id="as" class="text-muted">Local autosave enabled 😀</small>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script src="/js/skillbuilder.js"></script>
