@@ -1,5 +1,3 @@
-// skills
-// Runeblade"de
 var knight = {
     "max_points": 58,
     "10100001": {
@@ -1621,20 +1619,21 @@ var runeblade = {
         "lines": ['']
     }
 }
-
 var buildTemplate;
+var build;
 
 if (Cookies.get('ms2-build'))
-    buildTemplate = JSON.parse(Cookies.get('ms2-build'))
+    build = JSON.parse(Cookies.get('ms2-build'))
 else
-    buildTemplate = JSON.parse(JSON.stringify(knight))
+    build = JSON.parse(JSON.stringify(knight))
 
 
 $("[name='btn']").click(event => addPoints(event.target.getAttribute('data-skillid')));
 $("[name='-btn']").click(event => removePoints(event.target.getAttribute('data-skillid')));
 $("#resetbuildbtn").click(() => resetBuild());
-$("#dl").click(() => renderCanvas());
+$("#cmLauncher").click(() => renderCanvas());
 
+var renderedCanvas;
 $(document).ready(() => {
     $('.level_cell, .level_cell_sp').addClass('bg-light');
     loadBuild();
@@ -1642,49 +1641,46 @@ $(document).ready(() => {
 })
 
 function renderCanvas() {
-    html2canvas(document.querySelector("#render-skill-pane"), { width: 671, onclone: canvasPNG => disappearElements(canvasPNG) }).then(canvas => {
-        document.body.appendChild(canvas);
+    html2canvas(document.querySelector("#render-skill-pane"), { width: 672, onclone: canvasPNG => editElements(canvasPNG) }).then(canvas => {
+        $('#renderedCanvas').replaceWith(canvas);
     });
 }
 
-function dlCanvas(canvas) {
-    var dt = canvas.toDataURL('image/png');
-    this.href = dt.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-};
 function loadBuild() {
-    $.each(buildTemplate, (index, value) => {
-        $('#max-points').text(buildTemplate.max_points);
-        $('#point-' + index).text(" " + buildTemplate[index].min);
-        $('#point-max-' + index).text(buildTemplate[index].max + " ");
-        if (buildTemplate[index].locked) lockSkill(index);
+    $.each(build, (index, value) => {
+        $('#max-points').text(build.max_points);
+        $('#max-points-cap').text(knight.max_points);
+        $('#point-' + index).text(" " + build[index].min);
+        $('#point-max-' + index).text(build[index].max + " ");
+        if (build[index].locked) lockSkill(index);
     });
     toggleButtons();
     saveInCookie();
 }
 
 function addPoints(skillid) {
-    if (buildTemplate[skillid].min < knight[skillid].max && buildTemplate.max_points > 0) {
-        buildTemplate[skillid].min++;
+    if (build[skillid].min < knight[skillid].max && build.max_points > 0) {
+        build[skillid].min++;
         removeMaxPoints(1);
         pointsAction(skillid);
     }
 }
 
 function removePoints(skillid) {
-    if (buildTemplate[skillid].min > knight[skillid].min && buildTemplate.max_points <= 58) {
-        buildTemplate[skillid].min--;
+    if (build[skillid].min > knight[skillid].min && build.max_points <= 58) {
+        build[skillid].min--;
         addMaxPoints(1);
         pointsAction(skillid)
     }
 }
 
 function checkLocks(skillid) {
-    if (buildTemplate[skillid].unlockAt) {
-        $.each(buildTemplate[skillid].unlockAt, (index, value) => {
-            if (buildTemplate[index].min >= value) {
+    if (build[skillid].unlockAt) {
+        $.each(build[skillid].unlockAt, (index, value) => {
+            if (build[index].min >= value) {
             } else {
-                removeMaxPoints(Math.abs(buildTemplate[index].min - value))
-                buildTemplate[index].min = value;
+                removeMaxPoints(Math.abs(build[index].min - value))
+                build[index].min = value;
                 unlockSkill(index);
             }
         });
@@ -1692,12 +1688,12 @@ function checkLocks(skillid) {
 }
 
 function checkLocksAll() {
-    $.each(buildTemplate, (index, value) => {
-        if (buildTemplate[index].unlockAt) {
+    $.each(build, (index, value) => {
+        if (build[index].unlockAt) {
             var i = 0;
             var check = 0;
-            $.each(buildTemplate[index].unlockAt, (subindex, value) => {
-                if (buildTemplate[subindex].min >= value) {
+            $.each(build[index].unlockAt, (subindex, value) => {
+                if (build[subindex].min >= value) {
                     i++;
                     check++;
                 } else {
@@ -1711,25 +1707,25 @@ function checkLocksAll() {
 }
 
 function lockSkill(skillid) {
-    buildTemplate[skillid].locked = true;
-    addMaxPoints(buildTemplate[skillid].min);
-    buildTemplate[skillid].min = 0;
+    build[skillid].locked = true;
+    addMaxPoints(build[skillid].min);
+    build[skillid].min = 0;
     $('#lock-' + skillid).addClass('locked');
 }
 
 function unlockSkill(skillid) {
-    buildTemplate[skillid].locked = false;
+    build[skillid].locked = false;
     $('#lock-' + skillid).removeClass('locked');
 }
 
 function removeMaxPoints(points) {
-    buildTemplate.max_points -= points;
-    $('#max-points').text(buildTemplate.max_points);
+    build.max_points -= points;
+    $('#max-points').text(build.max_points);
 }
 
 function addMaxPoints(points) {
-    buildTemplate.max_points += points;
-    $('#max-points').text(buildTemplate.max_points);
+    build.max_points += points;
+    $('#max-points').text(build.max_points);
 }
 
 function pointsAction(skillid) {
@@ -1739,14 +1735,14 @@ function pointsAction(skillid) {
 }
 
 function toggleButtons() {
-    $.each(buildTemplate, (index, value) => {
-        if (buildTemplate[index].min === knight[index].min && buildTemplate[index].min === knight[index].max) {
+    $.each(build, (index, value) => {
+        if (build[index].min === knight[index].min && build[index].min === knight[index].max) {
             $('button[name="btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
             $('button[name="-btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
-        } else if (buildTemplate[index].min === knight[index].min) {
+        } else if (build[index].min === knight[index].min) {
             $('button[name="btn"][data-skillid="' + index + '"]').removeAttr("disabled");
             $('button[name="-btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
-        } else if (buildTemplate[index].min === knight[index].max) {
+        } else if (build[index].min === knight[index].max) {
             $('button[name="-btn"][data-skillid="' + index + '"]').removeAttr("disabled");
             $('button[name="btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
         } else {
@@ -1754,25 +1750,24 @@ function toggleButtons() {
             $('button[name="btn"][data-skillid="' + index + '"]').removeAttr("disabled", "disabled");
         }
     })
-    if (buildTemplate.max_points === 0) {
+    if (build.max_points === 0) {
         $('[name="btn"]').attr("disabled", "disabled");
     }
 
 }
 
 function resetBuild() {
-    buildTemplate = JSON.parse(JSON.stringify(knight))
+    build = JSON.parse(JSON.stringify(knight))
     loadBuild()
 }
 
 function saveInCookie() {
-    Cookies.set("ms2-build", JSON.stringify(buildTemplate));
+    Cookies.set("ms2-build", JSON.stringify(build));
 }
 
-function disappearElements(canvasPNG) {
-    var btns = canvasPNG.getElementsByClassName('skill_btn');
-    var url = canvasPNG.getElementById('as');
-    $(btns).hide()
-    $(url).text('MS2WORLD.NET').removeClass('text-muted').addClass('font-weight-bold ml-3')
+function editElements(canvasPNG) {
+    $($(canvasPNG).find('#resetbuildbtn')).hide();
+    $($(canvasPNG).find('.skill_btn')).hide();
+    $($(canvasPNG).find('#as')).text('MS2WORLD.NET').removeClass('text-muted').addClass('font-weight-bold ml-3');
 
 }

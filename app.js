@@ -15,8 +15,8 @@ var favicon = require('serve-favicon');
 app.enable("trust proxy");
 
 const limiter = rateLimit({
-	windowMs: 1500,
-	max: 30,
+	windowMs: 900,
+	max: 60,
 	delayMs: 0,
 	message: "{}"
 });
