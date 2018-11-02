@@ -1,351 +1,3 @@
-var knight = {
-    "max_points": 58,
-    "10100001": {
-        "title": "Cross Cut",
-        "level": "10",
-        "job": "Knight",
-        "min": 1,
-        "max": 10,
-        "locked": false,
-        "unlockAt": false
-    },
-    "10100011": {
-        "title": "Tornado Slash",
-        "level": "10",
-        "job": "Knight",
-        "min": 1,
-        "max": 10,
-        "locked": false,
-        "unlockAt": false
-    },
-    "10100021": {
-        "title": "Divine Strike",
-        "level": "13",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100001": 2, "10100011": 2 }
-    },
-    "10100031": {
-        "title": "Drill Thrust",
-        "level": "37",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100001": 2, "10100011": 2, "10100021": 6 }
-    },
-    "10100041": {
-        "title": "Warhorn",
-        "level": "22",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100051": 3 }
-    },
-    "10100051": {
-        "title": "Shield Wall",
-        "level": "16",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": false,
-        "unlockAt": {}
-    },
-    "10100061": {
-        "title": "Iron Defense",
-        "level": "1",
-        "job": "Knight",
-        "min": 1,
-        "max": 1,
-        "locked": false,
-        "unlockAt": {}
-    },
-    "10100071": {
-        "title": "Shield Toss",
-        "level": "25",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100001": 1, "10100011": 3, "10100131": 4, "10100151": 4 }
-    },
-    "10100081": {
-        "title": "Bulwark",
-        "level": "34",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100051": 4, "10100041": 3 }
-    },
-    "10100091": {
-        "title": "Shield Charge",
-        "level": "1",
-        "job": "Knight",
-        "min": 1,
-        "max": 1,
-        "locked": false,
-        "unlockAt": {}
-    },
-    "10100101": {
-        "title": "Defender of the Faith",
-        "level": "40",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100051": 4, "10100041": 3 }
-    },
-    "10100111": {
-        "title": "Longsword Mastery",
-        "level": "43",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100001": 6, "10100011": 2, "10100021": 6, "10100031": 2 }
-    },
-    "10100121": {
-        "title": "Shield Mastery",
-        "level": "31",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100151": 4 }
-    },
-    "10100131": {
-        "title": "Typhoon Slash",
-        "level": "19",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100011": 3 }
-    },
-    "10100141": {
-        "title": "Stinging Flurry",
-        "level": "28",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100001": 5, "10100011": 2, "10100021": 5 }
-    },
-    "10100151": {
-        "title": "Iron Shield",
-        "level": "10",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": false,
-        "unlockAt": {}
-    },
-    "10100161": {
-        "title": "Shield Booster",
-        "level": "46",
-        "job": "Knight",
-        "min": 0,
-        "max": 10,
-        "locked": true,
-        "unlockAt": { "10100151": 4, "10100121": 2 }
-    }
-}
-var berserker = {
-    "10200001": {
-        "title": "Raging Slash",
-        "level": "12",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200011": {
-        "title": "Death Spin",
-        "level": "12",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200021": {
-        "title": "Ground Breaker",
-        "level": "19",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200031": {
-        "title": "Dark Aura",
-        "level": "1",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200041": {
-        "title": "Void Slash",
-        "level": "10",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200051": {
-        "title": "Bloodlust",
-        "level": "13",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200061": {
-        "title": "Intimidation",
-        "level": "28",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200071": {
-        "title": "Dark Breaker",
-        "level": "22",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200081": {
-        "title": "Adrenaline Rush",
-        "level": "25",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200091": {
-        "title": "X Slash",
-        "level": "1",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200101": {
-        "title": "Inhuman Endurance",
-        "level": "43",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200111": {
-        "title": "Deep Wounds",
-        "level": "37",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200121": {
-        "title": "Greatsword Mastery",
-        "level": "16",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200131": {
-        "title": "Dark Might",
-        "level": "40",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200141": {
-        "title": "Blood Price",
-        "level": "31",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200151": {
-        "title": "Warrior's Instinct",
-        "level": "34",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10200161": {
-        "title": "Earthquake",
-        "level": "46",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "20000001": {
-        "title": "Swift Swim",
-        "level": "1",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "20000011": {
-        "title": "Wall Climbing",
-        "level": "1",
-        "job": "Berserker",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    }
-}
 var wizard = {
     "10300011": {
         "title": "Flame Tornado",
@@ -1619,22 +1271,24 @@ var runeblade = {
         "lines": ['']
     }
 }
-var buildTemplate;
-var build;
 
-if (Cookies.get('ms2-build'))
-    build = JSON.parse(Cookies.get('ms2-build'))
+var build;
+var no_count = 0;
+if (Cookies.get('ms2-build-' + class_name))
+    build = JSON.parse(Cookies.get('ms2-build-' + class_name))
 else
-    build = JSON.parse(JSON.stringify(knight))
+    build = JSON.parse(JSON.stringify(buildTemplate))
 
 
 $("[name='btn']").click(event => addPoints(event.target.getAttribute('data-skillid')));
+$("[name='typeRadio']").click(event => $('#buildtype').text(event.target.getAttribute('value')));
 $("[name='-btn']").click(event => removePoints(event.target.getAttribute('data-skillid')));
 $("#resetbuildbtn").click(() => resetBuild());
 $("#cmLauncher").click(() => renderCanvas());
 
 var renderedCanvas;
 $(document).ready(() => {
+    noCount();
     $('.level_cell, .level_cell_sp').addClass('bg-light');
     loadBuild();
 
@@ -1649,7 +1303,7 @@ function renderCanvas() {
 function loadBuild() {
     $.each(build, (index, value) => {
         $('#max-points').text(build.max_points);
-        $('#max-points-cap').text(knight.max_points);
+        $('#max-points-cap').text(buildTemplate.max_points);
         $('#point-' + index).text(" " + build[index].min);
         $('#point-max-' + index).text(build[index].max + " ");
         if (build[index].locked) lockSkill(index);
@@ -1659,17 +1313,17 @@ function loadBuild() {
 }
 
 function addPoints(skillid) {
-    if (build[skillid].min < knight[skillid].max && build.max_points > 0) {
+    if (build[skillid].min < buildTemplate[skillid].max && build.max_points > 0) {
         build[skillid].min++;
-        removeMaxPoints(1);
+        updateMaxPoints();
         pointsAction(skillid);
     }
 }
 
 function removePoints(skillid) {
-    if (build[skillid].min > knight[skillid].min && build.max_points <= 58) {
+    if (build[skillid].min > buildTemplate[skillid].min && build.max_points <= 58) {
         build[skillid].min--;
-        addMaxPoints(1);
+        updateMaxPoints();
         pointsAction(skillid)
     }
 }
@@ -1678,8 +1332,8 @@ function checkLocks(skillid) {
     if (build[skillid].unlockAt) {
         $.each(build[skillid].unlockAt, (index, value) => {
             if (build[index].min >= value) {
-            } else {
-                removeMaxPoints(Math.abs(build[index].min - value))
+            } else if (Math.abs(build[index].min - value) <= build.max_points) {
+                updateMaxPoints()
                 build[index].min = value;
                 unlockSkill(index);
             }
@@ -1708,7 +1362,7 @@ function checkLocksAll() {
 
 function lockSkill(skillid) {
     build[skillid].locked = true;
-    addMaxPoints(build[skillid].min);
+    updateMaxPoints();
     build[skillid].min = 0;
     $('#lock-' + skillid).addClass('locked');
 }
@@ -1718,13 +1372,14 @@ function unlockSkill(skillid) {
     $('#lock-' + skillid).removeClass('locked');
 }
 
-function removeMaxPoints(points) {
-    build.max_points -= points;
-    $('#max-points').text(build.max_points);
-}
-
-function addMaxPoints(points) {
-    build.max_points += points;
+function updateMaxPoints() {
+    let i = -no_count;
+    $.each(build, (index, value) => {
+        if (build[index].min) {
+            i += build[index].min
+        }
+    })
+    build.max_points = buildTemplate.max_points - i;
     $('#max-points').text(build.max_points);
 }
 
@@ -1736,18 +1391,27 @@ function pointsAction(skillid) {
 
 function toggleButtons() {
     $.each(build, (index, value) => {
-        if (build[index].min === knight[index].min && build[index].min === knight[index].max) {
+        if (build[index].min === buildTemplate[index].min && build[index].min === buildTemplate[index].max) {
             $('button[name="btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
             $('button[name="-btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
-        } else if (build[index].min === knight[index].min) {
+        } else if (build[index].min === buildTemplate[index].min) {
             $('button[name="btn"][data-skillid="' + index + '"]').removeAttr("disabled");
             $('button[name="-btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
-        } else if (build[index].min === knight[index].max) {
+        } else if (build[index].min === buildTemplate[index].max) {
             $('button[name="-btn"][data-skillid="' + index + '"]').removeAttr("disabled");
             $('button[name="btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
         } else {
             $('button[name="-btn"][data-skillid="' + index + '"]').removeAttr("disabled");
-            $('button[name="btn"][data-skillid="' + index + '"]').removeAttr("disabled", "disabled");
+            $('button[name="btn"][data-skillid="' + index + '"]').removeAttr("disabled");
+        }
+        if (build[index].unlockAt) {
+            var sum = 0;
+            $.each(build[index].unlockAt, (subindex, value) => {
+                sum += value;
+            })
+            if (sum > (build.max_points - 1) && build[index].locked === true) {
+                $('button[name="btn"][data-skillid="' + index + '"]').attr("disabled", "disabled");
+            }
         }
     })
     if (build.max_points === 0) {
@@ -1757,12 +1421,12 @@ function toggleButtons() {
 }
 
 function resetBuild() {
-    build = JSON.parse(JSON.stringify(knight))
+    build = JSON.parse(JSON.stringify(buildTemplate))
     loadBuild()
 }
 
 function saveInCookie() {
-    Cookies.set("ms2-build", JSON.stringify(build));
+    Cookies.set("ms2-build-" + class_name, JSON.stringify(build));
 }
 
 function editElements(canvasPNG) {
@@ -1770,4 +1434,14 @@ function editElements(canvasPNG) {
     $($(canvasPNG).find('.skill_btn')).hide();
     $($(canvasPNG).find('#as')).text('MS2WORLD.NET').removeClass('text-muted').addClass('font-weight-bold ml-3');
 
+}
+
+function noCount() {
+    let i = 0;
+    $.each(buildTemplate, (index, value) => {
+        if (buildTemplate[index].min) {
+            i += buildTemplate[index].min
+        }
+    })
+    no_count = i;
 }

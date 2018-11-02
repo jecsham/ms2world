@@ -15,7 +15,7 @@ module.exports = (app, constants) => {
     });
 
     app.post('/create-guide/submit', (req, res) => {
-        if(req.user){
+        if (req.user) {
             if (req.body.title.length <= 150 && req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags[0].length <= 20) {
                 var data = {};
                 data.title = constants.sanitize(req.body.title);
@@ -26,26 +26,27 @@ module.exports = (app, constants) => {
                 data.date_create = new Date();
                 constants.Post_guide.create(data, (err, doc) => {
                     if (err) return res.status(500).send({ error: constants.es.internal });
-                    res.send({ error: false, id: doc._id});
+                    res.send({ error: false, id: doc._id });
                 });
             } else {
                 res.status(500).send({ error: constants.es.big_content });
             }
-        }else{
+        } else {
             res.status(500).send({ error: constants.es.login });
         }
     });
 
     app.get('/create-build/:class', (req, res) => {
-        if (req.user) {
+        var class_name = constants.sanitize(req.params.class);
+        constants.Build_template.findOne({ class_name: class_name }, {_id:0, class_name: 0}, (err, doc) => {
             res.render('create-build', {
                 gstatic: constants.gstatic,
                 title: 'Create - MS2World.com',
                 user: req.user,
-                cstatic: cstatic
+                cstatic: cstatic,
+                class: doc.data_object,
+                whichPartial: () => "sb/"+class_name
             });
-        } else {
-            res.redirect('/');
-        }
+        })
     });
 }

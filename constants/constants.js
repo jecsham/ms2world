@@ -67,6 +67,11 @@ var classSchema = new mongoose.Schema({
     img: String
 });
 
+var buildTemplateSchema = new mongoose.Schema({
+    class_name: String,
+    data_object: Object
+});
+
 guideSchema.plugin(mongoosePaginate);
 
 // Models
@@ -80,6 +85,8 @@ var Ms2_new = mongoose.model('Ms2_new', newSchema);
 
 var Ms2_class = mongoose.model('Ms2_class', classSchema);
 
+var Build_template = mongoose.model('Build_template', buildTemplateSchema);
+
 module.exports = {
     gstatics: gstatics,
     User_account: User_account,
@@ -87,6 +94,7 @@ module.exports = {
     Post_build: Post_build,
     Ms2_new: Ms2_new,
     Ms2_class: Ms2_class,
+    Build_template: Build_template,
     sanitize: sanitize,
     steamapi: steamapi,
     es: es
