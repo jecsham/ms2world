@@ -22,7 +22,7 @@ module.exports = (app, constants) => {
                 data.description = constants.sanitize(req.body.description);
                 data.content = constants.sanitize(req.body.content);
                 data.sid = constants.sanitize(req.user.steamid);
-                data.tags = req.body.tags;
+                data.tags = constants.sanitize(req.body.tags);
                 data.date_create = new Date();
                 constants.Post_guide.create(data, (err, doc) => {
                     if (err) return res.status(500).send({ error: constants.es.internal });
@@ -39,6 +39,7 @@ module.exports = (app, constants) => {
     app.get('/create-build/:class', (req, res) => {
         var class_name = constants.sanitize(req.params.class);
         constants.Build_template.findOne({ class_name: class_name }, {_id:0, class_name: 0}, (err, doc) => {
+            if(err) return res.render('/create-build'); 
             res.render('create-build', {
                 gstatic: constants.gstatic,
                 title: 'Create - MS2World.com',

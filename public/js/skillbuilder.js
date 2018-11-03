@@ -1,3 +1,4 @@
+
 var wizard = {
     "10300011": {
         "title": "Flame Tornado",
