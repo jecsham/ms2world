@@ -69,211 +69,187 @@ module.exports = new CronJob('0 * * * *', () => {
 //    });
 //  }, null, true, 'America/Los_Angeles');
 
-//  module.exports = new CronJob('* * * * * *', () => {
-//   var berserker = {
+//   module.exports = new CronJob('* * * * * *', () => {
+//   var wizard = {
 //     "max_points": 58,
-//     "10200001": {
-//         "title": "Raging Slash",
-//         "level": "12",
-//         "job": "Berserker",
-//         "min": 1,
-//         "max": 10,
-//         "locked": false,
-//         "unlockAt": false
-//     },
-//     "10200011": {
-//         "title": "Death Spin",
-//         "level": "12",
-//         "job": "Berserker",
-//         "min": 1,
-//         "max": 10,
-//         "locked": false,
-//         "unlockAt": false
-//     },
-//     "10200021": {
-//         "title": "Ground Breaker",
-//         "level": "19",
-//         "job": "Berserker",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10200001": 4,
-//             "10200011": 3
-//         }
-//     },
-//     "10200031": {
-//         "title": "Dark Aura",
-//         "level": "1",
-//         "job": "Berserker",
-//         "min": 1,
-//         "max": 1,
-//         "locked": false,
-//         "unlockAt": false
-//     },
-//     "10200041": {
-//         "title": "Void Slash",
+//     "10300001": {
+//         "title": "Phantom Claw",
 //         "level": "10",
-//         "job": "Berserker",
-//         "min": 0,
-//         "max": 1,
+//         "job": "Wizard",
+//         "min": 1,
+//         "max": 10,
 //         "locked": false,
 //         "unlockAt": false
 //     },
-//     "10200051": {
-//         "title": "Bloodlust",
-//         "level": "13",
-//         "job": "Berserker",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10200001": 2
-//         }
-//     },
-//     "10200061": {
-//         "title": "Intimidation",
-//         "level": "28",
-//         "job": "Berserker",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10200001": 3,
-//             "10200121": 4
-//         }
-//     },
-//     "10200071": {
-//         "title": "Dark Breaker",
+//     "10300011": {
+//         "title": "Flame Tornado",
 //         "level": "22",
-//         "job": "Berserker",
+//         "job": "Wizard",
 //         "min": 0,
 //         "max": 10,
 //         "locked": true,
 //         "unlockAt": {
-//             "10200001": 4,
-//             "10200041": 3
+//             "10300021": 4
 //         }
 //     },
-//     "10200081": {
-//         "title": "Adrenaline Rush",
-//         "level": "25",
-//         "job": "Berserker",
+//     "10300021": {
+//         "title": "Flame Wave",
+//         "level": "10",
+//         "job": "Wizard",
 //         "min": 0,
 //         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10200001": 2,
-//             "10200051": 4
-//         }
+//         "locked": false,
+//         "unlockAt": false
 //     },
-//     "10200091": {
-//         "title": "X Slash",
+//     "10300031": {
+//         "title": "Chain Lightning",
+//         "level": "16",
+//         "job": "Wizard",
+//         "min": 0,
+//         "max": 10,
+//         "locked": false,
+//         "unlockAt": false
+//     },
+//     "10300041": {
+//         "title": "Arcane Blast",
+//         "level": "10",
+//         "job": "Wizard",
+//         "min": 1,
+//         "max": 10,
+//         "locked": false,
+//         "unlockAt": false
+//     },
+//     "10300051": {
+//         "title": "Ice Spear",
+//         "level": "13",
+//         "job": "Wizard",
+//         "min": 0,
+//         "max": 10,
+//         "locked": false,
+//         "unlockAt": false
+//     },
+//     "10300061": {
+//         "title": "Mana Font",
 //         "level": "1",
-//         "job": "Berserker",
+//         "job": "Wizard",
 //         "min": 1,
 //         "max": 1,
 //         "locked": false,
 //         "unlockAt": false
 //     },
-//     "10200101": {
-//         "title": "Inhuman Endurance",
-//         "level": "43",
-//         "job": "Berserker",
+//     "10300071": {
+//         "title": "Thunderbolt",
+//         "level": "28",
+//         "job": "Wizard",
 //         "min": 0,
 //         "max": 10,
 //         "locked": true,
 //         "unlockAt": {
-//             "10200001": 2,
-//             "10200051": 6,
-//             "10200081": 3,
-//             "10200141": 1
+//             "10300031": 4
 //         }
 //     },
-//     "10200111": {
-//         "title": "Deep Wounds",
-//         "level": "37",
-//         "job": "Berserker",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10200001": 3,
-//             "10200121": 6,
-//             "10200061": 4
-//         }
+//     "10300081": {
+//         "title": "Teleport",
+//         "level": "1",
+//         "job": "Wizard",
+//         "min": 1,
+//         "max": 1,
+//         "locked": false,
+//         "unlockAt": false
 //     },
-//     "10200121": {
-//         "title": "Greatsword Mastery",
-//         "level": "16",
-//         "job": "Berserker",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10200001": 4,
-//             "10200011": 3
-//         }
-//     },
-//     "10200131": {
-//         "title": "Dark Might",
-//         "level": "40",
-//         "job": "Berserker",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10200001": 6,
-//             "10200011": 3,
-//             "10200121": 6
-//         }
-//     },
-//     "10200141": {
-//         "title": "Blood Price",
+//     "10300091": {
+//         "title": "Focus Seal",
 //         "level": "31",
-//         "job": "Berserker",
+//         "job": "Wizard",
 //         "min": 0,
 //         "max": 10,
 //         "locked": true,
 //         "unlockAt": {
-//             "10200001": 2,
-//             "10200051": 6,
-//             "10200081": 2
+//             "10300131": 4
 //         }
 //     },
-//     "10200151": {
-//         "title": "Warrior's Instinct",
+//     "10300101": {
+//         "title": "Pyromancy",
 //         "level": "34",
-//         "job": "Berserker",
-//         "min": "",
-//         "max": "",
-//         "locked": "",
+//         "job": "Wizard",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
 //         "unlockAt": {
-//             "10200001": 4,
-//             "10200041": 6,
-//             "10200071": 5
+//             "10300011": 5,
+//             "10300021": 5
 //         }
 //     },
-//     "10200161": {
-//         "title": "Earthquake",
-//         "level": "46",
-//         "job": "Berserker",
+//     "10300111": {
+//         "title": "Cryomancy",
+//         "level": "37",
+//         "job": "Wizard",
 //         "min": "",
 //         "max": "",
 //         "locked": "",
 //         "unlockAt": {
-//             "10200001": 3,
-//             "10200121": 6,
-//             "10200061": 4,
-//             "10200111": 2
+//             "10300051": 5,
+//             "10300141": 5
+//         }
+//     },
+//     "10300121": {
+//         "title": "Electromancy",
+//         "level": "40",
+//         "job": "Wizard",
+//         "min": "",
+//         "max": "",
+//         "locked": "",
+//         "unlockAt": {
+//             "10300031": 5,
+//             "10300071": 5
+//         }
+//     },
+//     "10300131": {
+//         "title": "Magic Armor",
+//         "level": "19",
+//         "job": "Wizard",
+//         "min": 0,
+//         "max": 10,
+//         "locked": false,
+//         "unlockAt": false
+//     },
+//     "10300141": {
+//         "title": "Ice Storm",
+//         "level": "25",
+//         "job": "Wizard",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
+//         "unlockAt": {
+//             "10300051": 4
+//         }
+//     },
+//     "10300151": {
+//         "title": "Elemental Master",
+//         "level": "43",
+//         "job": "Wizard",
+//         "min": 0,
+//         "max": 10,
+//         "locked": false,
+//         "unlockAt": false
+//     },
+//     "10300161": {
+//         "title": "Mana Claw",
+//         "level": "46",
+//         "job": "Wizard",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
+//         "unlockAt": {
+//             "10300041": 3
 //         }
 //     }
 // }
-//    dinsert = {};
-//    dinsert.class_name = "berserker"
-//    dinsert.data_object = berserker
-//    constants.Build_template.create(dinsert, (err) => {
-//      if (err) return console.log('Error trying remove model at cronjob 1');
-//      console.log("Inserted")
-//    });
-//  }, null, true, 'America/Los_Angeles');
+//     dinsert = {};
+//     dinsert.class_name = "wizard"
+//     dinsert.data_object = wizard
+//     constants.Build_template.create(dinsert, (err) => {
+//       if (err) return console.log('Error trying remove model at cronjob 1');
+//       console.log("Inserted")
+//     });
+//   }, null, true, 'America/Los_Angeles');
