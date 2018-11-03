@@ -4,6 +4,18 @@
     text-align: center;
 }
 
+.line_63_m_special {
+    background-image: url('../assets/lines/line_63_m.png');
+    background-position: -30px 6px;
+    background-repeat: no-repeat;
+}
+
+.line_9_m_special {
+    background-image: url('../assets/lines/line_9_m.png');
+    background-position: 0 .1px;
+    background-repeat: no-repeat;
+}
+
 .line_v {
     background-image: url('../assets/lines/line_v.png');
     background-repeat: no-repeat;
@@ -244,6 +256,7 @@
     border: 1px;
     cursor: pointer;
 }
+
 .skill_btn[disabled] {
     background: #f8f9fa;
     color: grey;

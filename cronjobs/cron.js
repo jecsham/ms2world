@@ -69,13 +69,20 @@ module.exports = new CronJob('0 * * * *', () => {
 //    });
 //  }, null, true, 'America/Los_Angeles');
 
-  //  module.exports = new CronJob('* * * * * *', () => {
+// module.exports = new CronJob('* * * * * *', () => {
+//   dinsert = {};
+//   dinsert.class_name = "hgunner"
+//   dinsert.data_object = hgunner
+//   constants.Build_template.create(dinsert, (err) => {
+//     if (err) return console.log('Error trying remove model at cronjob 1');
+//     console.log("Inserted")
+//   });
+// }, null, true, 'America/Los_Angeles');
 
-  //     dinsert = {};
-  //     dinsert.class_name = "archer"
-  //     dinsert.data_object = archer
-  //     constants.Build_template.create(dinsert, (err) => {
-  //       if (err) return console.log('Error trying remove model at cronjob 1');
-  //       console.log("Inserted")
-  //     });
-  //   }, null, true, 'America/Los_Angeles');
+
+  // constants.Build_template.deleteMany({ class_name: 'hgunner' }, function (err) {
+  //   if (err) return handleError(err);
+  //   console.log("all deleted")
+  // });
+
+  
