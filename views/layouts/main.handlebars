@@ -24,6 +24,8 @@
     <script src="/js/jquery.sticky.js"></script>
     <!-- timeagoJS-->
     <script src="https://cdn.jsdelivr.net/npm/timeago@1.6.3/jquery.timeago.min.js" type="text/javascript"></script>
+    <!--CookiesJS-->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
     {{#if cstatic}}
     {{#each cstatic}}
@@ -126,10 +128,10 @@
             </div>
         </footer>
     </div>
-    <div id="cookie-notice" class="container-fluid">
+    <div id="cookie-notice" class="container-fluid position-fixed fixed-bottom">
         <div class="row">
             <div class="col">
-                <div class="alert alert-info alert-dismissible fade show" role="alert"><strong>Cookies Notice 🍪!
+                <div class="alert alert-info alert-dismissible fade" role="alert" id="cookies-alert"><strong>Cookies Notice 🍪!
                     </strong> We use cookies and other tracking technologies to improve your browsing
                     experience on our website, to show you personalized content and targeted ads, to analyze our
                     website traffic, and to understand where our visitors are coming from. By browsing our website, you

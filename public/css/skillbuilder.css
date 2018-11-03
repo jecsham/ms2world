@@ -9,11 +9,6 @@
     background-repeat: no-repeat;
     background-position: 1px 0;
 }
-.line_v_special {
-    background-image: url('../assets/lines/line_v.png');
-    background-repeat: no-repeat;
-    background-position: 1px -40px;
-}
 
 .line_v_sp {
     background-image: url('../assets/lines/line_v.png');
