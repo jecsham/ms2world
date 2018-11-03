@@ -1,0 +1,259 @@
+<script>
+    var class_name = "berserker";
+</script>
+<h6>Berserker Build | <span id="buildtype">PvX</span> | Remaining points: <strong id="max-points"></strong> / <strong
+        id="max-points-cap"></strong>
+    <button class="btn btn-secundary btn-sm" id="resetbuildbtn">Reset</button></h6>
+<div id="skill_pane" class="table-responsive">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" class="skill_builder_table">
+        <tbody>
+            <tr>
+                <td class="level_cell"><strong>Level 1</strong></td>
+                <td class="skill_cell line_vd">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="1" data-id="skill--10400001"
+                        data-hasqtip="1364" aria-describedby="qtip-1364"><img src="/assets/skill/icon/10400001.png">
+                        <div id="lock-10400001" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400001" data-max_level="10"><button data-skillid="10400001" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="1" id="point-10400001"></span>/<span class="lv_value" id="point-max-10400001"></span><button
+                            data-skillid="10400001" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td class="empty_cell_sp"></td>
+                <td class="empty_cell"></td>
+                <td class="empty_cell_sp"></td>
+                <td class="skill_cell">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="1" data-id="skill--10400111"
+                        data-hasqtip="1365"><img src="/assets/skill/icon/10400111.png">
+                        <div id="lock-10400111" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400111" data-max_level="1"><button data-skillid="10400111" class="skill_btn" name="-btn"
+                            disabled="">-</button><span class="skill_level lv_value" data-lv="1" id="point-10400111"></span>/<span class="lv_value" id="point-max-10400111"></span><button
+                            data-skillid="10400111" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td class="empty_cell_sp"></td>
+                <td class="skill_cell">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="1" data-id="skill--10400151"
+                        data-hasqtip="1366"><img src="/assets/skill/icon/10400151.png">
+                        <div id="lock-10400151" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400151" data-max_level="1"><button data-skillid="10400151" class="skill_btn" name="-btn"
+                            disabled="">-</button><span class="skill_level lv_value" data-lv="1" id="point-10400151"></span>/<span class="lv_value" id="point-max-10400151"></span><button
+                            data-skillid="10400151" class="skill_btn" name="btn">+</button></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="level_cell_sp"></td>
+                <td class="empty_cell_sp line_3"></td>
+                <td class="line_h"></td>
+                <td class="line_96"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="level_cell align-bottom"><strong>Level 10</strong></td>
+                <td class="skill_cell line_v">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="1" data-id="skill--10400011"
+                        data-hasqtip="1367"><img src="/assets/skill/icon/10400011.png">
+                        <div id="lock-10400011" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400011" data-max_level="10"><button data-skillid="10400011" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="1" id="point-10400011"></span>/<span class="lv_value" id="point-max-10400011"></span><button
+                            data-skillid="10400011" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="line_v"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="level_cell_sp"></td>
+                <td class="line_v"></td>
+                <td></td>
+                <td class="line_v"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="level_cell align-bottom"><strong>Level 20</strong></td>
+                <td class="skill_cell line_v">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400041"
+                        data-hasqtip="1394" aria-describedby="qtip-1394"><img src="/assets/skill/icon/10400041.png">
+                        <div id="lock-10400041" class="lock_state locked"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400041" data-max_level="10"><button data-skillid="10400041" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400041"></span>/<span class="lv_value" id="point-max-10400041"></span><button
+                            data-skillid="10400041" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="skill_cell line_v">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400071"
+                        data-hasqtip="1369"><img src="/assets/skill/icon/10400071.png">
+                        <div id="lock-10400071" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400071" data-max_level="10"><button data-skillid="10400071" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400071"></span>/<span class="lv_value" id="point-max-10400071"></span><button
+                            data-skillid="10400071" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="skill_cell line_vd">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400081"
+                        data-hasqtip="1370"><img src="/assets/skill/icon/10400081.png">
+                        <div id="lock-10400081" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400081" data-max_level="10"><button data-skillid="10400081" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400081"></span>/<span class="lv_value" id="point-max-10400081"></span><button
+                            data-skillid="10400081" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="skill_cell line_vd">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="4" data-id="skill--10400021"
+                        data-hasqtip="1392" aria-describedby="qtip-1392"><img src="/assets/skill/icon/10400021.png">
+                        <div id="lock-10400021" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400021" data-max_level="10"><button data-skillid="10400021" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400021"></span>/<span class="lv_value" id="point-max-10400021"></span><button
+                            data-skillid="10400021" class="skill_btn" name="btn">+</button></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="level_cell_sp"></td>
+                <td class="empty_cell_sp line_v"></td>
+                <td></td>
+                <td class="line_v"></td>
+                <td></td>
+                <td class="line_v"></td>
+                <td></td>
+                <td class="line_v"></td>
+            </tr>
+            <tr>
+                <td class="level_cell align-bottom"><strong>Level 30</strong></td>
+                <td class="skill_cell line_vu">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400031"
+                        data-hasqtip="1393"><img src="/assets/skill/icon/10400031.png">
+                        <div id="lock-10400031" class="lock_state locked"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400031" data-max_level="10"><button data-skillid="10400031" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400031"></span>/<span class="lv_value" id="point-max-10400031"></span><button
+                            data-skillid="10400031" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="skill_cell line_v">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400101"
+                        data-hasqtip="1398"><img src="/assets/skill/icon/10400101.png">
+                        <div id="lock-10400101" class="lock_state locked"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400101" data-max_level="10"><button data-skillid="10400101" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400101"></span>/<span class="lv_value" id="point-max-10400101"></span><button
+                            data-skillid="10400101" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="skill_cell line_v">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400091"
+                        data-hasqtip="1397"><img src="/assets/skill/icon/10400091.png">
+                        <div id="lock-10400091" class="lock_state locked"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400091" data-max_level="10"><button data-skillid="10400091" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400091"></span>/<span class="lv_value" id="point-max-10400091"></span><button
+                            data-skillid="10400091" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="line_v"></td>
+            </tr>
+            <tr>
+                <td class="level_cell_sp"></td>
+                <td class="empty_cell_sp"></td>
+                <td></td>
+                <td class="line_v"></td>
+                <td></td>
+                <td class="line_v"></td>
+                <td class="line_63_sp"></td>
+                <td class="line_9"></td>
+            </tr>
+            <tr>
+                <td class="level_cell align-bottom"><strong>Level 40</strong></td>
+                <td class="skill_cell"></td>
+                <td></td>
+                <td class="skill_cell line_v">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400061"
+                        data-hasqtip="1396"><img src="/assets/skill/icon/10400061.png">
+                        <div id="lock-10400061" class="lock_state locked"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400061" data-max_level="10"><button data-skillid="10400061" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400061"></span>/<span class="lv_value" id="point-max-10400061"></span><button
+                            data-skillid="10400061" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="skill_cell line_v">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400051"
+                        data-hasqtip="1395"><img src="/assets/skill/icon/10400051.png">
+                        <div id="lock-10400051" class="lock_state locked"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400051" data-max_level="10"><button data-skillid="10400051" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400051"></span>/<span class="lv_value" id="point-max-10400051"></span><button
+                            data-skillid="10400051" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td class="line_v_sp"></td>
+                <td class="skill_cell line_vu">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400141"
+                        data-hasqtip="1389"><img src="/assets/skill/icon/10400141.png">
+                        <div id="lock-10400141" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400141" data-max_level="10"><button data-skillid="10400141" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400141"></span>/<span class="lv_value" id="point-max-10400141"></span><button
+                            data-skillid="10400141" class="skill_btn" name="btn">+</button></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="level_cell_sp"></td>
+                <td></td>
+                <td></td>
+                <td class="line_v"></td>
+                <td></td>
+                <td class="line_v"></td>
+                <td class="line_v_sp"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="level_cell align-bottom pb-2"><strong>Level 50</strong></td>
+                <td></td>
+                <td></td>
+                <td class="skill_cell line_vu pb-2">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400121"
+                        data-hasqtip="1399"><img src="/assets/skill/icon/10400121.png">
+                        <div id="lock-10400121" class="lock_state locked"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400121" data-max_level="10"><button data-skillid="10400121" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400121"></span>/<span class="lv_value" id="point-max-10400121"></span><button
+                            data-skillid="10400121" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td></td>
+                <td class="skill_cell line_vu pb-2">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="0" data-id="skill--10400131"
+                        data-hasqtip="1400"><img src="/assets/skill/icon/10400131.png">
+                        <div id="lock-10400131" class="lock_state locked"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400131" data-max_level="10"><button data-skillid="10400131" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400131"></span>/<span class="lv_value" id="point-max-10400131"></span><button
+                            data-skillid="10400131" class="skill_btn" name="btn">+</button></div>
+                </td>
+                <td class="line_123_sp"></td>
+                <td class="skill_cell line_hl pb-2">
+                    <div class="skill_wrapper qtooltip" data-enabled="1" data-enchant="1" data-id="skill--10400161"
+                        data-hasqtip="1391"><img src="/assets/skill/icon/10400161.png">
+                        <div id="lock-10400161" class="lock_state"></div>
+                    </div>
+                    <div class="skill_buttons" data-id="10400161" data-max_level="10"><button data-skillid="10400161" class="skill_btn" name="-btn">-</button><span
+                            class="skill_level lv_value" data-lv="0" id="point-10400161"></span>/<span class="lv_value" id="point-max-10400161"></span><button
+                            data-skillid="10400161" class="skill_btn" name="btn">+</button></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <small id="as" class="text-muted">Local autosave enabled 😀</small>
+</div>

@@ -1,196 +1,4 @@
 
-var priest = {
-    "10400001": {
-        "title": "Celestial Light",
-        "level": "10",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400011": {
-        "title": "Holy Blast",
-        "level": "10",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400021": {
-        "title": "Scepter Mastery",
-        "level": "13",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400031": {
-        "title": "Holy Relic",
-        "level": "28",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400041": {
-        "title": "Shield of the Archon",
-        "level": "19",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400051": {
-        "title": "Holy Symbol",
-        "level": "34",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400061": {
-        "title": "Sanctuary",
-        "level": "31",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400071": {
-        "title": "Healing Prayer",
-        "level": "10",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400081": {
-        "title": "Celestial Guardian",
-        "level": "16",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400091": {
-        "title": "Celestial Blessings",
-        "level": "25",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400101": {
-        "title": "Scourging Wave",
-        "level": "22",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400111": {
-        "title": "Steadfast Faith",
-        "level": "1",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400121": {
-        "title": "Smiting Aura",
-        "level": "40",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400131": {
-        "title": "Disciple",
-        "level": "43",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400141": {
-        "title": "Healing Mastery",
-        "level": "37",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400151": {
-        "title": "Heavenly Wings",
-        "level": "1",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "10400161": {
-        "title": "Angelic Ray",
-        "level": "46",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "20000001": {
-        "title": "Swift Swim",
-        "level": "1",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    },
-    "20000011": {
-        "title": "Wall Climbing",
-        "level": "1",
-        "job": "Priest",
-        "min": "",
-        "max": "",
-        "locked": "",
-        "unlockAt": {},
-        "lines": ['']
-    }
-}
 var archer = {
     "10500001": {
         "title": "Arrow Stream",
@@ -199,8 +7,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500011": {
         "title": "Arrow Barrage",
@@ -209,8 +16,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500021": {
         "title": "Rapid Shot",
@@ -219,8 +25,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500031": {
         "title": "Ice Arrow",
@@ -229,8 +34,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500041": {
         "title": "Evasive Salvo",
@@ -239,8 +43,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500051": {
         "title": "Bow Swing",
@@ -249,8 +52,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500061": {
         "title": "Sharp Eyes",
@@ -259,8 +61,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500071": {
         "title": "Bronze Eagle",
@@ -269,8 +70,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500081": {
         "title": "Eagle Claw",
@@ -279,8 +79,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500091": {
         "title": "Eagle's Majesty",
@@ -289,8 +88,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500101": {
         "title": "Arrow Storm",
@@ -299,8 +97,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500111": {
         "title": "Snipe",
@@ -309,8 +106,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500121": {
         "title": "Conditioning",
@@ -319,8 +115,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500131": {
         "title": "Agile Archer",
@@ -329,8 +124,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500141": {
         "title": "Screwdriver Shot",
@@ -339,8 +133,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500151": {
         "title": "Eagle Glide",
@@ -349,8 +142,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10500161": {
         "title": "Precision Shooter",
@@ -359,8 +151,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000001": {
         "title": "Swift Swim",
@@ -369,8 +160,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000011": {
         "title": "Wall Climbing",
@@ -379,8 +169,7 @@ var archer = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     }
 }
 var hgunner = {
@@ -391,8 +180,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600011": {
         "title": "Rocket Launcher",
@@ -401,8 +189,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600021": {
         "title": "Lock-on",
@@ -411,8 +198,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600031": {
         "title": "Homing Missiles",
@@ -421,8 +207,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600041": {
         "title": "Electric Blast",
@@ -431,8 +216,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600051": {
         "title": "Stun Grenades",
@@ -441,8 +225,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600061": {
         "title": "Magnetic Bomb",
@@ -451,8 +234,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600071": {
         "title": "Reload",
@@ -461,8 +243,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600081": {
         "title": "Jet Boots",
@@ -471,8 +252,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600091": {
         "title": "Med Kit",
@@ -481,8 +261,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600101": {
         "title": "Bullet Spray",
@@ -491,8 +270,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600111": {
         "title": "Advanced Bullets",
@@ -501,8 +279,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600121": {
         "title": "M-Bomb",
@@ -511,8 +288,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600131": {
         "title": "Suborbital Bombardment",
@@ -521,8 +297,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600141": {
         "title": "Advanced Missiles",
@@ -531,8 +306,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600151": {
         "title": "Advanced Pulse Weapons",
@@ -541,8 +315,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10600161": {
         "title": "Blast Charge Kit",
@@ -551,8 +324,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000001": {
         "title": "Swift Swim",
@@ -561,8 +333,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000011": {
         "title": "Wall Climbing",
@@ -571,8 +342,7 @@ var hgunner = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     }
 }
 var thief = {
@@ -584,8 +354,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700011": {
         "title": "Poison Edge",
@@ -595,8 +364,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700021": {
         "title": "Vicious Cuts",
@@ -606,8 +374,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700031": {
         "title": "Blade Dance",
@@ -617,8 +384,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700041": {
         "title": "Mind Stealer",
@@ -628,8 +394,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700051": {
         "title": "Somersault Kick",
@@ -639,8 +404,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700061": {
         "title": "Spirit Thief",
@@ -650,8 +414,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700071": {
         "title": "Deft Combatant",
@@ -661,8 +424,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700081": {
         "title": "Haste",
@@ -672,8 +434,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700091": {
         "title": "Surprise Attack",
@@ -683,8 +444,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700101": {
         "title": "Retaliation",
@@ -694,8 +454,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700111": {
         "title": "Poison Vial",
@@ -705,8 +464,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700121": {
         "title": "Mind Breaker",
@@ -716,8 +474,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700131": {
         "title": "Quick Step",
@@ -727,8 +484,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700141": {
         "title": "Cunning Tactics",
@@ -738,8 +494,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700151": {
         "title": "Ruthless Guile",
@@ -749,8 +504,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10700161": {
         "title": "Mesoguard Plus",
@@ -760,8 +514,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000001": {
         "title": "Swift Swim",
@@ -771,8 +524,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000011": {
         "title": "Wall Climbing",
@@ -782,8 +534,7 @@ var thief = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     }
 }
 var assassin = {
@@ -794,8 +545,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800011": {
         "title": "Shadow Cutter",
@@ -804,8 +554,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800021": {
         "title": "Fragmented Star",
@@ -814,8 +563,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800031": {
         "title": "Shadow Burst",
@@ -824,8 +572,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800041": {
         "title": "Fatal Strikes",
@@ -834,8 +581,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800051": {
         "title": "Dark Cloak",
@@ -844,8 +590,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800061": {
         "title": "Shadow Web",
@@ -854,8 +599,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800071": {
         "title": "Dash",
@@ -864,8 +608,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800081": {
         "title": "Shadow Chaser",
@@ -874,8 +617,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800091": {
         "title": "Mark of Death",
@@ -884,8 +626,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800101": {
         "title": "Star Flurry",
@@ -894,8 +635,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800111": {
         "title": "Thrown Weapon Mastery",
@@ -904,8 +644,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800121": {
         "title": "Star Chaser",
@@ -914,8 +653,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800131": {
         "title": "Death Sentence",
@@ -924,8 +662,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800141": {
         "title": "Soul Grind",
@@ -934,8 +671,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800151": {
         "title": "Shadow Arts",
@@ -944,8 +680,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10800161": {
         "title": "Mirror Image: Dark Blade",
@@ -954,8 +689,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000001": {
         "title": "Swift Swim",
@@ -964,8 +698,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000011": {
         "title": "Wall Climbing",
@@ -974,8 +707,7 @@ var assassin = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     }
 }
 var runeblade = {
@@ -986,8 +718,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900011": {
         "title": "Frost Sigil",
@@ -996,8 +727,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900021": {
         "title": "Storm Sigil",
@@ -1006,8 +736,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900031": {
         "title": "Flurry",
@@ -1016,8 +745,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900041": {
         "title": "Rune Balance",
@@ -1026,8 +754,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900051": {
         "title": "Blink",
@@ -1036,8 +763,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900061": {
         "title": "Whirling Blades",
@@ -1046,8 +772,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900071": {
         "title": "Impact",
@@ -1056,8 +781,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900081": {
         "title": "Gravity Rune",
@@ -1066,8 +790,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900091": {
         "title": "Warding Rune",
@@ -1076,8 +799,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900101": {
         "title": "Blade Chasm",
@@ -1086,8 +808,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900111": {
         "title": "Illusory Blades",
@@ -1096,8 +817,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900121": {
         "title": "Rune Focus",
@@ -1106,8 +826,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900131": {
         "title": "Elemental Potency",
@@ -1116,8 +835,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900141": {
         "title": "Blade Mastery",
@@ -1126,8 +844,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900151": {
         "title": "Echoing Blade",
@@ -1136,8 +853,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "10900161": {
         "title": "Honing Runes",
@@ -1146,8 +862,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000001": {
         "title": "Swift Swim",
@@ -1156,8 +871,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     },
     "20000011": {
         "title": "Wall Climbing",
@@ -1166,8 +880,7 @@ var runeblade = {
         "min": "",
         "max": "",
         "locked": "",
-        "unlockAt": {},
-        "lines": ['']
+        "unlockAt": {}
     }
 }
 

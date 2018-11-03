@@ -70,186 +70,196 @@ module.exports = new CronJob('0 * * * *', () => {
 //  }, null, true, 'America/Los_Angeles');
 
 //   module.exports = new CronJob('* * * * * *', () => {
-//   var wizard = {
-//     "max_points": 58,
-//     "10300001": {
-//         "title": "Phantom Claw",
+//   var priest = {
+//     "10400001": {
+//         "title": "Celestial Light",
 //         "level": "10",
-//         "job": "Wizard",
+//         "job": "Priest",
 //         "min": 1,
 //         "max": 10,
 //         "locked": false,
 //         "unlockAt": false
 //     },
-//     "10300011": {
-//         "title": "Flame Tornado",
-//         "level": "22",
-//         "job": "Wizard",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10300021": 4
-//         }
-//     },
-//     "10300021": {
-//         "title": "Flame Wave",
+//     "10400011": {
+//         "title": "Holy Blast",
 //         "level": "10",
-//         "job": "Wizard",
-//         "min": 0,
-//         "max": 10,
-//         "locked": false,
-//         "unlockAt": false
-//     },
-//     "10300031": {
-//         "title": "Chain Lightning",
-//         "level": "16",
-//         "job": "Wizard",
-//         "min": 0,
-//         "max": 10,
-//         "locked": false,
-//         "unlockAt": false
-//     },
-//     "10300041": {
-//         "title": "Arcane Blast",
-//         "level": "10",
-//         "job": "Wizard",
+//         "job": "Priest",
 //         "min": 1,
 //         "max": 10,
 //         "locked": false,
 //         "unlockAt": false
 //     },
-//     "10300051": {
-//         "title": "Ice Spear",
+//     "10400021": {
+//         "title": "Scepter Mastery",
 //         "level": "13",
-//         "job": "Wizard",
+//         "job": "Priest",
 //         "min": 0,
 //         "max": 10,
 //         "locked": false,
 //         "unlockAt": false
 //     },
-//     "10300061": {
-//         "title": "Mana Font",
-//         "level": "1",
-//         "job": "Wizard",
-//         "min": 1,
-//         "max": 1,
-//         "locked": false,
-//         "unlockAt": false
-//     },
-//     "10300071": {
-//         "title": "Thunderbolt",
+//     "10400031": {
+//         "title": "Holy Relic",
 //         "level": "28",
-//         "job": "Wizard",
+//         "job": "Priest",
 //         "min": 0,
 //         "max": 10,
 //         "locked": true,
 //         "unlockAt": {
-//             "10300031": 4
+//             "10400001": 3,
+//             "10400011": 3,
+//             "10400041": 3
 //         }
 //     },
-//     "10300081": {
-//         "title": "Teleport",
+//     "10400041": {
+//         "title": "Shield of the Archon",
+//         "level": "19",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
+//         "unlockAt": {
+//             "10400001": 3,
+//             "10400011": 3
+//         }
+//     },
+//     "10400051": {
+//         "title": "Holy Symbol",
+//         "level": "34",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
+//         "unlockAt": {
+//             "10400081": 6,
+//             "10400091": 3
+//         }
+//     },
+//     "10400061": {
+//         "title": "Sanctuary",
+//         "level": "31",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
+//         "unlockAt": {
+//             "10400071": 3,
+//             "10400101": 3
+//         }
+//     },
+//     "10400071": {
+//         "title": "Healing Prayer",
+//         "level": "10",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 10,
+//         "locked": false,
+//         "unlockAt": false
+//     },
+//     "10400081": {
+//         "title": "Celestial Guardian",
+//         "level": "16",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 10,
+//         "locked": false,
+//         "unlockAt": false
+//     },
+//     "10400091": {
+//         "title": "Celestial Blessings",
+//         "level": "25",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
+//         "unlockAt": {
+//             "10400081": 3
+//         }
+//     },
+//     "10400101": {
+//         "title": "Scourging Wave",
+//         "level": "22",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
+//         "unlockAt": {
+//             "10400071": 2
+//         }
+//     },
+//     "10400111": {
+//         "title": "Steadfast Faith",
 //         "level": "1",
-//         "job": "Wizard",
+//         "job": "Priest",
 //         "min": 1,
 //         "max": 1,
 //         "locked": false,
 //         "unlockAt": false
 //     },
-//     "10300091": {
-//         "title": "Focus Seal",
-//         "level": "31",
-//         "job": "Wizard",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10300131": 4
-//         }
-//     },
-//     "10300101": {
-//         "title": "Pyromancy",
-//         "level": "34",
-//         "job": "Wizard",
-//         "min": 0,
-//         "max": 10,
-//         "locked": true,
-//         "unlockAt": {
-//             "10300011": 5,
-//             "10300021": 5
-//         }
-//     },
-//     "10300111": {
-//         "title": "Cryomancy",
-//         "level": "37",
-//         "job": "Wizard",
-//         "min": "",
-//         "max": "",
-//         "locked": "",
-//         "unlockAt": {
-//             "10300051": 5,
-//             "10300141": 5
-//         }
-//     },
-//     "10300121": {
-//         "title": "Electromancy",
+//     "10400121": {
+//         "title": "Smiting Aura",
 //         "level": "40",
-//         "job": "Wizard",
-//         "min": "",
-//         "max": "",
-//         "locked": "",
-//         "unlockAt": {
-//             "10300031": 5,
-//             "10300071": 5
-//         }
-//     },
-//     "10300131": {
-//         "title": "Magic Armor",
-//         "level": "19",
-//         "job": "Wizard",
-//         "min": 0,
-//         "max": 10,
-//         "locked": false,
-//         "unlockAt": false
-//     },
-//     "10300141": {
-//         "title": "Ice Storm",
-//         "level": "25",
-//         "job": "Wizard",
+//         "job": "Priest",
 //         "min": 0,
 //         "max": 10,
 //         "locked": true,
 //         "unlockAt": {
-//             "10300051": 4
+//             "10400001": 4,
+//             "10400071": 3,
+//             "10400101": 3,
+//             "10400061": 3
 //         }
 //     },
-//     "10300151": {
-//         "title": "Elemental Master",
+//     "10400131": {
+//         "title": "Disciple",
 //         "level": "43",
-//         "job": "Wizard",
-//         "min": 0,
-//         "max": 10,
-//         "locked": false,
-//         "unlockAt": false
-//     },
-//     "10300161": {
-//         "title": "Mana Claw",
-//         "level": "46",
-//         "job": "Wizard",
+//         "job": "Priest",
 //         "min": 0,
 //         "max": 10,
 //         "locked": true,
 //         "unlockAt": {
-//             "10300041": 3
+//             "10400081": 6,
+//             "10400091": 6,
+//             "10400051": 4
+//         }
+//     },
+//     "10400141": {
+//         "title": "Healing Mastery",
+//         "level": "37",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 10,
+//         "locked": true,
+//         "unlockAt": {
+//             "10400021": 4
+//         }
+//     },
+//     "10400151": {
+//         "title": "Heavenly Wings",
+//         "level": "1",
+//         "job": "Priest",
+//         "min": 1,
+//         "max": 1,
+//         "locked": false,
+//         "unlockAt": false
+//     },
+//     "10400161": {
+//         "title": "Angelic Ray",
+//         "level": "46",
+//         "job": "Priest",
+//         "min": 0,
+//         "max": 5,
+//         "locked": true,
+//         "unlockAt": {
+//             "10400021": 4
 //         }
 //     }
 // }
-//     dinsert = {};
-//     dinsert.class_name = "wizard"
-//     dinsert.data_object = wizard
-//     constants.Build_template.create(dinsert, (err) => {
-//       if (err) return console.log('Error trying remove model at cronjob 1');
-//       console.log("Inserted")
-//     });
-//   }, null, true, 'America/Los_Angeles');
+//      dinsert = {};
+//      dinsert.class_name = "priest"
+//      dinsert.data_object = priest
+//      constants.Build_template.create(dinsert, (err) => {
+//        if (err) return console.log('Error trying remove model at cronjob 1');
+//        console.log("Inserted")
+//      });
+//    }, null, true, 'America/Los_Angeles');
