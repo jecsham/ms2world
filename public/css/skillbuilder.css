@@ -87,6 +87,11 @@
     background-position: 0 -11px;
     background-repeat: no-repeat
 }
+.line_123_special {
+    background-image: url('../assets/lines/line_123.png');
+    background-position: 0 -25px;
+    background-repeat: no-repeat
+}
 
 .line_123_sp {
     background-image: url('../assets/lines/line_123.png');
