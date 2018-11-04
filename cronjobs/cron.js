@@ -71,8 +71,8 @@ module.exports = new CronJob('0 * * * *', () => {
 
 // module.exports = new CronJob('* * * * * *', () => {
 //   dinsert = {};
-//   dinsert.class_name = "thief"
-//   dinsert.data_object = thief
+//   dinsert.class_name = "assassin"
+//   dinsert.data_object = assassin
 //   constants.Build_template.create(dinsert, (err) => {
 //     if (err) return console.log('Error trying remove model at cronjob 1');
 //     console.log("Inserted")
@@ -85,4 +85,3 @@ module.exports = new CronJob('0 * * * *', () => {
   //   console.log("all deleted")
   // });
 
-  
