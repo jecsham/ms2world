@@ -36,17 +36,30 @@ module.exports = (app, constants) => {
         }
     });
 
+    app.get('/create-build/', (req, res) => {
+        constants.Build_template.findOne({ class_name: class_name }, { _id: 0, data_object: 0 }, (err, doc) => {
+            if (err) return res.render('/');
+            res.render('create-build', {
+                gstatic: constants.gstatic,
+                title: 'MS2World.net: Create a Build',
+                user: req.user,
+                cstatic: cstatic,
+                class: doc.class_name
+            });
+        })
+    });
+
     app.get('/create-build/:class', (req, res) => {
         var class_name = constants.sanitize(req.params.class);
-        constants.Build_template.findOne({ class_name: class_name }, {_id:0, class_name: 0}, (err, doc) => {
-            if(err) return res.render('/'); 
-            res.render('create-build', {
+        constants.Build_template.findOne({ class_name: class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
+            if (err) return res.render('/');
+            res.render('create-build-class', {
                 gstatic: constants.gstatic,
                 title: 'MS2World.net: Create a Build for ',
                 user: req.user,
                 cstatic: cstatic,
                 class: doc.data_object,
-                whichPartial: () => "sb/"+class_name
+                whichPartial: () => "sb/" + class_name
             });
         })
     });
