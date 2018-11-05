@@ -3,42 +3,43 @@ module.exports = (app, constants) => {
 
     cstatic = ['<link rel="stylesheet" href="/css/skillbuilder.css">'];
 
-    app.get('/builds', (req, res) => {
-        constants.Ms2_class.find({}, null, { sort: { name: 1 } }, (err, classes) => {
-            var classesMap = {};
-            classes.forEach((element) => {
-                classesMap[element._id] = element;
-            });
+    
+    app.get(['/builds','/builds/:filter'], (req, res) => {
+
+        var filter;
+        var reqFilter;
+        var page;
+
+        if (req.query.page === undefined)
+            page = 1
+        else
+            page = constants.sanitize(req.query.page)
+
+        if (req.params.filter === undefined)
+            reqFilter = 'recent'
+        else
+            reqFilter = constants.sanitize(req.params.filter)
+
+        if (reqFilter === 'recent')
+            filter = { '_id': -1 }
+        else if (reqFilter === 'popular')
+            filter = { 'votes': -1 }
+        else
+            filter = { '_id': -1 }
+
+        constants.Post_build.paginate({}, { select: 'title author', page: page, limit: 10, sort: filter }, (err, data) => {
+            if (err) return res.render('error')
             res.render('builds', {
                 gstatic: constants.gstatic,
-                title: 'Builds - MS2World.com',
+                title: 'builds - MS2World.com',
                 user: req.user,
-                classes: classesMap
+                reqFilter: reqFilter,
+                page: data.page,
+                totalPages: data.totalPages,
+                nextPage: data.nextPage,
+                prevPage: data.hasPrevPage,
+                guides: data.docs
             });
-        });
-    });
-
-    app.get('/builds/:class', (req, res) => {
-        res.render('builds', {
-            gstatic: constants.gstatic,
-            title: `${req.params.class.toUppercase()} Builds - MS2World.com`,
-            user: req.user
-        });
-    });
-
-    app.get('/builds/:class/popular', (req, res) => {
-        res.render('builds', {
-            gstatic: constants.gstatic,
-            title: 'Builds - MS2World.com',
-            user: req.user
-        });
-    });
-
-    app.get('/builds/:class/recent', (req, res) => {
-        res.render('builds', {
-            gstatic: constants.gstatic,
-            title: 'Builds - MS2World.com',
-            user: req.user
         });
     });
 

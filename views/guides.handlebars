@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <a href="/guides/popular" class="text-dark">Guides</a>
+            <p>
+                <a href="/guides/popular" class="text-dark">Guides</a>
+            </p>
         </div>
         <div class="col-md-3 mb-1">
             <select class="form-control form-control-sm">
@@ -9,14 +11,18 @@
                 <option selected>Recent</option>
             </select>
         </div>
-        <div class="col-md-9">
-            <div class="input-group mb-3">
+        <div class="col-md-7">
+            <div class="input-group mb-1">
                 <input type="text" class="form-control form-control-sm align-bottom" id="searchPost" aria-describedby="SearchPost"
                     placeholder="Search...">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary btn-sm" type="button"><span class="mdi mdi-magnify"></span></button>
                 </div>
             </div>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-success btn-sm btn-block mb-3 float-right" type="button"><span class="mdi mdi-plus"></span>
+                Create</button>
         </div>
         <div class="col">
             <div class="table-responsive">
