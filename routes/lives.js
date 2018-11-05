@@ -3,7 +3,7 @@ module.exports = (app, constants ) => {
     TwitchApi.clientID = process.env.TWITCH_KEY;
 
     app.get('/lives', (req, res) => {
-        TwitchApi.streams.live({game:'MapleStory 2', limit: 10}, (err, result)=>{
+        TwitchApi.streams.live({game:'MapleStory 2', limit: 12}, (err, result)=>{
             if(err) return res.render('404')
             res.render('lives', {
                 gstatic: constants.gstatic,
