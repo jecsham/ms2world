@@ -1,6 +1,7 @@
 // SkillBuilder v1
 var build;
 var no_count = 0;
+
 if (Cookies.get('ms2-build-' + class_name))
     build = JSON.parse(Cookies.get('ms2-build-' + class_name))
 else

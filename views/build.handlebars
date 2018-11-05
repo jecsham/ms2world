@@ -3,9 +3,9 @@
         <div class="col">
             <div class="border-left bg-light">
                 <div class="p-3">
-                    <h3>{{{guide.title}}}</h3>
-                    <p class="card-text"><small class="text-muted">By {{guide.author}}, 3 mins ago</small></p>
-                    <p>{{guide.description}}</p>
+                    <h3>{{{build.title}}}</h3>
+                    <p class="card-text"><small class="text-muted">By {{build.author}}, 3 mins ago</small></p>
+                    <p>{{build.description}}</p>
                 </div>
             </div>
             <div class="my-3 d-flex justify-content-end">
@@ -19,15 +19,10 @@
                     <button class="btn btn-danger btn-sm"><span class="mdi mdi-alert-circle"></span></button>
                 </div>
             </div>
-            <div class="card mb-3">
-                <div class="card-body">
-
-                    <div id="guide-content">
-                        {{#markdown}}{{{guide.content}}}{{/markdown}}
-                    </div>
-                </div>
+            <div id="render-skill-pane">
+                {{> (whichPartial)}}
             </div>
-            <p>Tags: {{#each (JSONparse guide.tags) }} <a href="/search/{{vale}}">{{value}}</a>&nbsp;{{/each}}</p>
+
             <button class="btn btn-dark btn-sm">Comments <span class="badge badge-light">soon</span></button>
         </div>
     </div>
@@ -55,9 +50,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="cancelbtn">Cancel</button>
-                <form id="delete-guide">
-                    <input type="hidden" name="postid" value="{{guide._id}}">
-                    <input type="hidden" name="postsid" value="{{guide.sid}}">
+                <form id="delete-build">
+                    <input type="hidden" name="postid" value="{{build._id}}">
+                    <input type="hidden" name="postsid" value="{{build.sid}}">
                     <button type="submit" class="btn btn-danger btn-sm" id="delbtn">Delete</button>
                 </form>
             </div>
@@ -65,27 +60,8 @@
     </div>
 </div>
 <script>
-    $(window).scroll(() => {
-        if ($(this).scrollTop() >= (100)) {
-            $('#return-to-top').fadeIn(200);
-        } else {
-            $('#return-to-top').fadeOut(200);
-        }
-    });
-    $('#return-to-top').click(function () {
-        $('body,html').animate({
-            scrollTop: 0
-        }, 500);
-    });
-    $(document).ready(() => {
-        if ($("table").length) {
-            $("table").each((index, value) => {
-                $(value).before("<div id='table-responsive-" + index + "' class='table-responsive'></div>")
-                    .prependTo($("#table-responsive-" + index))
-                    .addClass('table table-bordered');
-            })
-        }
-    });
-
+    var viewMode = true;
+    var buildTemplate = {{{ JSONstringify class}}}
+    var build = {{{ build.data_object }}}
 </script>
-<script src="/js/delete-guide.js"></script>
+<script src="/js/skillbuilder_viewer.js"></script>

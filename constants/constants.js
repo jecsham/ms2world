@@ -51,7 +51,7 @@ var buildSchema = new mongoose.Schema({
     type: String,
     description: String,
     data_object: Object,
-    class_name: Number,
+    class_name: String,
     date_create: Date,
     last_edit_date: Date
 });

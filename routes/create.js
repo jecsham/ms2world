@@ -41,6 +41,7 @@ module.exports = (app, constants) => {
             var data = {};
             if (req.body.title.length <= 150 && req.body.description.length <= 300) {
                 data.data_object = constants.sanitize(req.body.data_object)
+                data.class_name = constants.sanitize(req.body.class_name)
                 data.title = constants.sanitize(req.body.title)
                 data.description = constants.sanitize(req.body.description);
                 data.type = constants.sanitize(req.body.type)

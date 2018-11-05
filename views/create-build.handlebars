@@ -88,6 +88,7 @@
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
     var buildTemplate = {{{ JSONstringify class}}}
+    var viewMode = false;
 </script>
 <script src="/js/skillbuilder.js"></script>
 <script>
@@ -99,6 +100,7 @@
             var formData = {
                 'title': $('input[name=title]').val(),
                 'description': $('input[name=description]').val(),
+                'class_name': class_name,
                 'type': $('input[name=typeRadio]').val(),
                 'data_object': JSON.stringify(build)
             };
