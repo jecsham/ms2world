@@ -21,7 +21,8 @@
     "scrape-it": "^5.1.0",
     "serve-favicon": "^2.5.0",
     "steam-login": "^0.1.7",
-    "steamapi": "^2.0.3"
+    "steamapi": "^2.0.3",
+    "twitch-api-v5": "^2.0.4"
   },
   "devDependencies": {},
   "scripts": {

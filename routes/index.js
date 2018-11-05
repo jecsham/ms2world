@@ -7,5 +7,6 @@ module.exports = (app, constants) => {
     require('./home')(app, constants)
     require('./delete')(app, constants)
     require('./redirect')(app, constants)
+    require('./lives')(app, constants)
     app.use(require('./404'))
   }

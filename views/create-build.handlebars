@@ -101,7 +101,7 @@
                 'title': $('input[name=title]').val(),
                 'description': $('input[name=description]').val(),
                 'class_name': class_name,
-                'type': $('input[name=typeRadio]').val(),
+                'type': $('input[name=typeRadio]:checked').val(),
                 'data_object': JSON.stringify(build)
             };
             $.ajax({

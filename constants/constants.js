@@ -5,7 +5,6 @@ const sanitize = require('mongo-sanitize');
 const mSteamAPI = require('steamapi');
 const steamapi = new mSteamAPI(process.env.STEAM_KEY);
 
-
 mongoose.connect(process.env.MDB, { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 var db = mongoose.connection;

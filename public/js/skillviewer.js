@@ -4,9 +4,10 @@ $(document).ready(() => {
 
     $("#cmLauncher").click(() => renderCanvas());
 
-    $("[name='btn']").remove();
+    $("[name='btn']").remove()
     $("[name='-btn']").remove()
     $("#resetbuildbtn").remove()
+    $("#buildtype").text(class_type)
 
     var renderedCanvas;
 
@@ -33,4 +34,9 @@ function loadBuild() {
 
 function lockSkill(skillid) {
     $('#lock-' + skillid).addClass('locked');
+}
+
+function editElements(canvasPNG) {
+    $($(canvasPNG).find('#as')).show().text('MS2WORLD.NET').removeClass('text-muted').addClass('font-weight-bold ml-3');
+
 }
