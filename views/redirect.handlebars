@@ -1,0 +1,14 @@
+<div class="container">
+    Redirecting, please wait...
+</div>
+
+<script>
+    var last_url = JSON.parse(Cookies.get('last_url'));
+    if (last_url) {
+        if (!last_url.used) {
+            last_url.used = true;
+            Cookies.set('last_url', last_url);
+            document.location.href = last_url.path
+        }
+    }
+</script>

@@ -48,9 +48,9 @@ var guideSchema = new mongoose.Schema({
 var buildSchema = new mongoose.Schema({
     sid: String,
     title: String,
-    content: String,
+    description: String,
+    class_name: Number,
     date_create: Date,
-    class_id: Number,
     last_edit_date: Date
 });
 
@@ -98,5 +98,4 @@ module.exports = {
     sanitize: sanitize,
     steamapi: steamapi,
     es: es
-
 };

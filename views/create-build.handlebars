@@ -51,7 +51,7 @@
                 {{> (whichPartial)}}
             </div>
             <div class="mt-3">
-                <button id="submitbtn" type="submit" class="btn btn-success btn-sm">Publicate</button> <button type="button"
+                {{#if user}} <button id="submitbtn" type="submit" class="btn btn-success btn-sm">Publicate</button> {{else}} <button class="loginbtn btn btn-success btn-sm">Publicate (Require login)</button> {{/if}} <button type="button"
                     class="btn btn-info btn-sm" data-toggle="modal" id="cmLauncher" data-target="#canvasModal">Save
                     as PNG</button>
                 <div id="status" class="mt-3"></div>

@@ -21,7 +21,7 @@ module.exports = (app, constants) => {
         }
         constants.User_account.findOneAndUpdate(query, { $set: { 'name': username }, 'date_last_login': last_login }, { upsert: true }, (err, doc) => {
             if (err) return res.redirect('/logout');
-            return res.redirect('/');
+            return res.redirect('/redirect');
         });
     });
 
