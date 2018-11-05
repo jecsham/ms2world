@@ -52,6 +52,16 @@ require('./routes')(app, constants);
 
 require('./cronjobs/cron.js');
 
+app.use(errorHandler);
+
+function errorHandler(err, req, res, next) {
+	if (res.headersSent) {
+		return next(err);
+	}
+	res.status(500);
+	res.render('error', { error: err });
+}
+
 app.listen(process.env.PORT || 80, () => {
 	console.log(chalk.green('Server loaded'));
 });

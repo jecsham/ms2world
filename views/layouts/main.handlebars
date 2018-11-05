@@ -47,18 +47,17 @@
                     aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="mdi mdi-menu"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbar">
                     <div class="d-flex justify-content-center align-items-center w-100 flex-column flex-sm-row">
                         <a class="pr-3 text-dark" href="/home">Home</a>
                         <a class="pr-3 text-dark" href="/guides">Guides</a>
-                        <div class="btn-group">
+                        <div class="btn-group" id="dropdownBuild">
                             <a class="dropdown-toggle pr-3 text-dark" href="#" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 Builds
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#" >Skill Builder</a>
+                                <a class="dropdown-item" href="/create-build" >Skill Builder</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/builds" >Build list</a>
                             </div>
@@ -78,7 +77,7 @@
                             </div>
                         </div>
                         {{else}}
-                        <button id="loginbtn" data-url="/login" class="btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam"
+                        <button id="loginbtn" class="btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam"
                                 style="font-size: 17px;"></span>
                             Login</button>
                         {{/if}}

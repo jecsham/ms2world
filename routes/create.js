@@ -36,31 +36,25 @@ module.exports = (app, constants) => {
         }
     });
 
-    app.get('/create-build/', (req, res) => {
-        constants.Build_template.findOne({ class_name: class_name }, { _id: 0, data_object: 0 }, (err, doc) => {
-            if (err) return res.render('/');
-            res.render('create-build', {
-                gstatic: constants.gstatic,
-                title: 'MS2World.net: Create a Build',
-                user: req.user,
-                cstatic: cstatic,
-                class: doc.class_name
-            });
-        })
-    });
+    app.get(['/create-build', '/create-build/:class'], (req, res) => {
+        var class_name;
+        if (req.params.class === undefined) class_name = "knight"
+        else class_name = constants.sanitize(req.params.class);
 
-    app.get('/create-build/:class', (req, res) => {
-        var class_name = constants.sanitize(req.params.class);
-        constants.Build_template.findOne({ class_name: class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
-            if (err) return res.render('/');
-            res.render('create-build-class', {
-                gstatic: constants.gstatic,
-                title: 'MS2World.net: Create a Build for ',
-                user: req.user,
-                cstatic: cstatic,
-                class: doc.data_object,
-                whichPartial: () => "sb/" + class_name
-            });
+        constants.Build_template.find({}, { _id: 0, data_object: 0 }, (err, classname) => {
+            if (err) return res.render('404');
+            constants.Build_template.findOne({ class_name: class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
+                if (!doc) return res.render('404')
+                res.render('create-build', {
+                    gstatic: constants.gstatic,
+                    title: 'MS2World.net: Create a Build for ',
+                    user: req.user,
+                    cstatic: cstatic,
+                    class: doc.data_object,
+                    classname: classname,
+                    whichPartial: () => "sb/" + class_name
+                });
+            })
         })
     });
 }
