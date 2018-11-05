@@ -22,7 +22,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_guide.paginate({}, { select: 'title author', page: page, limit: 10, sort: filter }, (err, data) => {
+        constants.Post_guide.paginate({}, { select: 'title sid date_create', page: page, limit: 10, sort: filter }, (err, data) => {
             // data.docs
             // data.total
             // data.limit

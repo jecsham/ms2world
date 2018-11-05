@@ -27,7 +27,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_build.paginate({}, { select: 'title author', page: page, limit: 10, sort: filter }, (err, data) => {
+        constants.Post_build.paginate({}, { select: 'title sid date_create', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             res.render('builds', {
                 gstatic: constants.gstatic,
@@ -38,7 +38,7 @@ module.exports = (app, constants) => {
                 totalPages: data.totalPages,
                 nextPage: data.nextPage,
                 prevPage: data.hasPrevPage,
-                guides: data.docs
+                builds: data.docs
             });
         });
     });

@@ -74,6 +74,7 @@ var buildTemplateSchema = new mongoose.Schema({
 });
 
 guideSchema.plugin(mongoosePaginate);
+buildSchema.plugin(mongoosePaginate);
 
 // Models
 var User_account = mongoose.model('User_account', userSchema);
