@@ -48,7 +48,9 @@ var guideSchema = new mongoose.Schema({
 var buildSchema = new mongoose.Schema({
     sid: String,
     title: String,
+    type: String,
     description: String,
+    data_object: Object,
     class_name: Number,
     date_create: Date,
     last_edit_date: Date

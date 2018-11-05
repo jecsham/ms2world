@@ -26,13 +26,35 @@ module.exports = (app, constants) => {
                 data.date_create = new Date();
                 constants.Post_guide.create(data, (err, doc) => {
                     if (err) return res.status(500).send({ error: constants.es.internal });
-                    res.send({ error: false, id: doc._id });
+                    return res.send({ error: false, id: doc._id });
                 });
             } else {
-                res.status(500).send({ error: constants.es.big_content });
+                return res.status(500).send({ error: constants.es.big_content });
             }
         } else {
-            res.status(500).send({ error: constants.es.login });
+            return res.status(500).send({ error: constants.es.login });
+        }
+    });
+
+    app.post('/create-build/submit', (req, res) => {
+        if (req.user) {
+            var data = {};
+            if (req.body.title.length <= 150 && req.body.description.length <= 300) {
+                data.data_object = constants.sanitize(req.body.data_object)
+                data.title = constants.sanitize(req.body.title)
+                data.description = constants.sanitize(req.body.description);
+                data.type = constants.sanitize(req.body.type)
+                data.sid = constants.sanitize(req.user.steamid);
+                data.date_create = new Date();
+                constants.Post_build.create(data, (err, doc) => {
+                    if (err) return res.status(500).send({ error: constants.es.internal });
+                    return res.send({ error: false, id: doc._id });
+                });
+            } else {
+                return res.status(500).send({ error: constants.es.big_content });
+            }
+        } else {
+            return res.status(500).send({ error: constants.es.login });
         }
     });
 
@@ -57,26 +79,5 @@ module.exports = (app, constants) => {
             })
         })
     });
-
-    app.post('/create-build/submit', (req, res) => {
-        if (req.user) {
-            if (req.body.title.length <= 150 && req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags[0].length <= 20) {
-                var data = {};
-                data.title = constants.sanitize(req.body.title);
-                data.description = constants.sanitize(req.body.description);
-                data.content = constants.sanitize(req.body.content);
-                data.sid = constants.sanitize(req.user.steamid);
-                data.tags = constants.sanitize(req.body.tags);
-                data.date_create = new Date();
-                constants.Post_guide.create(data, (err, doc) => {
-                    if (err) return res.status(500).send({ error: constants.es.internal });
-                    res.send({ error: false, id: doc._id });
-                });
-            } else {
-                res.status(500).send({ error: constants.es.big_content });
-            }
-        } else {
-            res.status(500).send({ error: constants.es.login });
-        }
-    });
 }
+
