@@ -36,25 +36,25 @@ var userSchema = new mongoose.Schema({
 
 var guideSchema = new mongoose.Schema({
     sid: String,
-    title: String,
-    author: String,
+    title: { type: String, index: true },
+    author: { type: String, index: true },
     content: String,
-    description: String,
-    tags: [Object],
-    votes: Number,
+    description: { type: String, index: true },
+    tags: { type: [Object], index: true },
+    votes: { type: Number, default: 0 },
     date_create: Date,
     last_edit_date: Date
 });
 
 var buildSchema = new mongoose.Schema({
     sid: String,
-    title: String,
-    author: String,
-    type: String,
-    votes: Number,
-    description: String,
+    title: { type: String, index: true },
+    author: { type: String, index: true },
+    type: { type: String, index: true },
+    description: { type: String, index: true },
     data_object: Object,
-    class_name: String,
+    class_name: { type: String, index: true },
+    votes: { type: Number, default: 0 },
     date_create: Date,
     last_edit_date: Date
 });
@@ -77,20 +77,16 @@ var buildTemplateSchema = new mongoose.Schema({
     data_object: Object
 });
 
+//paginations
 guideSchema.plugin(mongoosePaginate);
 buildSchema.plugin(mongoosePaginate);
 
 // Models
 var User_account = mongoose.model('User_account', userSchema);
-
 var Post_guide = mongoose.model('Post_guide ', guideSchema);
-
 var Post_build = mongoose.model('Post_build', buildSchema);
-
 var Ms2_new = mongoose.model('Ms2_new', newSchema);
-
 var Ms2_class = mongoose.model('Ms2_class', classSchema);
-
 var Build_template = mongoose.model('Build_template', buildTemplateSchema);
 
 module.exports = {

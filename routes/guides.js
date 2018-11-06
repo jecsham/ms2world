@@ -1,10 +1,18 @@
 module.exports = (app, constants) => {
     app.get(['/guides', '/guides/:filter'], (req, res) => {
 
+        var query = {};
         var filter;
         var reqFilter;
         var page;
 
+        if (req.query.search != undefined) {
+            query = {
+                $text: {
+                    $search: req.query.search
+                }
+            }
+        }
         if (req.query.page === undefined)
             page = 1
         else
@@ -22,7 +30,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_guide.paginate({}, { select: 'title author date_create', page: page, limit: 10, sort: filter }, (err, data) => {
+        constants.Post_guide.paginate(query, { select: 'title author date_create', page: page, limit: 10, sort: filter, search: 'temple' }, (err, data) => {
             if (err) return res.render('error')
             res.render('guides', {
                 gstatic: constants.gstatic,

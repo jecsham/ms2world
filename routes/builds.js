@@ -6,9 +6,18 @@ module.exports = (app, constants) => {
 
     app.get(['/builds', '/builds/:filter'], (req, res) => {
 
+        var query = {};
         var filter;
         var reqFilter;
         var page;
+
+        if (req.query.search != undefined) {
+            query = {
+                $text: {
+                    $search: req.query.search
+                }
+            }
+        }
 
         if (req.query.page === undefined)
             page = 1
@@ -27,7 +36,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_build.paginate({}, { select: 'title sid date_create', page: page, limit: 10, sort: filter }, (err, data) => {
+        constants.Post_build.paginate(query, { select: 'title sid date_create', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             constants.Ms2_class.find({}, 'name', (err, classes) => {
                 res.render('builds', {

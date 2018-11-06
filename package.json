@@ -16,7 +16,7 @@
     "express-session": "^1.15.6",
     "handlebars-helpers": "^0.10.0",
     "mongo-sanitize": "^1.0.0",
-    "mongoose": "^5.3.7",
+    "mongoose": "^5.3.9",
     "mongoose-paginate-v2": "^1.0.12",
     "scrape-it": "^5.1.0",
     "serve-favicon": "^2.5.0",
