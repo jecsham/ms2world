@@ -6,9 +6,9 @@
             </p>
         </div>
         <div class="col-md-3 mb-1">
-            <select class="form-control form-control-sm">
-                <option>Popular</option>
-                <option selected>Recent</option>
+            <select id="selectFilter" class="form-control form-control-sm">
+                <option value="popular">Popular</option>
+                <option value="recent" selected>Recent</option>
             </select>
         </div>
         <div class="col-md-7">
@@ -82,5 +82,12 @@
         $('#page_nav').append(`<li class="page-item"><a class="page-link" href="/guides/${filter}/?page=${page + 1}">Next</a></li>`)
     }
 
+    $(document).ready(() => {
+        $('#selectFilter').val(filter)
+
+        $("#selectFilter").change(function () {
+            document.location.href = '/guides/'+this.value;
+        });
+    })
 
 </script>

@@ -11,7 +11,15 @@
                 <option selected>Recent</option>
             </select>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-3 mb-1">
+            <select class="form-control form-control-sm">
+                <option>All classes</option>
+                {{#each classes}}
+                <option>{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-md-4">
             <div class="input-group mb-1">
                 <input type="text" class="form-control form-control-sm align-bottom" id="searchPost" aria-describedby="SearchPost"
                     placeholder="Search...">

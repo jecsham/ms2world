@@ -3,8 +3,8 @@ module.exports = (app, constants) => {
 
     cstatic = ['<link rel="stylesheet" href="/css/skillbuilder.css">'];
 
-    
-    app.get(['/builds','/builds/:filter'], (req, res) => {
+
+    app.get(['/builds', '/builds/:filter'], (req, res) => {
 
         var filter;
         var reqFilter;
@@ -29,17 +29,20 @@ module.exports = (app, constants) => {
 
         constants.Post_build.paginate({}, { select: 'title sid date_create', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
-            res.render('builds', {
-                gstatic: constants.gstatic,
-                title: 'builds - MS2World.com',
-                user: req.user,
-                reqFilter: reqFilter,
-                page: data.page,
-                totalPages: data.totalPages,
-                nextPage: data.nextPage,
-                prevPage: data.hasPrevPage,
-                builds: data.docs
-            });
+            constants.Ms2_class.find({}, 'name', (err, classes) => {
+                res.render('builds', {
+                    gstatic: constants.gstatic,
+                    title: 'MS2World.net: Builds',
+                    user: req.user,
+                    reqFilter: reqFilter,
+                    page: data.page,
+                    totalPages: data.totalPages,
+                    nextPage: data.nextPage,
+                    prevPage: data.hasPrevPage,
+                    builds: data.docs,
+                    classes: classes
+                });
+            })
         });
     });
 
