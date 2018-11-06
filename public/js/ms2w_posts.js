@@ -26,6 +26,12 @@ else {
 }
 
 $(document).ready(() => {
+    $('#searchInput').keydown(function(e) {
+        if (e.keyCode == 13) {
+            document.location.href = `/${pagename}/?search=${this.value}`;
+        }
+    });
+
     $('#selectFilter').val(filter)
 
     $("#selectFilter").change(function () {
