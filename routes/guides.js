@@ -1,5 +1,5 @@
 module.exports = (app, constants) => {
-    app.get(['/guides','/guides/:filter'], (req, res) => {
+    app.get(['/guides', '/guides/:filter'], (req, res) => {
 
         var filter;
         var reqFilter;
@@ -22,12 +22,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_guide.paginate({}, { select: 'title sid date_create', page: page, limit: 10, sort: filter }, (err, data) => {
-            // data.docs
-            // data.total
-            // data.limit
-            // data.page 
-            // data.pages
+        constants.Post_guide.paginate({}, { select: 'title author date_create', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             res.render('guides', {
                 gstatic: constants.gstatic,

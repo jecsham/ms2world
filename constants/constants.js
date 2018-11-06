@@ -37,9 +37,11 @@ var userSchema = new mongoose.Schema({
 var guideSchema = new mongoose.Schema({
     sid: String,
     title: String,
+    author: String,
     content: String,
     description: String,
     tags: [Object],
+    votes: Number,
     date_create: Date,
     last_edit_date: Date
 });
@@ -47,7 +49,9 @@ var guideSchema = new mongoose.Schema({
 var buildSchema = new mongoose.Schema({
     sid: String,
     title: String,
+    author: String,
     type: String,
+    votes: Number,
     description: String,
     data_object: Object,
     class_name: String,
