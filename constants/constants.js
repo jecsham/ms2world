@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate-v2');
+const mongoosePaginate = require('mongoose-paginate-v2');
 const chalk = require('chalk');
 const sanitize = require('mongo-sanitize');
 const mSteamAPI = require('steamapi');
@@ -7,7 +7,7 @@ const steamapi = new mSteamAPI(process.env.STEAM_KEY);
 
 mongoose.connect(process.env.MDB, { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
@@ -31,7 +31,7 @@ var userSchema = new mongoose.Schema({
     name: String,
     sid: String,
     date_create: Date,
-    votes: [Object],
+    votes: Array,
     date_last_login: Date
 });
 
@@ -42,7 +42,8 @@ var guideSchema = new mongoose.Schema({
     content: String,
     description: { type: String, index: true },
     tags: { type: [Object], index: true },
-    votes: { type: Number, default: 0 },
+    voteCount: Number,
+    votes: Array,
     date_create: Date,
     last_edit_date: Date
 });
@@ -55,7 +56,8 @@ var buildSchema = new mongoose.Schema({
     description: { type: String, index: true },
     data_object: Object,
     class_name: { type: String, index: true },
-    votes: { type: Number, default: 0 },
+    voteCount: Number,
+    votes: Array,
     date_create: Date,
     last_edit_date: Date
 });

@@ -48,14 +48,30 @@ module.exports = (app, constants) => {
 
     app.get('/guide/:id', (req, res) => {
         var guideid = constants.sanitize(req.params.id);
+
         constants.Post_guide.findOne({ '_id': guideid }, (err, data) => {
             if (err) return res.render('404');
-            res.render('guide', {
-                gstatic: constants.gstatic,
-                title: 'MS2World.net: ' + data.title,
-                guide: data,
-                user: req.user
-            });
+            if (req.user) {
+                constants.User_account.findOne({ sid: req.user.steamid, votes: guideid }, '_id', (err, hasvote) => {
+                    if (err) return res.render('error')
+                    var vote = false;
+                    if (hasvote) vote = true;
+                    res.render('guide', {
+                        gstatic: constants.gstatic,
+                        title: 'MS2World.net: ' + data.title,
+                        guide: data,
+                        vote: vote,
+                        user: req.user
+                    });
+                })
+            } else {
+                res.render('guide', {
+                    gstatic: constants.gstatic,
+                    title: 'MS2World.net: ' + data.title,
+                    guide: data,
+                    user: req.user
+                });
+            }
         })
     });
 }

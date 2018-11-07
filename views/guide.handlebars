@@ -15,7 +15,17 @@
                             class="mdi mdi-delete"></span></button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button class="btn btn-success btn-sm"><span class="mdi mdi-thumb-up"></span></button>
+                    {{#if user}}
+                    {{#if vote}}
+                    <button class="btnvote btn btn-danger btn-sm" data-type="down" data-post="guide" data-postid="{{guide._id}}"><span
+                            class="mdi mdi-thumb-down"></span></button>
+                    {{else}}
+                    <button class="btnvote btn btn-success btn-sm" data-type="up" data-post="guide" data-postid="{{guide._id}}"><span
+                            class="mdi mdi-thumb-up"></span></button>
+                    {{/if}}
+                    {{else}}
+                    <button class="loginbtn btn btn-success btn-sm"><span class="mdi mdi-thumb-up"></span></button>
+                    {{/if}}
                     <button class="btn btn-danger btn-sm"><span class="mdi mdi-alert-circle"></span></button>
                 </div>
             </div>
@@ -89,3 +99,4 @@
 
 </script>
 <script src="/js/delete-guide.js"></script>
+<script src="/js/voting.js"></script>
