@@ -8,17 +8,7 @@
                     <p>{{build.description}}</p>
                 </div>
             </div>
-            <div class="my-3 d-flex justify-content-end">
-                <div class="btn-group mr-1" role="group">
-                    <button class="btn btn-success btn-sm"><span class="mdi mdi-pencil"></span></button>
-                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletePostModal"><span
-                            class="mdi mdi-delete"></span></button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button class="btn btn-success btn-sm"><span class="mdi mdi-thumb-up"></span></button>
-                    <button class="btn btn-danger btn-sm"><span class="mdi mdi-alert-circle"></span></button>
-                </div>
-            </div>
+            {{> postbuttons}}
             <div id="render-skill-pane">
                 {{> (whichPartial)}}
             </div>
@@ -90,3 +80,4 @@
     var class_type = "{{{ build.type }}}"
 </script>
 <script src="/js/skillviewer.js"></script>
+<script src="/js/voting.js"></script>
