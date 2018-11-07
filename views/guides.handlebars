@@ -21,8 +21,14 @@
             </div>
         </div>
         <div class="col-md-2">
-            <button class="btn btn-success btn-sm btn-block mb-3 float-right" type="button"><span class="mdi mdi-plus"></span>
+            {{#if user}}
+            <a href="/create-guide" class="btn btn-success btn-sm btn-block mb-3 float-right"><span class="mdi mdi-plus"></span>
+                Create</a>
+            {{else}}
+            <button class="loginbtn btn btn-success btn-sm btn-block mb-3 float-right" type="button"><span class="mdi mdi-plus"></span>
                 Create</button>
+            {{/if}}
+
         </div>
         <div class="col">
             <div class="table-responsive">

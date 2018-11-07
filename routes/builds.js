@@ -59,24 +59,18 @@ module.exports = (app, constants) => {
         var buildid = constants.sanitize(req.params.id);
         constants.Post_build.findOne({ '_id': buildid }, (err, data) => {
             if (err) return res.render('404');
-            constants.steamapi.getUserSummary(data.sid).then(summary => {
-                data.author = summary.nickname;
-                constants.Build_template.findOne({ class_name: data.class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
-                    if (!doc) return res.render('404')
-                    res.render('build', {
-                        gstatic: constants.gstatic,
-                        title: 'MS2World.net: ' + data.title,
-                        build: data,
-                        user: req.user,
-                        class: doc.data_object,
-                        cstatic: cstatic,
-                        whichPartial: () => "sb/" + data.class_name
-                    })
-                });
-            })
-                .catch(err => {
-                    res.status(500).render('error');
+            constants.Build_template.findOne({ class_name: data.class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
+                if (!doc) return res.render('404')
+                res.render('build', {
+                    gstatic: constants.gstatic,
+                    title: 'MS2World.net: ' + data.title,
+                    build: data,
+                    user: req.user,
+                    class: doc.data_object,
+                    cstatic: cstatic,
+                    whichPartial: () => "sb/" + data.class_name
                 })
+            });
         });
     });
 }

@@ -31,6 +31,7 @@ var userSchema = new mongoose.Schema({
     name: String,
     sid: String,
     date_create: Date,
+    votes: [Object],
     date_last_login: Date
 });
 

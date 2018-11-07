@@ -24,14 +24,11 @@ module.exports = (app, constants) => {
                 data.sid = constants.sanitize(req.user.steamid);
                 data.tags = constants.sanitize(req.body.tags);
                 data.date_create = new Date();
-                constants.User_account.findOne({ sid: data.sid }, 'name', (err, name) => {
+                data.author = req.user.username;
+                constants.Post_guide.create(data, (err, doc) => {
                     if (err) return res.status(500).send({ error: constants.es.internal });
-                    data.author = name.name;
-                    constants.Post_guide.create(data, (err, doc) => {
-                        if (err) return res.status(500).send({ error: constants.es.internal });
-                        return res.send({ error: false, id: doc._id });
-                    });
-                })
+                    return res.send({ error: false, id: doc._id });
+                });
             } else {
                 return res.status(500).send({ error: constants.es.big_content });
             }
@@ -51,14 +48,11 @@ module.exports = (app, constants) => {
                 data.type = constants.sanitize(req.body.type)
                 data.sid = constants.sanitize(req.user.steamid);
                 data.date_create = new Date();
-                constants.User_account.findOne({ sid: data.sid }, 'name', (err, name) => {
+                data.author = req.user.username;
+                constants.Post_build.create(data, (err, doc) => {
                     if (err) return res.status(500).send({ error: constants.es.internal });
-                    data.author = name.name;
-                    constants.Post_build.create(data, (err, doc) => {
-                        if (err) return res.status(500).send({ error: constants.es.internal });
-                        return res.send({ error: false, id: doc._id });
-                    });
-                })
+                    return res.send({ error: false, id: doc._id });
+                });
             } else {
                 return res.status(500).send({ error: constants.es.big_content });
             }
