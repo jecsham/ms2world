@@ -25,14 +25,14 @@ module.exports = (app, constants) => {
             page = constants.sanitize(req.query.page)
 
         if (req.params.filter === undefined)
-            reqFilter = 'recent'
+            reqFilter = 'popular'
         else
             reqFilter = constants.sanitize(req.params.filter)
 
         if (reqFilter === 'recent')
             filter = { '_id': -1 }
         else if (reqFilter === 'popular')
-            filter = { 'votes': -1 }
+            filter = { 'voteCount': -1 }
         else
             filter = { '_id': -1 }
 

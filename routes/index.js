@@ -8,5 +8,6 @@ module.exports = (app, constants) => {
     require('./delete')(app, constants)
     require('./redirect')(app, constants)
     require('./lives')(app, constants)
+    require('./vote')(app, constants)
     app.use(require('./404'))
   }
