@@ -55,7 +55,7 @@
                 <form id="create-build" class="d-inline">
                     <button id="submitbtn" type="submit" class="btn btn-success btn-sm">Publicate</button>
                 </form>
-                {{else}} <button class="loginbtn btn btn-success btn-sm">Publicate (Require login)</button>
+                {{else}} <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#loginModal">Publicate</button>
                 {{/if}}
                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" id="cmLauncher" data-target="#canvasModal">Save
                     as PNG</button>

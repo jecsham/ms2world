@@ -52,14 +52,14 @@
                         <a class="pr-3 text-dark" href="/home">Home</a>
                         <a class="pr-3 text-dark" href="/guides">Guides</a>
                         <div class="btn-group" id="dropdownBuild">
-                            <a class="dropdown-toggle pr-3 text-dark" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <a class="dropdown-toggle pr-3 text-dark" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
                                 Builds
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/create-build" >Skill Builder <span class="badge badge-secondary">Beta</span></a>
+                                <a class="dropdown-item" href="/create-build">Skill Builder <span class="badge badge-secondary">Beta</span></a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/builds" >Build list</a>
+                                <a class="dropdown-item" href="/builds">Build list</a>
                             </div>
                         </div>
                         <a class="pr-3 text-dark" href="/lives"><span class="mdi mdi-record text-danger "></span>Lives</a>
@@ -77,8 +77,7 @@
                             </div>
                         </div>
                         {{else}}
-                        <button class="loginbtn btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam"
-                                style="font-size: 17px;"></span>
+                        <button class="loginbtn btn btn-dark btn-sm ml-auto"><span class="mdi mdi-steam" style="font-size: 17px;"></span>
                             Login</button>
                         {{/if}}
                     </div>
@@ -130,7 +129,8 @@
     <div id="cookie-notice" class="container-fluid position-fixed fixed-bottom">
         <div class="row">
             <div class="col">
-                <div class="alert alert-info alert-dismissible fade" role="alert" id="cookies-alert"><strong>Cookies Notice 🍪!
+                <div class="alert alert-info alert-dismissible fade" role="alert" id="cookies-alert"><strong>Cookies
+                        Notice 🍪!
                     </strong> We use cookies and other tracking technologies to improve your browsing
                     experience on our website, to show you personalized content and targeted ads, to analyze our
                     website traffic, and to understand where our visitors are coming from. By browsing our website, you
@@ -142,6 +142,32 @@
             </div>
         </div>
     </div>
+
+    {{#unless user}}
+    <!-- Login Modal-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login required</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    This feature requires you to log in
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="loginbtn btn btn-dark btn-sm"><span class="mdi mdi-steam"></span> Login with
+                        steam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/unless}}
+
+
     <script src="/js/global.js"></script>
 </body>
 
