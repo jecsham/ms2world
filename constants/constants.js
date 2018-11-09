@@ -43,7 +43,7 @@ var guideSchema = new mongoose.Schema({
     content: String,
     description: { type: String, index: true },
     tags: { type: [Object], index: true },
-    voteCount: Number,
+    voteCount: {type: Number, default: 0},
     votes: Array,
     date_create: Date,
     last_edit_date: Date
@@ -57,7 +57,7 @@ var buildSchema = new mongoose.Schema({
     description: { type: String, index: true },
     data_object: Object,
     class_name: { type: String, index: true },
-    voteCount: Number,
+    voteCount: {type: Number, default: 0},
     votes: Array,
     date_create: Date,
     last_edit_date: Date

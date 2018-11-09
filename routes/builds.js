@@ -36,7 +36,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_build.paginate(query, { select: 'title author date_create', page: page, limit: 10, sort: filter }, (err, data) => {
+        constants.Post_build.paginate(query, { select: 'title author date_create voteCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             constants.Ms2_class.find({}, 'name', (err, classes) => {
                 if (err) return res.render('error')
