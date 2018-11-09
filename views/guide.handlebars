@@ -3,9 +3,9 @@
         <div class="col">
             <div class="border-left bg-light">
                 <div class="p-3">
-                    <h3>{{{guide.title}}}</h3>
-                    <p class="card-text"><small class="text-muted">By {{guide.author}}, 3 mins ago</small></p>
-                    <p>{{guide.description}}</p>
+                    <h3>{{{post.title}}}</h3>
+                    <p class="card-text"><small class="text-muted">By {{post.author}}, 3 mins ago</small></p>
+                    <p>{{post.description}}</p>
                 </div>
             </div>
             {{> postbuttons}}
@@ -13,12 +13,12 @@
                 <div class="card-body">
 
                     <div id="guide-content">
-                        {{#markdown}}{{{guide.content}}}{{/markdown}}
+                        {{#markdown}}{{{post.content}}}{{/markdown}}
                     </div>
                 </div>
             </div>
             {{> postbuttons}}
-            <p>Tags: {{#each (JSONparse guide.tags) }} <a href="/search/{{vale}}">{{value}}</a>&nbsp;{{/each}}</p>
+            <p>Tags: {{#each (JSONparse post.tags) }} <a href="/search/{{vale}}">{{value}}</a>&nbsp;{{/each}}</p>
             <button class="btn btn-dark btn-sm">Comments <span class="badge badge-light">soon</span></button>
         </div>
     </div>
@@ -27,34 +27,8 @@
                 class="mdi mdi-arrow-up"></span></a>
     </div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="deletePostModalTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deletePostModalTitle">Are you sure?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-danger">
-                <p>We will literally delete your post from our database. There will be no way to recover it in the
-                    future!</p>
-                <div id="status"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="cancelbtn">Cancel</button>
-                <form id="delete-guide">
-                    <input type="hidden" name="postid" value="{{guide._id}}">
-                    <input type="hidden" name="postsid" value="{{guide.sid}}">
-                    <button type="submit" class="btn btn-danger btn-sm" id="delbtn">Delete</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+{{> modals/deletemodal}}
+{{> modals/reportmodal}}
 <script>
     $(window).scroll(() => {
         if ($(this).scrollTop() >= (100)) {
@@ -79,5 +53,5 @@
     });
 
 </script>
-<script src="/js/delete-guide.js"></script>
+<script src="/js/delete-post.js"></script>
 <script src="/js/voting.js"></script>

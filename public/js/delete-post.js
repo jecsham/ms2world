@@ -1,22 +1,23 @@
 $(document).ready(function () {
-    $('#delete-guide').submit(function (event) {
+    $('#delete-post').submit(function (event) {
         $('#delbtn').attr('disabled', 'disabled');
         $('#cancelbtn').attr('disabled', 'disabled');
         $('#status').html('<div class="alert alert-success">Please wait...</div>');
         var sendData = {
             'postid': $('input[name=postid]').val(),
+            'postType': $('input[name=postType]').val(),
             'postsid': $('input[name=postsid]').val()
         };
         $.ajax({
             type: 'POST',
-            url: '/delete/guide',
+            url: '/delete/post',
             data: sendData,
             dataType: 'json',
             encode: true,
             success: () => {
-                $('#status').html('<p class="alert alert-success"><strong>Deleted!</strong> Redirecting to /guides ... 😀<p>');
+                $('#status').html('<p class="alert alert-success"><strong>Deleted!</strong> Redirecting to /home ... 😀<p>');
                 var timer = setTimeout(() => {
-                    window.location = '/guides';
+                    window.location = '/home';
                 }, 3000);
             },
             error: (resdata) => {

@@ -1,0 +1,30 @@
+<!-- Delete Modal -->
+{{#if (compare user.steamid "==" post.sid)}}
+<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="deletePostModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletePostModalTitle">Are you sure?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-danger">
+                <p>We will literally delete your post from our database. There will be no way to recover it in the
+                    future!</p>
+                <div id="status"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="cancelbtn">Cancel</button>
+                <form id="delete-post">
+                    <input type="hidden" name="postid" value="{{post._id}}">
+                    <input type="hidden" name="postsid" value="{{post.sid}}">
+                    <input type="hidden" name="postType" value="{{post.postType}}">
+                    <button type="submit" class="btn btn-danger btn-sm" id="delbtn">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}

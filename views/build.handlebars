@@ -3,9 +3,9 @@
         <div class="col">
             <div class="border-left bg-light">
                 <div class="p-3">
-                    <h3>{{{build.title}}}</h3>
-                    <p class="card-text"><small class="text-muted">By {{build.author}}, 3 mins ago</small></p>
-                    <p>{{build.description}}</p>
+                    <h3>{{{post.title}}}</h3>
+                    <p class="card-text"><small class="text-muted">By {{post.author}}, 3 mins ago</small></p>
+                    <p>{{post.description}}</p>
                 </div>
             </div>
             {{> postbuttons}}
@@ -28,7 +28,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="canvasModalLabel">Build</h5>
+                <h5 class="modal-title" id="canvasModalLabel">post</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -46,38 +46,14 @@
 </div>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
-<!-- Modal Delete -->
-<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="deletePostModalTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deletePostModalTitle">Are you sure?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-danger">
-                <p>We will literally delete your post from our database. There will be no way to recover it in the
-                    future!</p>
-                <div id="status"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="cancelbtn">Cancel</button>
-                <form id="delete-build">
-                    <input type="hidden" name="postid" value="{{build._id}}">
-                    <input type="hidden" name="postsid" value="{{build.sid}}">
-                    <button type="submit" class="btn btn-danger btn-sm" id="delbtn">Delete</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+{{> modals/deletemodal}}
+{{> modals/reportmodal}}
 <script>
     var viewMode = true;
     var buildTemplate = {{{ JSONstringify class}}}
-    var build = {{{ build.data_object }}}
-    var class_type = "{{{ build.type }}}"
+    var build = {{{ post.data_object }}}
+    var class_type = "{{{ post.type }}}"
 </script>
+<script src="/js/delete-post.js"></script>
 <script src="/js/skillviewer.js"></script>
 <script src="/js/voting.js"></script>

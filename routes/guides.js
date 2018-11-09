@@ -51,6 +51,7 @@ module.exports = (app, constants) => {
 
         constants.Post_guide.findOne({ '_id': guideid }, (err, data) => {
             if (err) return res.render('404');
+            data.postType = 'guide'
             if (req.user) {
                 constants.User_account.findOne({ sid: req.user.steamid, votes: guideid }, '_id', (err, hasvote) => {
                     if (err) return res.render('error')
@@ -59,7 +60,7 @@ module.exports = (app, constants) => {
                     res.render('guide', {
                         gstatic: constants.gstatic,
                         title: 'MS2World.net: ' + data.title,
-                        guide: data,
+                        post: data,
                         vote: vote,
                         user: req.user
                     });
@@ -68,7 +69,7 @@ module.exports = (app, constants) => {
                 res.render('guide', {
                     gstatic: constants.gstatic,
                     title: 'MS2World.net: ' + data.title,
-                    guide: data,
+                    post: data,
                     user: req.user
                 });
             }

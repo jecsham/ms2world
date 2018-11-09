@@ -35,6 +35,11 @@ var userSchema = new mongoose.Schema({
     date_last_login: Date
 });
 
+var reportreasonSchema = new mongoose.Schema({
+    name: String,
+    
+})
+
 var guideSchema = new mongoose.Schema({
     sid: String,
     title: { type: String, index: true },

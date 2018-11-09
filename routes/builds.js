@@ -59,12 +59,13 @@ module.exports = (app, constants) => {
         var buildid = constants.sanitize(req.params.id);
         constants.Post_build.findOne({ '_id': buildid }, (err, data) => {
             if (err) return res.render('404');
+            data.postType = 'build'
             constants.Build_template.findOne({ class_name: data.class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
                 if (!doc) return res.render('404')
                 res.render('build', {
                     gstatic: constants.gstatic,
                     title: 'MS2World.net: ' + data.title,
-                    build: data,
+                    post: data,
                     user: req.user,
                     class: doc.data_object,
                     cstatic: cstatic,
