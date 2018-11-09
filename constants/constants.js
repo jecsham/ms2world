@@ -87,6 +87,8 @@ var reportReasonSchema = new mongoose.Schema({
 
 var reportPostSchema = new mongoose.Schema({
     reason_id: String,
+    post_title: String,
+    post_type: String,
     post_id: String,
     reporter_sid: String
 })

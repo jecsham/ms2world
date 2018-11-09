@@ -50,24 +50,29 @@ module.exports = (app, constants) => {
         var guideid = constants.sanitize(req.params.id);
 
         constants.Post_guide.findOne({ '_id': guideid }, (err, data) => {
-            if (err) return res.render('404');
+            if (!data) return res.render('404');
             data.postType = 'guide'
             if (req.user) {
-                constants.User_account.findOne({ sid: req.user.steamid, votes: guideid }, '_id', (err, hasvote) => {
+                constants.User_account.findOne({ sid: req.user.steamid, reports: guideid }, '_id', (err, isreported) => {
                     if (err) return res.render('error')
-                    var vote = false;
-                    if (hasvote) vote = true;
-                    constants.Report_reason.find({}, (err, reasons) => {
-                        var report = {}
-                        report.reasons = reasons;
-                        if (err) return res.render('404');
-                        res.render('guide', {
-                            gstatic: constants.gstatic,
-                            title: 'MS2World.net · ' + data.title,
-                            post: data,
-                            report: report,
-                            vote: vote,
-                            user: req.user
+                    var report = {}
+                    report.isreported = false;
+                    if (isreported) report.isreported = true;
+                    constants.User_account.findOne({ sid: req.user.steamid, votes: guideid }, '_id', (err, hasvote) => {
+                        if (err) return res.render('error')
+                        var vote = false;
+                        if (hasvote) vote = true;
+                        constants.Report_reason.find({}, (err, reasons) => {
+                            if (err) return res.render('404');
+                            report.reasons = reasons;
+                            res.render('guide', {
+                                gstatic: constants.gstatic,
+                                title: 'MS2World.net · ' + data.title,
+                                post: data,
+                                report: report,
+                                vote: vote,
+                                user: req.user
+                            });
                         });
                     });
                 })

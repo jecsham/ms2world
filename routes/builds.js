@@ -59,23 +59,49 @@ module.exports = (app, constants) => {
     app.get('/build/:id', (req, res) => {
         var buildid = constants.sanitize(req.params.id);
         constants.Post_build.findOne({ '_id': buildid }, (err, data) => {
-            if (err) return res.render('404');
+            if (!data) return res.render('404');
+            
             data.postType = 'build'
             constants.Build_template.findOne({ class_name: data.class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
-                if (!doc) return res.render('404')
-                constants.Report_reason.find({}, { sort: { name: -1 } }, (err, reasons) => {
-                    if (err) return res.render('404');
+                if (err) return res.render('404')
+                if (req.user) {
+                    constants.Report_reason.find({}, (err, reasons) => {
+                        if (err) return res.render('404');
+                        constants.User_account.findOne({ sid: req.user.steamid, votes: buildid }, '_id', (err, hasvote) => {
+                            if (err) return res.render('error')
+                            var vote = false;
+                            if (hasvote) vote = true;
+                            constants.User_account.findOne({ sid: req.user.steamid, reports: buildid }, '_id', (err, isreported) => {
+                                if (err) return res.render('error')
+                                var report = {}
+                                report.isreported = false;
+                                if (isreported) report.isreported = true;
+                                report.reasons = reasons;
+                                res.render('build', {
+                                    gstatic: constants.gstatic,
+                                    title: 'MS2World.net · ' + data.title,
+                                    post: data,
+                                    report: report,
+                                    vote: vote,
+                                    user: req.user,
+                                    class: doc.data_object,
+                                    cstatic: cstatic,
+                                    whichPartial: () => "sb/" + data.class_name
+                                })
+                            })
+                        })
+                    })
+                } else {
                     res.render('build', {
                         gstatic: constants.gstatic,
                         title: 'MS2World.net · ' + data.title,
                         post: data,
-                        report_reasons: reasons,
                         user: req.user,
                         class: doc.data_object,
                         cstatic: cstatic,
                         whichPartial: () => "sb/" + data.class_name
                     })
-                })
+                }
             });
         });
     });

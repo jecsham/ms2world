@@ -27,6 +27,7 @@
     <!--CookiesJS-->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
+
     {{#if cstatic}}
     {{#each cstatic}}
     {{{this}}}
@@ -35,6 +36,9 @@
 </head>
 
 <body>
+    <div id="adblockmessage">
+    </div>
+
     <header class="mb-3">
         <div id="brand-logo" class="d-flex justify-content-center mt-3">
             <a href="/home">
@@ -144,6 +148,25 @@
     </div>
     {{> modals/loginmodal}}
     <script src="/js/global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockadblock/3.2.1/blockadblock.js"></script>
+    <script>
+
+        function adBlockDetected() {
+            //$('#adblockmessage').html('<div class="alert alert-danger text-center alert-dismissible fade show" role="alert">AdBlocker enabled 😢<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        }
+        function adBlockNotDetected() {
+            $('#adblockmessage').hide();
+        }
+
+        if (typeof blockAdBlock === 'undefined') {
+            adBlockDetected();
+        } else {
+            blockAdBlock.setOption({ debug: false });
+            blockAdBlock.onDetected(adBlockDetected).onNotDetected(adBlockNotDetected);
+        }
+
+
+    </script>
 </body>
 
 </html>

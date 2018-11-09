@@ -74,24 +74,17 @@ module.exports = (app, constants) => {
 
     app.post('/report/post', (req, res) => {
         if (req.user) {
-            if (req.user.steamid === req.body.postsid) {
-                var postid = constants.sanitize(req.body.postid)
-                var postsid = constants.sanitize(req.body.postsid)
-                var postType = constants.sanitize(req.body.postType)
-                if (postType === 'guide') {
-                    constants.Post_guide.insertMany({ _id: postid, sid: postsid }, (err) => {
-                        if (err) return res.status(500).send({ error: constants.es.internal });
-                        res.send({ error: false });
-                    });
-                } else if (postType === 'build') {
-                    constants.Post_build.insertMany({ _id: postid, sid: postsid }, (err) => {
-                        if (err) return res.status(500).send({ error: constants.es.internal });
-                        res.send({ error: false });
-                    });
-                }
-            } else {
-                res.status(500).send({ error: constants.es.steam_id_match });
-            }
+            var usersid = req.user.steamid
+            var postid = constants.sanitize(req.body.postid)
+            var reasonid = constants.sanitize(req.body.reportReason)
+            var postType = constants.sanitize(req.body.postType)
+            constants.User_account.findOneAndUpdate({ sid: usersid }, { $addToSet: { reports: postid } }, (err) => {
+                if (err) return res.status(500).send({ error: constants.es.internal });
+            });
+            constants.Report_post.insertMany({ post_id: postid, reason_id: reasonid, post_type: postType, reporter_sid: usersid }, {upset: true}, (err) => {
+                if (err) return res.status(500).send({ error: constants.es.internal });
+                res.send({ error: false });
+            });
         } else {
             res.status(500).send({ error: constants.es.login });
         }

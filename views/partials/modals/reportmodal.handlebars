@@ -1,5 +1,6 @@
 <!-- Report Modal-->
 {{#if user}}
+{{#unless report.isreported}}
 <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -18,8 +19,9 @@
                     {{/each}}
                     <option value="1">Other</option>
                 </select>
-                <input type="hidden" value="{{post.postType}}" name="postType">
-                <div id="status" class="mt-1"></div>
+                <input type="hidden" name="postid" value="{{post._id}}">
+                <input type="hidden" name="postType" value="{{post.postType}}">
+                <div id="statusreport"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="cancelbtnreport">Cancel</button>
@@ -30,33 +32,33 @@
 </div>
 <script>
     $(document).ready(function () {
-    $('#sendreport').click(function (event) {
-        $('#sendreport').attr('disabled', 'disabled');
-        $('#cancelbtnreport').attr('disabled', 'disabled');
-        $('#status').html('<div class="alert alert-success">Please wait...</div>');
-        var sendData = {
-            'reportReason': $('select[name="reportReason"]').val(),
-            'postType': 'postType': $('input[name=postType]').val()
-        };
-        console.log(sendData.reportReason)
-        $.ajax({
-            type: 'POST',
-            url: '/report/post',
-            data: sendData,
-            dataType: 'json',
-            encode: true,
-            success: () => {
-                $('#status').html('<p class="alert alert-success"><strong>Deleted!</strong> Redirecting to /home ... 😀<p>');
-                var timer = setTimeout(() => {
-                    window.location = '/home';
-                }, 3000);
-            },
-            error: (resdata) => {
-                $('#status').html('<div class="alert alert-danger" role="alert"><strong>Error:</strong> '+resdata.responseJSON.error+'</div>');
-            },
+        $('#sendreport').click(function (event) {
+            $('#sendreport').attr('disabled', 'disabled');
+            $('#cancelbtnreport').attr('disabled', 'disabled');
+            $('#statusreport').html('<div class="alert alert-success my-3">Please wait...</div>');
+            var sendData = {
+                'postid': $('input[name=postid]').val(),
+                'reportReason': $('select[name="reportReason"]').val(),
+                'postType': $('input[name=postType]').val()
+            };
+            console.log(sendData.reportReason)
+            $.ajax({
+                type: 'POST',
+                url: '/report/post',
+                data: sendData,
+                dataType: 'json',
+                encode: true,
+                success: () => {
+                    $('.btnreport').hide()
+                    $('#statusreport').html('<div class="alert alert-success my-3"><strong>Thanks for your report!</strong> We\'ll review the information you provided and get back to you soon!<div>');
+                },
+                error: (resdata) => {
+                    $('#statusreport').html('<div class="alert alert-danger my-3" role="alert"><strong>Error:</strong> ' + resdata.responseJSON.error + '</div>');
+                },
+            });
+            event.preventDefault();
         });
-        event.preventDefault();
     });
-});
 </script>
+{{/unless}}
 {{/if}}
