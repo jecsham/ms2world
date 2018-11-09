@@ -11,20 +11,52 @@
             </div>
             <div class="modal-body">
                 Why do you want to report this post?
-                <select class="form-control form-control-sm">
-                    <option>Select a option</option>
-                    <option>Content not available (images or links broken)</option>
-                    <option>Duplicate post</option>
-                    <option>Unsuitable content (violence, pornography, etc)</option>
-                    <option>Off-topic (it's not related to MapleStory2)</option>
-                    <option>Other</option>
+                <select class="form-control form-control-sm" name="reportReason">
+                    <option value="0">Select a option</option>
+                    {{#each report.reasons}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                    <option value="1">Other</option>
                 </select>
+                <input type="hidden" value="{{post.postType}}" name="postType">
+                <div id="status" class="mt-1"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
-                <button type="button" class="reportbtn btn btn-danger btn-sm">Send report</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="cancelbtnreport">Cancel</button>
+                <button type="button" class="reportbtn btn btn-danger btn-sm" id="sendreport">Send report</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+    $('#sendreport').click(function (event) {
+        $('#sendreport').attr('disabled', 'disabled');
+        $('#cancelbtnreport').attr('disabled', 'disabled');
+        $('#status').html('<div class="alert alert-success">Please wait...</div>');
+        var sendData = {
+            'reportReason': $('select[name="reportReason"]').val(),
+            'postType': 'postType': $('input[name=postType]').val()
+        };
+        console.log(sendData.reportReason)
+        $.ajax({
+            type: 'POST',
+            url: '/report/post',
+            data: sendData,
+            dataType: 'json',
+            encode: true,
+            success: () => {
+                $('#status').html('<p class="alert alert-success"><strong>Deleted!</strong> Redirecting to /home ... 😀<p>');
+                var timer = setTimeout(() => {
+                    window.location = '/home';
+                }, 3000);
+            },
+            error: (resdata) => {
+                $('#status').html('<div class="alert alert-danger" role="alert"><strong>Error:</strong> '+resdata.responseJSON.error+'</div>');
+            },
+        });
+        event.preventDefault();
+    });
+});
+</script>
 {{/if}}

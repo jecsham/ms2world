@@ -34,7 +34,7 @@ module.exports = (app, constants) => {
             if (err) return res.render('error')
             res.render('guides', {
                 gstatic: constants.gstatic,
-                title: 'Guides - MS2World.com',
+                title: 'MS2World.net · Guides',
                 user: req.user,
                 reqFilter: reqFilter,
                 page: data.page,
@@ -57,18 +57,24 @@ module.exports = (app, constants) => {
                     if (err) return res.render('error')
                     var vote = false;
                     if (hasvote) vote = true;
-                    res.render('guide', {
-                        gstatic: constants.gstatic,
-                        title: 'MS2World.net: ' + data.title,
-                        post: data,
-                        vote: vote,
-                        user: req.user
+                    constants.Report_reason.find({}, (err, reasons) => {
+                        var report = {}
+                        report.reasons = reasons;
+                        if (err) return res.render('404');
+                        res.render('guide', {
+                            gstatic: constants.gstatic,
+                            title: 'MS2World.net · ' + data.title,
+                            post: data,
+                            report: report,
+                            vote: vote,
+                            user: req.user
+                        });
                     });
                 })
             } else {
                 res.render('guide', {
                     gstatic: constants.gstatic,
-                    title: 'MS2World.net: ' + data.title,
+                    title: 'MS2World.net · ' + data.title,
                     post: data,
                     user: req.user
                 });

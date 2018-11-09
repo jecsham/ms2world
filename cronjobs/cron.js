@@ -69,15 +69,20 @@ module.exports = new CronJob('0 * * * *', () => {
 //    });
 //  }, null, true, 'America/Los_Angeles');
 
-// module.exports = new CronJob('* * * * * *', () => {
-//   dinsert = {};
-//   dinsert.class_name = "runeblade"
-//   dinsert.data_object = runeblade
-//   constants.Build_template.create(dinsert, (err) => {
-//     if (err) return console.log('Error trying remove model at cronjob 1');
-//     console.log("Inserted")
-//   });
-// }, null, true, 'America/Los_Angeles');
+//  module.exports = new CronJob('* * * * * *', () => {
+//    dinsert = [
+//      {name: "Content not available (images or links broken)"},
+//      {name: "Duplicate post"},
+//      {name: "Unsuitable content (violence, pornography, etc)"},
+//      {name: "Off-topic (it's not related to MapleStory2)"},
+//      {name: "Other"},
+//      {name: "Spam"},
+//    ];
+//    constants.Report_reason.insertMany(dinsert, (err) => {
+//      if (err) return console.log('Error trying remove model at cronjob 1');
+//      console.log("Inserted")
+//    });
+//  }, null, true, 'America/Los_Angeles');
 
 
   // constants.Build_template.deleteMany({ class_name: 'hgunner' }, function (err) {

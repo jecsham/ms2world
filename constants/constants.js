@@ -32,13 +32,9 @@ var userSchema = new mongoose.Schema({
     sid: String,
     date_create: Date,
     votes: Array,
+    reports: Array,
     date_last_login: Date
 });
-
-var reportreasonSchema = new mongoose.Schema({
-    name: String,
-    
-})
 
 var guideSchema = new mongoose.Schema({
     sid: String,
@@ -85,6 +81,16 @@ var buildTemplateSchema = new mongoose.Schema({
     data_object: Object
 });
 
+var reportReasonSchema = new mongoose.Schema({
+    name: String,
+})
+
+var reportPostSchema = new mongoose.Schema({
+    reason_id: String,
+    post_id: String,
+    reporter_sid: String
+})
+
 //paginations
 guideSchema.plugin(mongoosePaginate);
 buildSchema.plugin(mongoosePaginate);
@@ -96,6 +102,8 @@ var Post_build = mongoose.model('Post_build', buildSchema);
 var Ms2_new = mongoose.model('Ms2_new', newSchema);
 var Ms2_class = mongoose.model('Ms2_class', classSchema);
 var Build_template = mongoose.model('Build_template', buildTemplateSchema);
+var Report_reason = mongoose.model('Report_reason', reportReasonSchema);
+var Report_post = mongoose.model('Report_post', reportPostSchema);
 
 module.exports = {
     gstatics: gstatics,
@@ -105,6 +113,8 @@ module.exports = {
     Ms2_new: Ms2_new,
     Ms2_class: Ms2_class,
     Build_template: Build_template,
+    Report_reason: Report_reason,
+    Report_post: Report_post,
     sanitize: sanitize,
     steamapi: steamapi,
     es: es

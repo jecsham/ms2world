@@ -39,9 +39,10 @@ module.exports = (app, constants) => {
         constants.Post_build.paginate(query, { select: 'title author date_create', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             constants.Ms2_class.find({}, 'name', (err, classes) => {
+                if (err) return res.render('error')
                 res.render('builds', {
                     gstatic: constants.gstatic,
-                    title: 'MS2World.net: Builds',
+                    title: 'MS2World.net · Builds',
                     user: req.user,
                     reqFilter: reqFilter,
                     page: data.page,
@@ -62,14 +63,18 @@ module.exports = (app, constants) => {
             data.postType = 'build'
             constants.Build_template.findOne({ class_name: data.class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
                 if (!doc) return res.render('404')
-                res.render('build', {
-                    gstatic: constants.gstatic,
-                    title: 'MS2World.net: ' + data.title,
-                    post: data,
-                    user: req.user,
-                    class: doc.data_object,
-                    cstatic: cstatic,
-                    whichPartial: () => "sb/" + data.class_name
+                constants.Report_reason.find({}, { sort: { name: -1 } }, (err, reasons) => {
+                    if (err) return res.render('404');
+                    res.render('build', {
+                        gstatic: constants.gstatic,
+                        title: 'MS2World.net · ' + data.title,
+                        post: data,
+                        report_reasons: reasons,
+                        user: req.user,
+                        class: doc.data_object,
+                        cstatic: cstatic,
+                        whichPartial: () => "sb/" + data.class_name
+                    })
                 })
             });
         });
