@@ -36,7 +36,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_build.paginate(query, { select: 'title author date_create voteCount', page: page, limit: 10, sort: filter }, (err, data) => {
+        constants.Post_build.paginate(query, { select: 'title author date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             constants.Ms2_class.find({}, 'name', (err, classes) => {
                 if (err) return res.render('error')
@@ -60,8 +60,9 @@ module.exports = (app, constants) => {
         var buildid = constants.sanitize(req.params.id);
         constants.Post_build.findOne({ '_id': buildid }, (err, data) => {
             if (!data) return res.render('404');
-            
+
             data.postType = 'build'
+            constants.incView(buildid, data.postType)
             constants.Build_template.findOne({ class_name: data.class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
                 if (err) return res.render('404')
                 if (req.user) {

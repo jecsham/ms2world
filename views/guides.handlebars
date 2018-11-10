@@ -38,8 +38,8 @@
                         {{#each guides}}
                         <tr>
                             <th class="font-weight-normal align-middle"><a href="/guide/{{_id}}">{{title}}</a></th>
-                            <th class="text-muted small text-right align-middle"><span class="mdi mdi-thumb-up"></span>
-                                {{voteCount}}</th>
+                            <th class="text-muted small text-left align-middle"><span class="mdi mdi-eye"></span> {{viewCount}}</th>
+                            <th class="text-muted small text-left align-middle"><span class="mdi mdi-thumb-up"> {{voteCount}}</span></th>
                             <th class="text-muted small text-right align-middle"><a class="text-muted" href="#">{{author}}</a><br>
                                 <time id="time{{@index}}" title="{{date_create}}"></time>
                                 <script>

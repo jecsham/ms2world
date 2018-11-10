@@ -30,7 +30,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_guide.paginate(query, { select: 'title author date_create voteCount', page: page, limit: 10, sort: filter, search: 'temple' }, (err, data) => {
+        constants.Post_guide.paginate(query, { select: 'title author date_create voteCount viewCount', page: page, limit: 10, sort: filter, search: 'temple' }, (err, data) => {
             if (err) return res.render('error')
             res.render('guides', {
                 gstatic: constants.gstatic,
@@ -49,9 +49,11 @@ module.exports = (app, constants) => {
     app.get('/guide/:id', (req, res) => {
         var guideid = constants.sanitize(req.params.id);
 
+        
         constants.Post_guide.findOne({ '_id': guideid }, (err, data) => {
             if (!data) return res.render('404');
             data.postType = 'guide'
+            constants.incView(guideid, data.postType)
             if (req.user) {
                 constants.User_account.findOne({ sid: req.user.steamid, reports: guideid }, '_id', (err, isreported) => {
                     if (err) return res.render('error')
@@ -67,7 +69,7 @@ module.exports = (app, constants) => {
                             report.reasons = reasons;
                             res.render('guide', {
                                 gstatic: constants.gstatic,
-                                title: 'MS2World.net · ' + data.title,
+                                title: 'MS2World.net - ' + data.title,
                                 post: data,
                                 report: report,
                                 vote: vote,
@@ -79,7 +81,7 @@ module.exports = (app, constants) => {
             } else {
                 res.render('guide', {
                     gstatic: constants.gstatic,
-                    title: 'MS2World.net · ' + data.title,
+                    title: 'MS2World.net - ' + data.title,
                     post: data,
                     user: req.user
                 });

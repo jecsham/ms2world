@@ -14,6 +14,13 @@ db.once('open', () => {
     console.log(chalk.green('MongoDB connected'));
 });
 
+var incView = (id, postType) => {
+    if (postType === 'guide')
+        Post_guide.findOneAndUpdate({ _id: id }, { $inc: { viewCount: 1 } }, () => { });
+    else if (postType === 'build')
+        Post_build.findOneAndUpdate({ _id: id }, { $inc: { viewCount: 1 } }, () => { });
+}
+
 // Error strings
 var es = {
     internal: "An internal server error has occurred. Please contact an administrator or try later.",
@@ -43,7 +50,8 @@ var guideSchema = new mongoose.Schema({
     content: String,
     description: { type: String, index: true },
     tags: { type: [Object], index: true },
-    voteCount: {type: Number, default: 0},
+    voteCount: { type: Number, default: 0 },
+    viewCount: { type: Number, default: 0 },
     votes: Array,
     date_create: Date,
     last_edit_date: Date
@@ -57,7 +65,8 @@ var buildSchema = new mongoose.Schema({
     description: { type: String, index: true },
     data_object: Object,
     class_name: { type: String, index: true },
-    voteCount: {type: Number, default: 0},
+    voteCount: { type: Number, default: 0 },
+    viewCount: { type: Number, default: 0 },
     votes: Array,
     date_create: Date,
     last_edit_date: Date
@@ -119,5 +128,6 @@ module.exports = {
     Report_post: Report_post,
     sanitize: sanitize,
     steamapi: steamapi,
+    incView: incView,
     es: es
 };
