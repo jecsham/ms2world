@@ -117,20 +117,24 @@ module.exports = (app, constants) => {
 
     app.post('/edit/guide', (req, res) => {
         if (req.user) {
-            if (req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
-                var data = {};
-                data.postid = constants.sanitize(req.body.postid);
-                data.description = constants.sanitize(req.body.description);
-                data.content = constants.sanitize(req.body.content);
-                data.tags = constants.sanitize(req.body.tags);
-                data.date_last_edit = new Date();
-                data.author = req.user.username;
-                constants.Post_guide.findOneAndUpdate({ _id: data.postid, sid: req.user.steamid }, data, (err, doc) => {
-                    if (err) return res.status(500).send({ error: constants.es.internal });
-                    return res.send({ error: false, id: doc._id });
-                });
+            if (req.body.description.length >= 5 && req.body.content.length >= 100 && req.body.tags.length >= 1) {
+                if (req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
+                    var data = {};
+                    data.postid = constants.sanitize(req.body.postid);
+                    data.description = constants.sanitize(req.body.description);
+                    data.content = constants.sanitize(req.body.content);
+                    data.tags = constants.sanitize(req.body.tags);
+                    data.date_last_edit = new Date();
+                    data.author = req.user.username;
+                    constants.Post_guide.findOneAndUpdate({ _id: data.postid, sid: req.user.steamid }, data, (err, doc) => {
+                        if (err) return res.status(500).send({ error: constants.es.internal });
+                        return res.send({ error: false, id: doc._id });
+                    });
+                } else {
+                    return res.status(500).send({ error: constants.es.big_content });
+                }
             } else {
-                return res.status(500).send({ error: constants.es.big_content });
+                return res.status(500).send({ error: constants.es.short_content });
             }
         } else {
             return res.status(500).send({ error: constants.es.login });
@@ -167,20 +171,24 @@ module.exports = (app, constants) => {
 
     app.post('/edit/build', (req, res) => {
         if (req.user) {
-            if (req.body.description.length <= 300) {
-                var data = {};
-                data.postid = constants.sanitize(req.body.postid);
-                data.description = constants.sanitize(req.body.description);
-                data.type = constants.sanitize(req.body.type);
-                data.data_object = constants.sanitize(req.body.data_object);
-                data.date_last_edit = new Date();
-                data.author = req.user.username;
-                constants.Post_build.findOneAndUpdate({ _id: data.postid, sid: req.user.steamid }, data, (err, doc) => {
-                    if (err) return res.status(500).send({ error: constants.es.internal });
-                    return res.send({ error: false, id: doc._id });
-                });
+            if (req.body.description.length >= 5) {
+                if (req.body.description.length <= 300) {
+                    var data = {};
+                    data.postid = constants.sanitize(req.body.postid);
+                    data.description = constants.sanitize(req.body.description);
+                    data.type = constants.sanitize(req.body.type);
+                    data.data_object = constants.sanitize(req.body.data_object);
+                    data.date_last_edit = new Date();
+                    data.author = req.user.username;
+                    constants.Post_build.findOneAndUpdate({ _id: data.postid, sid: req.user.steamid }, data, (err, doc) => {
+                        if (err) return res.status(500).send({ error: constants.es.internal });
+                        return res.send({ error: false, id: doc._id });
+                    });
+                } else {
+                    return res.status(500).send({ error: constants.es.big_content });
+                }
             } else {
-                return res.status(500).send({ error: constants.es.big_content });
+                return res.status(500).send({ error: constants.es.short_content });
             }
         } else {
             return res.status(500).send({ error: constants.es.login });

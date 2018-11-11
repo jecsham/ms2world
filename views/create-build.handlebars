@@ -92,10 +92,15 @@
     var editMode = false;
 </script>
 <script src="/js/skillbuilder.js"></script>
+<script src="/js/formvalidation.js"></script>
 <script>
     'use strict'
     $(document).ready(function () {
         $('#create-build').submit(function (event) {
+            if (!checkForm()) {
+                event.preventDefault();
+                return $('#status').html('<div class="alert alert-danger" role="alert"><strong>Error!</strong> Some inputs are empty</div>');
+            }
             $('#submitbtn').attr('disabled', 'disabled');
             $('#status').html('<p class="text-success">Please wait...<p>');
             var formData = {
@@ -119,6 +124,7 @@
                 },
                 error: (resdata) => {
                     $('#status').html('<div class="alert alert-danger" role="alert"><strong>Error:</strong> ' + resdata.responseJSON.error + '</div>');
+                    $('#submitbtn').removeAttr('disabled');
                 },
             });
             event.preventDefault();

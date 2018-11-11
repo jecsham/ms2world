@@ -18,7 +18,7 @@ $(document).ready(function () {
                 console.log(resdata)
                 // $('#status').html('<div class="alert alert-success" role="alert"><strong>Submited!</strong> Redirecting to your new <a href="/guide/' + resdata.id + '">post</>... 😀</div>');
                 var timer = setTimeout(() => {
-                    $('.btnvote').attr('disabled', 'false');
+                    $('.btnvote').removeAttr('disabled');
                     changueButtonStyle()
                 }, 1000);
             },

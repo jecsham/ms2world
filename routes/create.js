@@ -16,21 +16,25 @@ module.exports = (app, constants) => {
 
     app.post('/create-guide/submit', (req, res) => {
         if (req.user) {
-            if (req.body.title.length <= 150 && req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
-                var data = {};
-                data.title = constants.sanitize(req.body.title);
-                data.description = constants.sanitize(req.body.description);
-                data.content = constants.sanitize(req.body.content);
-                data.sid = req.user.steamid;
-                data.tags = constants.sanitize(req.body.tags);
-                data.date_create = new Date();
-                data.author = req.user.username;
-                constants.Post_guide.create(data, (err, doc) => {
-                    if (err) return res.status(500).send({ error: constants.es.internal });
-                    return res.send({ error: false, id: doc._id });
-                });
+            if (req.body.title.length >= 5 && req.body.description.length >= 5 && req.body.content.length >= 100 && req.body.tags.length >= 1) {
+                if (req.body.title.length <= 150 && req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
+                    var data = {};
+                    data.title = constants.sanitize(req.body.title);
+                    data.description = constants.sanitize(req.body.description);
+                    data.content = constants.sanitize(req.body.content);
+                    data.sid = req.user.steamid;
+                    data.tags = constants.sanitize(req.body.tags);
+                    data.date_create = new Date();
+                    data.author = req.user.username;
+                    constants.Post_guide.create(data, (err, doc) => {
+                        if (err) return res.status(500).send({ error: constants.es.internal });
+                        return res.send({ error: false, id: doc._id });
+                    });
+                } else {
+                    return res.status(500).send({ error: constants.es.big_content });
+                }
             } else {
-                return res.status(500).send({ error: constants.es.big_content });
+                return res.status(500).send({ error: constants.es.short_content });
             }
         } else {
             return res.status(500).send({ error: constants.es.login });
@@ -40,21 +44,25 @@ module.exports = (app, constants) => {
     app.post('/create-build/submit', (req, res) => {
         if (req.user) {
             var data = {};
-            if (req.body.title.length <= 150 && req.body.description.length <= 300) {
-                data.data_object = constants.sanitize(req.body.data_object)
-                data.class_name = constants.sanitize(req.body.class_name)
-                data.title = constants.sanitize(req.body.title)
-                data.description = constants.sanitize(req.body.description);
-                data.type = constants.sanitize(req.body.type)
-                data.sid = req.user.steamid;
-                data.date_create = new Date();
-                data.author = req.user.username;
-                constants.Post_build.create(data, (err, doc) => {
-                    if (err) return res.status(500).send({ error: constants.es.internal });
-                    return res.send({ error: false, id: doc._id });
-                });
+            if (req.body.title.length >= 5 && req.body.description.length >= 5) {
+                if (req.body.title.length <= 150 && req.body.description.length <= 300) {
+                    data.data_object = constants.sanitize(req.body.data_object)
+                    data.class_name = constants.sanitize(req.body.class_name)
+                    data.title = constants.sanitize(req.body.title)
+                    data.description = constants.sanitize(req.body.description);
+                    data.type = constants.sanitize(req.body.type)
+                    data.sid = req.user.steamid;
+                    data.date_create = new Date();
+                    data.author = req.user.username;
+                    constants.Post_build.create(data, (err, doc) => {
+                        if (err) return res.status(500).send({ error: constants.es.internal });
+                        return res.send({ error: false, id: doc._id });
+                    });
+                } else {
+                    return res.status(500).send({ error: constants.es.big_content });
+                }
             } else {
-                return res.status(500).send({ error: constants.es.big_content });
+                return res.status(500).send({ error: constants.es.short_content });
             }
         } else {
             return res.status(500).send({ error: constants.es.login });
