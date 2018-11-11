@@ -42,11 +42,7 @@
                             <th class="text-muted small text-left align-middle"><span class="mdi mdi-eye"></span> {{viewCount}}</th>
                             <th class="text-muted small text-left align-middle"><span class="mdi mdi-thumb-up"></span> {{voteCount}} </th>
                             <th class="text-muted small text-right align-middle"><a class="text-muted" href="#">{{author}}</a><br>
-                                <time id="time{{@index}}" title="{{date_create}}"></time>
-                                <script>
-                                    var date = jQuery.timeago(new Date("{{{date_create}}}"));
-                                    $('#time{{@index}}').text(date);
-                                </script>
+                                <time class="time" title="{{{date_create}}}"></time>
                             </th>
                         </tr>
                         {{/each}}

@@ -29,9 +29,14 @@ $(document).ready(() => {
     }, function () {
         $(this).find('.dropdown-menu').stop(true, true).delay(1000).fadeOut(100);
     });
-
     // timeago JS
     jQuery("time.timeago").timeago();
+    
+    //timeago JS use
+    $.each($('.time'), function(){
+        var date = jQuery.timeago(new Date($(this).attr('title')));
+        $(this).text(date)
+    })
 
     // stickyJS - Header
     $("#header").sticky({

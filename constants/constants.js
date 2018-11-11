@@ -53,8 +53,9 @@ var guideSchema = new mongoose.Schema({
     voteCount: { type: Number, default: 0 },
     viewCount: { type: Number, default: 0 },
     votes: Array,
+    posts: Array,
     date_create: Date,
-    last_edit_date: Date
+    date_last_edit: Date
 });
 
 var buildSchema = new mongoose.Schema({
@@ -68,8 +69,9 @@ var buildSchema = new mongoose.Schema({
     voteCount: { type: Number, default: 0 },
     viewCount: { type: Number, default: 0 },
     votes: Array,
+    posts: Array,
     date_create: Date,
-    last_edit_date: Date
+    date_last_edit: Date
 });
 
 var newSchema = new mongoose.Schema({

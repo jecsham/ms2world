@@ -2,10 +2,17 @@
 var build;
 var no_count = 0;
 
-if (Cookies.get('ms2-build-' + class_name))
-    build = JSON.parse(Cookies.get('ms2-build-' + class_name))
-else
-    build = JSON.parse(JSON.stringify(buildTemplate))
+if (editMode) {
+    if (Cookies.get('ms2-build-' + class_name + '-' + buildid))
+        build = JSON.parse(Cookies.get('ms2-build-' + class_name + '-' + buildid))
+    else
+        build = buildToEdit
+} else {
+    if (Cookies.get('ms2-build-' + class_name))
+        build = JSON.parse(Cookies.get('ms2-build-' + class_name))
+    else
+        build = JSON.parse(JSON.stringify(buildTemplate))
+}
 
 
 $("[name='btn']").click(event => addPoints(event.target.getAttribute('data-skillid')));
@@ -154,7 +161,10 @@ function resetBuild() {
 }
 
 function saveInCookie() {
-    Cookies.set("ms2-build-" + class_name, JSON.stringify(build));
+    if (editMode)
+        Cookies.set('ms2-build-' + class_name + '-' + buildid, JSON.stringify(build), { expires: 2 });
+    else
+        Cookies.set("ms2-build-" + class_name, JSON.stringify(build), { expires: 2 });
 }
 
 function editElements(canvasPNG) {

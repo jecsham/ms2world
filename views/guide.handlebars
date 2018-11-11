@@ -4,12 +4,8 @@
             <div class="border-left bg-light">
                 <div class="p-3">
                     <h3>{{{post.title}}}</h3>
-                    <p class="card-text"><small class="text-muted">By {{post.author}},
-                            <time id="time" title="{{post.date_create}}"></time>
-                            <script>
-                                var date = jQuery.timeago(new Date("{{{post.date_create}}}"));
-                                $('#time').text(date);
-                            </script>
+                    <p class="card-text"><small class="text-muted">Created by {{post.author}},
+                            <time class="time" title="{{post.date_create}}"></time>{{#if post.date_last_edit}}. Last edit: <time class="time" title="{{{post.date_last_edit}}}"></time>{{/if}}
                         </small></p>
                     <p>{{post.description}}</p>
                 </div>
@@ -24,7 +20,7 @@
                 </div>
             </div>
             {{> postbuttons}}
-            <p>Tags: {{#each (JSONparse post.tags) }} <a href="/search/{{vale}}">{{value}}</a>&nbsp;{{/each}}</p>
+            <p>Tags: {{#each (JSONparse post.tags) }} <a href="/guides/?search={{value}}">{{value}}</a>&nbsp;&nbsp;{{/each}}</p>
             <button class="btn btn-dark btn-sm">Comments <span class="badge badge-light">soon</span></button>
         </div>
     </div>

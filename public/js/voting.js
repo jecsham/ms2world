@@ -33,8 +33,8 @@ $(document).ready(function () {
 function changueButtonStyle() {
     var btnvote = $('.btnvote').attr('data-type')
     if (btnvote === 'up') {
-        $('.btnvote').attr('data-type', 'down').removeClass('btn-success').addClass('btn-danger').removeAttr('disabled').html('<span class="mdi mdi-thumb-down"></span>')
+        $('.btnvote').attr('data-type', 'down').removeAttr('disabled').html('<span class="mdi mdi-thumb-down"></span>')
     } else {
-        $('.btnvote').attr('data-type', 'up').removeClass('btn-danger').addClass('btn-success').removeAttr('disabled').html('<span class="mdi mdi-thumb-up"></span>')
+        $('.btnvote').attr('data-type', 'up').removeAttr('disabled').html('<span class="mdi mdi-thumb-up"></span>')
     }
 }

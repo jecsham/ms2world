@@ -20,11 +20,7 @@
                                         <span class="mdi mdi-open-in-new" title="See in Nexon official site" style="font-size: 11px;"></span></a></td>
                                 <td class="text-muted small text-right align-middle"><a href="http://maplestory2.nexon.net/en/news/{{ lowercase tag}}" class="text-muted" target="blanc">{{pascalcase tag}}</a>
                                 <br>
-                                    <time id="time{{@index}}" title="{{date_create}}"></time></td>
-                                <script>
-                                    var date = jQuery.timeago(new Date("{{{date_create}}}"));
-                                    $('#time{{@index}}').text(date);
-                                </script>
+                                    <time class="time" title="{{{date_create}}}"></time></td>
                             </tr>
                             {{/each}}
                         </tbody>

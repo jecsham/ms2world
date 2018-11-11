@@ -21,7 +21,7 @@ module.exports = (app, constants) => {
                 data.title = constants.sanitize(req.body.title);
                 data.description = constants.sanitize(req.body.description);
                 data.content = constants.sanitize(req.body.content);
-                data.sid = constants.sanitize(req.user.steamid);
+                data.sid = req.user.steamid;
                 data.tags = constants.sanitize(req.body.tags);
                 data.date_create = new Date();
                 data.author = req.user.username;
@@ -46,7 +46,7 @@ module.exports = (app, constants) => {
                 data.title = constants.sanitize(req.body.title)
                 data.description = constants.sanitize(req.body.description);
                 data.type = constants.sanitize(req.body.type)
-                data.sid = constants.sanitize(req.user.steamid);
+                data.sid = req.user.steamid;
                 data.date_create = new Date();
                 data.author = req.user.username;
                 constants.Post_build.create(data, (err, doc) => {
