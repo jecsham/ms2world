@@ -7,6 +7,7 @@ module.exports = (app, constants) => {
     require('./home')(app, constants)
     require('./options')(app, constants)
     require('./about')(app, constants)
+    require('./profile')(app, constants)
     require('./redirect')(app, constants)
     require('./lives')(app, constants)
     app.use(require('./404'))

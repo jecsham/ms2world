@@ -117,7 +117,7 @@ module.exports = (app, constants) => {
 
     app.post('/edit/guide', (req, res) => {
         if (req.user) {
-            if (req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags[0].length <= 20) {
+            if (req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
                 var data = {};
                 data.postid = constants.sanitize(req.body.postid);
                 data.description = constants.sanitize(req.body.description);

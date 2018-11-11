@@ -16,7 +16,7 @@ module.exports = (app, constants) => {
 
     app.post('/create-guide/submit', (req, res) => {
         if (req.user) {
-            if (req.body.title.length <= 150 && req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags[0].length <= 20) {
+            if (req.body.title.length <= 150 && req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
                 var data = {};
                 data.title = constants.sanitize(req.body.title);
                 data.description = constants.sanitize(req.body.description);

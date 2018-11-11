@@ -40,11 +40,16 @@
                         $('#create-guide').submit(function (event) {
                             $('#submitbtn').attr('disabled', 'disabled');
                             $('#status').html('<p class="text-success">Please wait...<p>');
+                                var tagsString = ' ';
+                                $.each(JSON.parse($('#tags').val()), function (i, element){
+                                    tagsString += element.value+", "
+                                    
+                                })
                             var formData = {
                                 'title': $('input[name=title]').val(),
                                 'description': $('input[name=description]').val(),
                                 'content': simplemde.value(),
-                                'tags': $('#tags').val()
+                                'tags': tagsString
                             };
                             $.ajax({
                                 type: 'POST',

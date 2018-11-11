@@ -14,7 +14,7 @@ module.exports = (app, constants) => {
         if (req.query.search != undefined) {
             query = {
                 $text: {
-                    $search: req.query.search
+                    $search: constants.sanitize(req.query.search)
                 }
             }
         }

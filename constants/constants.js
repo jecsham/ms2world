@@ -7,6 +7,7 @@ const steamapi = new mSteamAPI(process.env.STEAM_KEY);
 
 mongoose.connect(process.env.MDB, { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -45,11 +46,11 @@ var userSchema = new mongoose.Schema({
 
 var guideSchema = new mongoose.Schema({
     sid: String,
-    title: { type: String, index: true },
-    author: { type: String, index: true },
+    title: String,
+    author: String,
     content: String,
-    description: { type: String, index: true },
-    tags: { type: [Object], index: true },
+    description: String,
+    tags: String,
     voteCount: { type: Number, default: 0 },
     viewCount: { type: Number, default: 0 },
     votes: Array,
@@ -60,12 +61,12 @@ var guideSchema = new mongoose.Schema({
 
 var buildSchema = new mongoose.Schema({
     sid: String,
-    title: { type: String, index: true },
-    author: { type: String, index: true },
-    type: { type: String, index: true },
-    description: { type: String, index: true },
+    title: String,
+    author: String,
+    type: String,
+    description: String,
     data_object: Object,
-    class_name: { type: String, index: true },
+    class_name: String,
     voteCount: { type: Number, default: 0 },
     viewCount: { type: Number, default: 0 },
     votes: Array,
@@ -104,7 +105,11 @@ var reportPostSchema = new mongoose.Schema({
     reporter_sid: String
 })
 
-//paginations
+// Schemas indexes
+guideSchema.index({ sid: 'text', title: 'text', author: 'text', description: 'text', tags: 'text' })
+buildSchema.index({ sid: 'text', title: 'text', author: 'text', description: 'text', type: 'text', class_name: 'text' })
+
+// paginations
 guideSchema.plugin(mongoosePaginate);
 buildSchema.plugin(mongoosePaginate);
 

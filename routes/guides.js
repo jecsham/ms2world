@@ -9,7 +9,7 @@ module.exports = (app, constants) => {
         if (req.query.search != undefined) {
             query = {
                 $text: {
-                    $search: req.query.search
+                    $search: constants.sanitize(req.query.search)
                 }
             }
         }
@@ -30,7 +30,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_guide.paginate(query, { select: 'title author date_create voteCount viewCount', page: page, limit: 10, sort: filter, search: 'temple' }, (err, data) => {
+        constants.Post_guide.paginate(query, { select: 'title author date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             res.render('guides', {
                 gstatic: constants.gstatic,
@@ -49,7 +49,7 @@ module.exports = (app, constants) => {
     app.get('/guide/:id', (req, res) => {
         var guideid = constants.sanitize(req.params.id);
 
-        
+
         constants.Post_guide.findOne({ '_id': guideid }, (err, data) => {
             if (!data) return res.render('404');
             data.postType = 'guide'
