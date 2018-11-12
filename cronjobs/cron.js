@@ -71,14 +71,12 @@ module.exports = new CronJob('0 * * * *', () => {
 
 //  module.exports = new CronJob('* * * * * *', () => {
 //    dinsert = [
-//      {name: "Content not available (images or links broken)"},
-//      {name: "Duplicate post"},
-//      {name: "Unsuitable content (violence, pornography, etc)"},
-//      {name: "Off-topic (it's not related to MapleStory2)"},
-//      {name: "Other"},
-//      {name: "Spam"},
+//      {name: "PvX"},
+//      {name: "PvE"},
+//      {name: "PvP"},
+//      {name: "Other"}
 //    ];
-//    constants.Report_reason.insertMany(dinsert, (err) => {
+//    constants.Ms2_classType.insertMany(dinsert, (err) => {
 //      if (err) return console.log('Error trying remove model at cronjob 1');
 //      console.log("Inserted")
 //    });

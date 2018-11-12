@@ -5,16 +5,24 @@
                 <a href="/builds/popular" class="text-dark">Builds</a>
             </p>
         </div>
-        <div class="col-md-3 mb-1">
+        <div class="col-md-2 mb-1">
             <select id="selectFilter" class="form-control form-control-sm">
                 <option value="popular" selected>Popular</option>
                 <option value="recent">Recent</option>
             </select>
         </div>
-        <div class="col-md-3 mb-1">
+        <div class="col-md-2 mb-1">
             <select class="form-control form-control-sm">
                 <option>All classes</option>
                 {{#each classes}}
+                <option>{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-md-2 mb-1">
+            <select class="form-control form-control-sm">
+                <option>All types</option>
+                {{#each classType}}
                 <option>{{name}}</option>
                 {{/each}}
             </select>

@@ -18,7 +18,6 @@ module.exports = (app, constants) => {
                 }
             }
         }
-
         if (req.query.page === undefined)
             page = 1
         else

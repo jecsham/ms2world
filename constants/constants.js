@@ -114,6 +114,10 @@ var classSchema = new mongoose.Schema({
     img: String
 });
 
+var classTypeSchema = new mongoose.Schema({
+    name: String,
+});
+
 var buildTemplateSchema = new mongoose.Schema({
     class_name: String,
     data_object: Object
@@ -145,6 +149,7 @@ var Post_guide = mongoose.model('Post_guide ', guideSchema);
 var Post_build = mongoose.model('Post_build', buildSchema);
 var Ms2_new = mongoose.model('Ms2_new', newSchema);
 var Ms2_class = mongoose.model('Ms2_class', classSchema);
+var Ms2_classType = mongoose.model('Ms2_classType ', classTypeSchema);
 var Build_template = mongoose.model('Build_template', buildTemplateSchema);
 var Report_reason = mongoose.model('Report_reason', reportReasonSchema);
 var Report_post = mongoose.model('Report_post', reportPostSchema);
@@ -156,6 +161,7 @@ module.exports = {
     Post_build: Post_build,
     Ms2_new: Ms2_new,
     Ms2_class: Ms2_class,
+    Ms2_classType: Ms2_classType,
     Build_template: Build_template,
     Report_reason: Report_reason,
     Report_post: Report_post,
