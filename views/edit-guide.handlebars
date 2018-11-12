@@ -21,7 +21,8 @@
                         <input name="tags" id="tags" placeholder='Write some tags, separe by commas' required>
                         <small id="titleHelp" class="form-text text-muted">Min 1 - Max 20 tags</small>
                     </div>
-                    <button id="submitbtn" type="submit" class="btn btn-success btn-sm">Save</button>
+                    <div class="g-recaptcha" data-sitekey="6LcSWXkUAAAAAJDHLKqCeKkzD14qz9eXuhmkmOpB"></div>
+                    <button id="submitbtn" type="submit" class="btn btn-success btn-sm mt-3">Save</button>
                     <div id="status" class="mt-3"></div>
                 </form>
                 <script src="/js/formvalidation.js"></script>
@@ -57,7 +58,8 @@
                                 'postid': '{{post.id}}',
                                 'description': $('input[name=description]').val(),
                                 'content': simplemde.value(),
-                                'tags': tagsString
+                                'tags': tagsString,
+                                'recaptcha': $("#g-recaptcha-response").val()
                             };
                             $.ajax({
                                 type: 'POST',

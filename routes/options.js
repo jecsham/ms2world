@@ -1,5 +1,5 @@
 module.exports = (app, constants) => {
-    var cstatic = ['<link rel="stylesheet" href="/css/simplemde.css">', '<link rel="stylesheet" href="/css/tagify.css">', '<link rel="stylesheet" href="/css/skillbuilder.css">', '<script src="/js/simplemde.js"></script>', '<script src="/js/jQuery.tagify.js"></script>'];
+    var cstatic = ['<link rel="stylesheet" href="/css/simplemde.css">', '<link rel="stylesheet" href="/css/tagify.css">', '<link rel="stylesheet" href="/css/skillbuilder.css">', '<script src="/js/simplemde.js"></script>', '<script src="/js/jQuery.tagify.js"></script>', '<script src="https://www.google.com/recaptcha/api.js"></script>'];
 
     app.post('/vote', (req, res) => {
         if (req.user) {
@@ -97,11 +97,10 @@ module.exports = (app, constants) => {
             var guideid = constants.sanitize(req.params.id)
             constants.Post_guide.findOne({ _id: guideid }, 'title description content sid tags', (err, doc) => {
                 if (err) return res.render('404');
-
                 if (req.user.steamid === doc.sid) {
                     res.render('edit-guide', {
                         gstatic: constants.gstatic,
-                        title: 'Edit - '+constants.title,
+                        title: 'Edit - ' + constants.title,
                         user: req.user,
                         post: doc,
                         cstatic: cstatic
@@ -117,25 +116,31 @@ module.exports = (app, constants) => {
 
     app.post('/edit/guide', (req, res) => {
         if (req.user) {
-            if (req.body.description.length >= 5 && req.body.content.length >= 100 && req.body.tags.length >= 1) {
-                if (req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
-                    var data = {};
-                    data.postid = constants.sanitize(req.body.postid);
-                    data.description = constants.sanitize(req.body.description);
-                    data.content = constants.sanitize(req.body.content);
-                    data.tags = constants.sanitize(req.body.tags);
-                    data.date_last_edit = new Date();
-                    data.author = req.user.username;
-                    constants.Post_guide.findOneAndUpdate({ _id: data.postid, sid: req.user.steamid }, data, (err, doc) => {
-                        if (err) return res.status(500).send({ error: constants.es.internal });
-                        return res.send({ error: false, id: doc._id });
-                    });
+            constants.verifyRecaptcha(req.body["recaptcha"], function (success) {
+                if (success) {
+                    if (req.body.description.length >= 5 && req.body.content.length >= 100 && req.body.tags.length >= 1) {
+                        if (req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
+                            var data = {};
+                            data.postid = constants.sanitize(req.body.postid);
+                            data.description = constants.sanitize(req.body.description);
+                            data.content = constants.sanitize(req.body.content);
+                            data.tags = constants.sanitize(req.body.tags);
+                            data.date_last_edit = new Date();
+                            data.author = req.user.username;
+                            constants.Post_guide.findOneAndUpdate({ _id: data.postid, sid: req.user.steamid }, data, (err, doc) => {
+                                if (err) return res.status(500).send({ error: constants.es.internal });
+                                return res.send({ error: false, id: doc._id });
+                            });
+                        } else {
+                            return res.status(500).send({ error: constants.es.big_content });
+                        }
+                    } else {
+                        return res.status(500).send({ error: constants.es.short_content });
+                    }
                 } else {
-                    return res.status(500).send({ error: constants.es.big_content });
+                    return res.status(500).send({ error: constants.es.recaptcha });
                 }
-            } else {
-                return res.status(500).send({ error: constants.es.short_content });
-            }
+            })
         } else {
             return res.status(500).send({ error: constants.es.login });
         }
@@ -146,13 +151,12 @@ module.exports = (app, constants) => {
             var buildid = constants.sanitize(req.params.id)
             constants.Post_build.findOne({ _id: buildid }, 'title description class_name type data_object sid', (err, doc) => {
                 if (err) return res.render('404');
-
                 if (req.user.steamid === doc.sid) {
                     constants.Build_template.findOne({ class_name: doc.class_name }, { _id: 0, class_name: 0 }, (err, data) => {
                         if (err) return res.render('404')
                         res.render('edit-build', {
                             gstatic: constants.gstatic,
-                            title: 'Edit - '+constants.title,
+                            title: 'Edit - ' + constants.title,
                             user: req.user,
                             class: data.data_object,
                             post: doc,
@@ -171,25 +175,31 @@ module.exports = (app, constants) => {
 
     app.post('/edit/build', (req, res) => {
         if (req.user) {
-            if (req.body.description.length >= 5) {
-                if (req.body.description.length <= 300) {
-                    var data = {};
-                    data.postid = constants.sanitize(req.body.postid);
-                    data.description = constants.sanitize(req.body.description);
-                    data.type = constants.sanitize(req.body.type);
-                    data.data_object = constants.sanitize(req.body.data_object);
-                    data.date_last_edit = new Date();
-                    data.author = req.user.username;
-                    constants.Post_build.findOneAndUpdate({ _id: data.postid, sid: req.user.steamid }, data, (err, doc) => {
-                        if (err) return res.status(500).send({ error: constants.es.internal });
-                        return res.send({ error: false, id: doc._id });
-                    });
+            constants.verifyRecaptcha(req.body["recaptcha"], function (success) {
+                if (success) {
+                    if (req.body.description.length >= 5) {
+                        if (req.body.description.length <= 300) {
+                            var data = {};
+                            data.postid = constants.sanitize(req.body.postid);
+                            data.description = constants.sanitize(req.body.description);
+                            data.type = constants.sanitize(req.body.type);
+                            data.data_object = constants.sanitize(req.body.data_object);
+                            data.date_last_edit = new Date();
+                            data.author = req.user.username;
+                            constants.Post_build.findOneAndUpdate({ _id: data.postid, sid: req.user.steamid }, data, (err, doc) => {
+                                if (err) return res.status(500).send({ error: constants.es.internal });
+                                return res.send({ error: false, id: doc._id });
+                            });
+                        } else {
+                            return res.status(500).send({ error: constants.es.big_content });
+                        }
+                    } else {
+                        return res.status(500).send({ error: constants.es.short_content });
+                    }
                 } else {
-                    return res.status(500).send({ error: constants.es.big_content });
+                    return res.status(500).send({ error: constants.es.recaptcha });
                 }
-            } else {
-                return res.status(500).send({ error: constants.es.short_content });
-            }
+            })
         } else {
             return res.status(500).send({ error: constants.es.login });
         }

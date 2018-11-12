@@ -46,8 +46,10 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
-// routes
+// server stuff
 const constants = require("./constants/constants.js");
+
+// routes
 require('./routes')(app, constants);
 
 require('./cronjobs/cron.js');
