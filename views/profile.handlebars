@@ -3,7 +3,7 @@
         <div class="col">
             <div id="main">
                 <div>
-                    <img src="/temp/img.jpg" width="82" class="rounded-circle mr-2" alt="...">
+                    <img src="{{account.img}}" width="75" class="rounded-circle mr-2" alt="{{account.name}}'s profile">
                     {{account.name}}
                     <small class="text-muted">Last login: <time class="time" title="{{account.date_last_login}}"></time></small>
                 </div>
@@ -19,6 +19,10 @@
                 </ul>
                 <div class="tab-content" id="tabContent">
                     <div class="tab-pane fade show active" id="guides" role="tabpanel" aria-labelledby="guides-tab">
+                        {{#unless guidesTotal}}
+                        <p class="text-center mt-3">
+                            There is nothing to show here 😔</p>
+                        {{else}}
                         <div class="table-responsive mt-3">
                             <table class="table table-hover">
                                 <tbody>
@@ -40,8 +44,13 @@
                                 <a href="/guides/?search={{account.sid}}">Show all...</a>
                             </div>
                         </div>
+                        {{/unless}}
                     </div>
                     <div class="tab-pane fade" id="builds" role="tabpanel" aria-labelledby="builds-tab">
+                        {{#unless buildsTotal}}
+                        <p class="text-center mt-3">
+                            There is nothing to show here 😔</p>
+                        {{else}}
                         <div class="table-responsive mt-3">
                             <table class="table table-hover">
                                 <tbody>
@@ -63,6 +72,7 @@
                                 <a href="/builds/?search={{account.sid}}">Show all...</a>
                             </div>
                         </div>
+                        {{/unless}}
                     </div>
                 </div>
             </div>

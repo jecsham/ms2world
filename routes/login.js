@@ -13,13 +13,14 @@ module.exports = (app, constants) => {
     });
 
     app.get('/verify', steam.verify(), (req, res) => {
-        var username = constants.sanitize(req.user.username);
+        var username = req.user.username;
+        var img = req.user.avatar.medium;
         var last_login = new Date();
-        
+
         var query = {
-            'sid': constants.sanitize(req.user.steamid)
+            'sid': req.user.steamid
         }
-        constants.User_account.findOneAndUpdate(query, { $set: { 'name': username }, 'date_last_login': last_login }, { upsert: true }, (err, doc) => {
+        constants.User_account.findOneAndUpdate(query, { $set: { 'name': username, 'date_last_login': last_login, 'img': img } }, { upsert: true }, (err, doc) => {
             if (err) return res.redirect('/logout');
             return res.redirect('/redirect');
         });

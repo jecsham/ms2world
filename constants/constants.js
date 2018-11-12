@@ -39,6 +39,7 @@ gstatics.description = 'MS2World.net is the best MapleStory2 fan site to find Gu
 var userSchema = new mongoose.Schema({
     name: String,
     sid: String,
+    img: String,
     date_create: Date,
     votes: Array,
     reports: Array,
