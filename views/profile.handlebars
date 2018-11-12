@@ -4,7 +4,7 @@
             <div id="main">
                 <div>
                     <img src="{{account.img}}" width="75" class="rounded-circle mr-2" alt="{{account.name}}'s profile">
-                    {{account.name}}
+                    <a href="https://steamcommunity.com/profiles/{{account.sid}}" class="text-dark" target="blanc" title="Steam profile">{{account.name}} <span class="mdi mdi-open-in-new"></span></a>
                     <small class="text-muted">Last login: <time class="time" title="{{account.date_last_login}}"></time></small>
                 </div>
                 <ul class="nav nav-tabs mt-3" id="tab" role="tablist">

@@ -35,8 +35,8 @@ var es = {
 const title = 'MS2World.net'
 
 // Global statics
-var gstatics = {}
-gstatics.description = 'MS2World.net is the best MapleStory2 fan site to find Guides, Builds, Beats, News and More! Join now our community!';
+var gstatic = {}
+gstatic.description = 'MS2World.net is the best MapleStory2 fan site to find Guides, Builds, Beats, News and More! Join now our community!';
 
 // Schemas
 var userSchema = new mongoose.Schema({
@@ -129,7 +129,7 @@ var Report_reason = mongoose.model('Report_reason', reportReasonSchema);
 var Report_post = mongoose.model('Report_post', reportPostSchema);
 
 module.exports = {
-    gstatics: gstatics,
+    gstatic: gstatic,
     User_account: User_account,
     Post_guide: Post_guide,
     Post_build: Post_build,
