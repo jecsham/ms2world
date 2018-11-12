@@ -30,7 +30,7 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_guide.paginate(query, { select: 'title author date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
+        constants.Post_guide.paginate(query, { select: 'title author date_create sid voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             res.render('guides', {
                 gstatic: constants.gstatic,
