@@ -118,7 +118,7 @@
                 dataType: 'json',
                 encode: true,
                 success: (resdata) => {
-                    $('#status').html('<div class="alert alert-success" role="alert"><strong>Submited!</strong> Redirecting to your new <a href="/guide/' + resdata.id + '">post</>... 😀</div>');
+                    $('#status').html('<div class="alert alert-success" role="alert"><strong>Submited!</strong> Redirecting to your <a href="/build/' + resdata.id + '">post</a>... 😀</div>');
                     var timer = setTimeout(() => {
                         window.location = '/build/' + resdata.id;
                     }, 3000);

@@ -66,7 +66,7 @@
                                 encode: true,
                                 success: (resdata) => {
                                     console.log(resdata)
-                                    $('#status').html('<div class="alert alert-success" role="alert"><strong>Submited!</strong> Redirecting to your new <a href="/guide/' + resdata.id + '">post</>... 😀</div>');
+                                    $('#status').html('<div class="alert alert-success" role="alert"><strong>Submited!</strong> Redirecting to your <a href="/guide/' + resdata.id + '">post</a>... 😀</div>');
                                     var timer = setTimeout(() => {
                                         window.location = '/guide/'+resdata.id;
                                     }, 3000);
