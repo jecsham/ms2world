@@ -101,7 +101,7 @@ module.exports = (app, constants) => {
                 if (req.user.steamid === doc.sid) {
                     res.render('edit-guide', {
                         gstatic: constants.gstatic,
-                        title: 'Edit - MS2World.com',
+                        title: 'Edit - '+constants.title,
                         user: req.user,
                         post: doc,
                         cstatic: cstatic
@@ -152,7 +152,7 @@ module.exports = (app, constants) => {
                         if (err) return res.render('404')
                         res.render('edit-build', {
                             gstatic: constants.gstatic,
-                            title: 'Edit - MS2World.com',
+                            title: 'Edit - '+constants.title,
                             user: req.user,
                             class: data.data_object,
                             post: doc,

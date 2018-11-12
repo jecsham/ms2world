@@ -34,7 +34,7 @@ module.exports = (app, constants) => {
             if (err) return res.render('error')
             res.render('guides', {
                 gstatic: constants.gstatic,
-                title: 'MS2World.net · Guides',
+                title: 'Guides - '+constants.title,
                 user: req.user,
                 reqFilter: reqFilter,
                 page: data.page,
@@ -69,7 +69,7 @@ module.exports = (app, constants) => {
                             report.reasons = reasons;
                             res.render('guide', {
                                 gstatic: constants.gstatic,
-                                title: 'MS2World.net - ' + data.title,
+                                title: data.title+' - '+constants.title,
                                 post: data,
                                 report: report,
                                 vote: vote,
@@ -81,7 +81,7 @@ module.exports = (app, constants) => {
             } else {
                 res.render('guide', {
                     gstatic: constants.gstatic,
-                    title: 'MS2World.net - ' + data.title,
+                    title: data.title+' - '+constants.title,
                     post: data,
                     user: req.user
                 });

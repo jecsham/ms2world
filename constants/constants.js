@@ -31,6 +31,9 @@ var es = {
     short_content: "The content is too short. Please check inputs."
 }
 
+// title
+const title = 'MS2World.net'
+
 // Global statics
 var gstatics = {}
 gstatics.description = 'MS2World.net is the best MapleStory2 fan site to find Guides, Builds, Beats, News and More! Join now our community!';
@@ -138,5 +141,6 @@ module.exports = {
     sanitize: sanitize,
     steamapi: steamapi,
     incView: incView,
+    title: title,
     es: es
 };

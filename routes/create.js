@@ -5,7 +5,7 @@ module.exports = (app, constants) => {
         if (req.user) {
             res.render('create-guide', {
                 gstatic: constants.gstatic,
-                title: 'Create - MS2World.com',
+                title: 'Create a guide - '+constants.title,
                 user: req.user,
                 cstatic: cstatic
             });
@@ -80,7 +80,7 @@ module.exports = (app, constants) => {
                 if (!doc) return res.render('404')
                 res.render('create-build', {
                     gstatic: constants.gstatic,
-                    title: 'MS2World.net: Create a Build for ',
+                    title: 'Create a Build for '+class_name+' - '+constants.title,
                     user: req.user,
                     cstatic: cstatic,
                     class: doc.data_object,

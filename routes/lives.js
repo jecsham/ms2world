@@ -9,7 +9,7 @@ module.exports = (app, constants ) => {
                 gstatic: constants.gstatic,
                 user: req.user,
                 lives: result.streams,
-                title: "MS2World.net: Lives"
+                title: "Lives - "+constants.title
             })
         })
     })

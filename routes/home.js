@@ -15,7 +15,7 @@ module.exports = (app, constants) => {
                             if (err) return res.render('error')
                             res.render('index', {
                                 gstatic: constants.gstatic,
-                                title: 'Home - MS2World.com',
+                                title: 'Home - '+constants.title,
                                 user: req.user,
                                 news: newsMap,
                                 recentGuides: recentGuides.docs,

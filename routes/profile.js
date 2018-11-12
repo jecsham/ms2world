@@ -9,7 +9,7 @@ module.exports = (app, constants) => {
                     if (err) return res.render('error')
                     res.render('profile', {
                         gstatic: constants.gstatic,
-                        title: 'Home - MS2World.com',
+                        title: account.name+'\'s Profile - '+constants.title,
                         user: req.user,
                         account: account,
                         guidesTotal: guides.totalDocs,
