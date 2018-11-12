@@ -1,5 +1,4 @@
-// SkillBuilder v1
-var build;
+// SkillViewer v1
 $(document).ready(() => {
 
     $("#cmLauncher").click(() => renderCanvas());
