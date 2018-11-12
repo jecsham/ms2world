@@ -18,8 +18,9 @@
                                 </td>
                                 <td class="small align-middle"><a href="http://maplestory2.nexon.net{{{url}}}" target="blanc">{{{title}}}
                                         <span class="mdi mdi-open-in-new" title="See in Nexon official site" style="font-size: 11px;"></span></a></td>
-                                <td class="text-muted small text-right align-middle"><a href="http://maplestory2.nexon.net/en/news/{{ lowercase tag}}" class="text-muted" target="blanc">{{pascalcase tag}}</a>
-                                <br>
+                                <td class="text-muted small text-right align-middle"><a href="http://maplestory2.nexon.net/en/news/{{ lowercase tag}}"
+                                        class="text-muted" target="blanc">{{pascalcase tag}}</a>
+                                    <br>
                                     <time class="time" title="{{{date_create}}}"></time></td>
                             </tr>
                             {{/each}}
@@ -32,64 +33,113 @@
             </div>
         </div>
         <div class="col-lg-6">
+            <div id="popular-guides">
+                <div>
+                    <p>Popular Guides</p>
+                </div>
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <tbody>
+                            {{#each popularGuides}}
+                            <tr>
+                                <th class="small align-middle"><a href="/guide/{{_id}}">{{title}}</a></th>
+                                <th class="text-muted small text-left align-middle" style="min-width: 80px">
+                                     <span class="mdi mdi-eye"></span> {{viewCount}}</th>
+                                <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-thumb-up">
+                                        {{voteCount}}</span></th>
+                                <th class="text-muted small text-right align-middle text-truncate" style="max-width: 100px"><a class="text-muted" title="{{author}}" href="#">{{author}}</a><br>
+                                    <time class="time" title="{{{date_create}}}"></time>
+                                </th>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <div class="text-right pb-1 small">
+                        <a href="/guides">Show all...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
             <div id="popular-builds">
                 <div>
                     <p>Popular Builds</p>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-hover mb-1">
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
                         <tbody>
+                            {{#each popularBuilds}}
                             <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide ever [EPICchest
-                                        guide ever [EPIC] [] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecshasssssssssssm</a><br>
-                                    7 days ago</td>
+                                <th class="small align-middle"><a href="/build/{{_id}}">{{title}}</a></th>
+                                <th class="text-muted small text-left align-middle" style="min-width: 80px">
+                                     <span class="mdi mdi-eye"></span> {{viewCount}}</th>
+                                <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-thumb-up">
+                                        {{voteCount}}</span></th>
+                                <th class="text-muted small text-right align-middle text-truncate" style="max-width: 100px"><a class="text-muted" title="{{author}}" href="#">{{author}}</a><br>
+                                    <time class="time" title="{{{date_create}}}"></time>
+                                </th>
                             </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide eveqwqwqwqwr
-                                        [EPIC] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chestchest guide ever [EPIC]
-                                        [chest guide ever [EPIC] [ guide ever [EPIC] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guasaside ever [EPIC]
-                                        [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guasasasasaschest guide
-                                        ever [EPIC] [ide ever [EPIC] [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
-                            <tr>
-                                <td class="small align-middle"><a href="#">Get all golden chest guide ever [EPIC]
-                                        [Runeblade
-                                        recomedable]</a></td>
-                                <td class="text-muted small text-right align-middle"><a class="text-muted" href="#">Jecsham</a>
-                                    • 7
-                                    days ago</td>
-                            </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                     <div class="text-right pb-1 small">
-                        <a href="#">Show more...</a>
+                        <a href="/builds">Show all...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div id="recent-guides">
+                <div>
+                    <p>Recent Guides</p>
+                </div>
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <tbody>
+                            {{#each recentGuides}}
+                            <tr>
+                                <th class="small align-middle"><a href="/guide/{{_id}}">{{title}}</a></th>
+                                <th class="text-muted small text-left align-middle" style="min-width: 80px">
+                                     <span class="mdi mdi-eye"></span> {{viewCount}}</th>
+                                <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-thumb-up">
+                                        {{voteCount}}</span></th>
+                                <th class="text-muted small text-right align-middle text-truncate" style="max-width: 100px"><a class="text-muted" title="{{author}}" href="#">{{author}}</a><br>
+                                    <time class="time" title="{{{date_create}}}"></time>
+                                </th>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <div class="text-right pb-1 small">
+                        <a href="/guides/recent/">Show all...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div id="recent-builds">
+                <div>
+                    <p>Recent Builds</p>
+                </div>
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <tbody>
+                            {{#each recentBuilds}}
+                            <tr>
+                                <th class="small align-middle"><a href="/build/{{_id}}">{{title}}</a></th>
+                                <th class="text-muted small text-left align-middle" style="min-width: 80px">
+                                     <span class="mdi mdi-eye"></span> {{viewCount}}</th>
+                                <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-thumb-up">
+                                        {{voteCount}}</span></th>
+                                <th class="text-muted small text-right align-middle text-truncate" style="max-width: 100px"><a class="text-muted" title="{{author}}" href="#">{{author}}</a><br>
+                                    <time class="time" title="{{{date_create}}}"></time>
+                                </th>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <div class="text-right pb-1 small">
+                        <a href="/builds/recent">Show all...</a>
                     </div>
                 </div>
             </div>

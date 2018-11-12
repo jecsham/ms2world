@@ -5,11 +5,27 @@ module.exports = (app, constants) => {
             news.forEach((element) => {
                 newsMap[element._id] = element;
             });
-            res.render('index', {
-                gstatic: constants.gstatic,
-                title: 'Home - MS2World.com',
-                user: req.user,
-                news: newsMap
+            constants.Post_guide.paginate({}, { select: 'title author date_create voteCount viewCount', page: 1, limit: 9, sort: { '_id': -1 } }, (err, recentGuides) => {
+                if (err) return res.render('error')
+                constants.Post_guide.paginate({}, { select: 'title author date_create voteCount viewCount', page: 1, limit: 9, sort: { 'voteCount': -1 } }, (err, popularGuides) => {
+                    if (err) return res.render('error')
+                    constants.Post_build.paginate({}, { select: 'title author date_create voteCount viewCount', page: 1, limit: 9, sort: { 'voteCount': -1 } }, (err, popularBuilds) => {
+                        if (err) return res.render('error')
+                        constants.Post_build.paginate({}, { select: 'title author date_create voteCount viewCount', page: 1, limit: 9, sort: { '_id': -1 } }, (err, recentBuilds) => {
+                            if (err) return res.render('error')
+                            res.render('index', {
+                                gstatic: constants.gstatic,
+                                title: 'Home - MS2World.com',
+                                user: req.user,
+                                news: newsMap,
+                                recentGuides: recentGuides.docs,
+                                popularGuides: popularGuides.docs,
+                                popularBuilds: popularBuilds.docs,
+                                recentBuilds: recentBuilds.docs,
+                            });
+                        });
+                    });
+                });
             });
         });
     });
