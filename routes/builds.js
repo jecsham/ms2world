@@ -39,17 +39,21 @@ module.exports = (app, constants) => {
             if (err) return res.render('error')
             constants.Ms2_class.find({}, 'name', (err, classes) => {
                 if (err) return res.render('error')
-                res.render('builds', {
-                    gstatic: constants.gstatic,
-                    title: 'Builds - '+constants.title,
-                    user: req.user,
-                    reqFilter: reqFilter,
-                    page: data.page,
-                    totalPages: data.totalPages,
-                    nextPage: data.nextPage,
-                    prevPage: data.hasPrevPage,
-                    builds: data.docs,
-                    classes: classes
+                constants.Ms2_classType.find({}, 'name', (err, types) => {
+                    if (err) return res.render('error')
+                    res.render('builds', {
+                        gstatic: constants.gstatic,
+                        title: 'Builds - ' + constants.title,
+                        user: req.user,
+                        reqFilter: reqFilter,
+                        page: data.page,
+                        totalPages: data.totalPages,
+                        nextPage: data.nextPage,
+                        prevPage: data.hasPrevPage,
+                        builds: data.docs,
+                        classes: classes,
+                        classTypes: types
+                    });
                 });
             })
         });
@@ -79,7 +83,7 @@ module.exports = (app, constants) => {
                                 report.reasons = reasons;
                                 res.render('build', {
                                     gstatic: constants.gstatic,
-                                    title: data.title+' - '+constants.title,
+                                    title: data.title + ' - ' + constants.title,
                                     post: data,
                                     report: report,
                                     vote: vote,
@@ -94,7 +98,7 @@ module.exports = (app, constants) => {
                 } else {
                     res.render('build', {
                         gstatic: constants.gstatic,
-                        title: data.title+' - '+constants.title,
+                        title: data.title + ' - ' + constants.title,
                         post: data,
                         user: req.user,
                         class: doc.data_object,
