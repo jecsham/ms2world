@@ -10,18 +10,33 @@ module.exports = (app, constants) => {
         var filter;
         var reqFilter;
         var page;
+        var classFilter = 'all'
+        var typeFilter = 'all'
+
 
         if (req.query.search != undefined) {
-            query = {
-                $text: {
-                    $search: constants.sanitize(req.query.search)
-                }
+            query.$text = {
+                $search: constants.sanitize(req.query.search)
             }
         }
         if (req.query.page === undefined)
             page = 1
         else
             page = constants.sanitize(req.query.page)
+
+        if (req.query.class === undefined)
+            classFilter = 'all'
+        else if (req.query.class != 'all') {
+            classFilter = constants.sanitize(req.query.class)
+            query.class_name = classFilter.toLowerCase()
+        }
+
+        if (req.query.type === undefined)
+            typeFilter = 'all'
+        else if (req.query.type != 'all') {
+            typeFilter = constants.sanitize(req.query.type)
+            query.type = typeFilter
+        }
 
         if (req.params.filter === undefined)
             reqFilter = 'popular'
@@ -52,7 +67,10 @@ module.exports = (app, constants) => {
                         prevPage: data.hasPrevPage,
                         builds: data.docs,
                         classes: classes,
-                        classTypes: types
+                        classTypes: types,
+                        classFilter: classFilter,
+                        typeFilter: typeFilter
+
                     });
                 });
             })
