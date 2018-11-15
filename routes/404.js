@@ -1,10 +1,9 @@
 module.exports = (req, res, constants) => {
-
-    var error = new Error();
+    let error = new Error();
     error.status = 404;
     res.render('404', {
         gstatic: constants.gstatic,
-        title: 'Error 404 - MS2World.com',
+        title: 'Error 404 - '+constants.title,
         user: req.user
     });
 }

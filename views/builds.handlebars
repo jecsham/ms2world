@@ -5,17 +5,25 @@
                 <a href="/builds/popular" class="text-dark">Builds</a>
             </p>
         </div>
-        <div class="col-md-3 mb-1">
+        <div class="col-md-2 mb-1">
             <select id="selectFilter" class="form-control form-control-sm">
                 <option value="popular" selected>Popular</option>
                 <option value="recent">Recent</option>
             </select>
         </div>
-        <div class="col-md-3 mb-1">
-            <select class="form-control form-control-sm">
-                <option>All classes</option>
+        <div class="col-md-2 mb-1">
+            <select id="selectClass" class="form-control form-control-sm">
+                <option value="all" selected>All classes</option>
                 {{#each classes}}
-                <option>{{name}}</option>
+                <option value="{{name}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-md-2 mb-1">
+            <select id="selectType" class="form-control form-control-sm">
+                <option value="all" selected>All types</option>
+                {{#each classTypes}}
+                <option value="{{name}}">{{name}}</option>
                 {{/each}}
             </select>
         </div>
@@ -42,9 +50,12 @@
                         {{#each builds}}
                         <tr>
                             <th class="font-weight-normal align-middle"><a href="/build/{{_id}}">{{title}}</a></th>
-                            <th class="text-muted small text-left align-middle"><span class="mdi mdi-eye"></span> {{viewCount}}</th>
-                            <th class="text-muted small text-left align-middle"><span class="mdi mdi-thumb-up"></span> {{voteCount}} </th>
-                            <th class="text-muted small text-right align-middle"><a class="text-muted" href="#">{{author}}</a><br>
+                            <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-eye" title="Views"></span>
+                                {{viewCount}} </th>
+                            <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-thumb-up" title="Votes"></span>
+                                {{voteCount}} </th>
+                            <th class="text-muted small text-right align-middle text-truncate" style="max-width: 100px"><a
+                                    class="text-muted" href="/profile/{{sid}}">{{author}}</a><br>
                                 <time class="time" title="{{{date_create}}}"></time>
                             </th>
                         </tr>
@@ -66,5 +77,34 @@
     var totalPages = {{{ totalPages }}}
     var filter = '{{{reqFilter}}}'
     var pagename = 'builds'
+    var classFilter = "{{classFilter}}"
+    var typeFilter = "{{typeFilter}}"
+
+    $(document).ready(function () {
+
+        var urlParams = new URLSearchParams(window.location.search);
+
+
+        $('#selectClass').val(classFilter)
+        $('#selectType').val(typeFilter)
+
+        $("#selectClass").change(function () {
+            if (urlParams.has('class')) {
+                urlParams.set("class", this.value);
+            } else {
+                urlParams.append("class", this.value);
+            }
+            document.location.href = `/${pagename}/${$('#selectFilter').val()}?${urlParams.toString()}`;
+        })
+        $("#selectType").change(function () {
+            if (urlParams.has('type')) {
+                urlParams.set("type", this.value);
+            } else {
+                urlParams.append("type", this.value);
+            }
+            document.location.href = `/${pagename}/${$('#selectFilter').val()}?${urlParams.toString()}`;
+        })
+    })
+
 </script>
 <script src="/js/ms2w_posts.js"></script>

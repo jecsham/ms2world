@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{{gstatic.desc}}">
-    <meta name="keywords" content="{{gstatic.keywords}}">
-    <meta name="robots" content="noindex" />
+    <meta name="description" content="{{gstatic.description}}">
+    <meta name="robots" content="noindex">
     <meta http-equiv="X-UA-Compatible">
     <title>{{title}}</title>
+    <!--OpenGraph-->
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:image" content="https://davidwalsh.name/wp-content/themes/klass/img/facebooklogo.png" />
+    <meta property="og:site_name" content="MS2World" />
+    <meta property="og:description" content="{{gstatic.description}}" />
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css">
     <!-- MDI CSS -->
@@ -39,6 +44,16 @@
     <div id="adblockmessage">
     </div>
 
+    <div class="container-fluid p-0">
+        <div class="bg-secondary text-center text-white">
+            {{#each messages}}
+            <div class="donor-messages">
+                <a href="/donate" title="Donor message" class="text-white">📢</a> <a target="blanc" href="{{link}}"
+                    class="text-white">{{message}}</a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
     <header class="mb-3">
         <div id="brand-logo" class="d-flex justify-content-center mt-3">
             <a href="/home">
@@ -66,7 +81,8 @@
                                 <a class="dropdown-item" href="/builds">Build list</a>
                             </div>
                         </div>
-                        <a class="pr-3 text-dark" href="/lives"><span class="mdi mdi-record text-danger "></span>Lives</a>
+                        {{!-- <a class="pr-3 text-dark" href="/lives"><span class="mdi mdi-record text-danger "></span>Lives</a>
+                        --}}
                         {{#if user}}
                         <div class="btn-group ml-auto">
                             <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown"
@@ -74,16 +90,21 @@
                                 {{user.username}}
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="/profile/{{user.steamid}}" class="dropdown-item">Profile</a>
+                                <a href="/profile/{{user.steamid}}" class="dropdown-item"><span class="mdi mdi-account"></span>
+                                    Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="/create-guide" class="dropdown-item">Create guide</a>
-                                <a href="/create-build/knight" class="dropdown-item">Create build</a>
+                                <a href="/create-guide" class="dropdown-item"><span class="mdi mdi-plus-circle"></span>
+                                    Create guide</a>
+                                <a href="/create-build/knight" class="dropdown-item"><span class="mdi mdi-plus-circle"></span>
+                                    Create build</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="/logout" class="dropdown-item">Logout</a>
+                                <a href="/logout" class="dropdown-item bg-danger text-white"><span class="mdi mdi-logout"></span>
+                                    Logout</a>
                             </div>
                         </div>
                         {{else}}
-                        <button class="loginbtn btn btn-dark btn-sm ml-auto" data-toggle="tooltip" data-placement="bottom" title="Login with Steam"><span class="mdi mdi-steam"></span>
+                        <button class="loginbtn btn btn-dark btn-sm ml-auto" data-toggle="tooltip" data-placement="bottom"
+                            title="Login with Steam"><span class="mdi mdi-steam"></span>
                             Login</button>
                         {{/if}}
                     </div>
@@ -98,7 +119,7 @@
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
             <div class="row">
                 <div class="col-12 col-md text-cenetr my-auto">
-                    <small class="d-block mb-3 text-muted">&copy; {{year}} - Maded with ❤ by Jecsham</small>
+                    <small class="d-block mb-3 text-muted">&copy; {{year}} - Maded with ❤ by <a href="https://twitter.com/jecsham">Jecsham</a></small>
                 </div>
                 <div class="col-6 col-md">
                     <h5>Cool ms2 sites</h5>
@@ -110,10 +131,11 @@
                 <div class="col-6 col-md">
                     <h5>Resources</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#" target="_blanc">Source Code</a></li>
+                        {{!-- <li><a class="text-muted" href="#" target="blanc">Source Code</a></li> --}}
                         <li><a class="text-muted" href="http://maplestory2.nexon.net/" target="_blanc">MapleStory2</a></li>
-                        <li><a class="text-muted" href="https://store.steampowered.com/app/560380/MapleStory_2/" target="_blanc">MapleStory2 in Steam</a></li>
-                        <li><a class="text-muted" href="https://paypal.me/jecsham" target="_blanc">Donate</a></li>
+                        <li><a class="text-muted" href="https://store.steampowered.com/app/560380/MapleStory_2/" target="_blanc">MapleStory2
+                                in Steam</a></li>
+                        <li><a class="text-muted" href="/donate">Donate</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
@@ -161,7 +183,21 @@
             blockAdBlock.setOption({ debug: false });
             blockAdBlock.onDetected(adBlockDetected).onNotDetected(adBlockNotDetected);
         }
+        (function () {
+            $(".donor-messages").hide()
+            var quotes = $(".donor-messages");
+            var quoteIndex = -1;
 
+            function showNextQuote() {
+                ++quoteIndex;
+                quotes.eq(quoteIndex % quotes.length)
+                    .fadeIn(2000)
+                    .delay(10000)
+                    .fadeOut(2000, showNextQuote);
+            }
+            showNextQuote();
+
+        })();
 
     </script>
 </body>

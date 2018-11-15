@@ -4,7 +4,7 @@
             <div id="main">
                 <div>
                     <img src="{{account.img}}" width="75" class="rounded-circle mr-2" alt="{{account.name}}'s profile">
-                    {{account.name}}
+                    <a href="https://steamcommunity.com/profiles/{{account.sid}}" class="text-dark" target="blanc" title="Steam profile">{{account.name}} <span class="mdi mdi-open-in-new"></span></a>
                     <small class="text-muted">Last login: <time class="time" title="{{account.date_last_login}}"></time></small>
                 </div>
                 <ul class="nav nav-tabs mt-3" id="tab" role="tablist">
@@ -29,11 +29,11 @@
                                     {{#each guides}}
                                     <tr>
                                         <th class="font-weight-normal align-middle"><a href="/guide/{{_id}}">{{title}}</a></th>
-                                        <th class="text-muted small text-left align-middle"><span class="mdi mdi-eye"></span>
+                                        <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-eye"></span>
                                             {{viewCount}}</th>
-                                        <th class="text-muted small text-left align-middle"><span class="mdi mdi-thumb-up">
+                                        <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-thumb-up">
                                                 {{voteCount}}</span></th>
-                                        <th class="text-muted small text-right align-middle"><a class="text-muted" href="#">{{author}}</a><br>
+                                        <th class="text-muted small text-right align-middle text-truncate" style="max-width: 100px">
                                             <time class="time" title="{{{date_create}}}"></time>
                                         </th>
                                     </tr>
@@ -57,11 +57,11 @@
                                     {{#each builds}}
                                     <tr>
                                         <th class="font-weight-normal align-middle"><a href="/build/{{_id}}">{{title}}</a></th>
-                                        <th class="text-muted small text-left align-middle"><span class="mdi mdi-eye"></span>
+                                        <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-eye"></span>
                                             {{viewCount}}</th>
-                                        <th class="text-muted small text-left align-middle"><span class="mdi mdi-thumb-up">
+                                        <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-thumb-up">
                                                 {{voteCount}}</span></th>
-                                        <th class="text-muted small text-right align-middle"><a class="text-muted" href="#">{{author}}</a><br>
+                                        <th class="text-muted small text-right align-middle text-truncate" style="max-width: 100px">
                                             <time class="time" title="{{{date_create}}}"></time>
                                         </th>
                                     </tr>

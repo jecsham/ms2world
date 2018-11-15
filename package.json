@@ -1,7 +1,7 @@
 {
   "name": "ms2world",
   "version": "1.0.0",
-  "description": "ms2world core fan site",
+  "description": "ms2world core",
   "main": "app.js",
   "dependencies": {
     "all-error-handler": "^1.2.0",
@@ -36,5 +36,5 @@
     "site"
   ],
   "author": "jecsham",
-  "license": "ISC"
+  "license": "MIT"
 }

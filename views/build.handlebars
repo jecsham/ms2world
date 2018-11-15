@@ -4,7 +4,7 @@
             <div class="border-left bg-light">
                 <div class="p-3">
                     <h3>{{{post.title}}}</h3>
-                   <p class="card-text"><small class="text-muted">Created by {{post.author}},
+                   <p class="card-text"><small class="text-muted">Created by <a href="/profile/{{post.sid}}" class="text-dark">{{post.author}}</a>,
                             <time class="time" title="{{post.date_create}}"></time>{{#if post.date_last_edit}}. Last edit: <time class="time" title="{{{post.date_last_edit}}}"></time>{{/if}}
                         </small></p>
                     <p>{{post.description}}</p>
@@ -30,7 +30,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="canvasModalLabel">post</h5>
+                <h5 class="modal-title" id="canvasModalLabel">Save build: {{post.title}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

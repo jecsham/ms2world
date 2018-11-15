@@ -1,16 +1,20 @@
 module.exports = (app, constants) => {
-    
-    app.get('/privacy', (req, res) => {
+
+    app.get('/privacy', async (req, res) => {
+        let messages = await constants.messages()
         res.render('privacy', {
+            messages: messages,
             gstatic: constants.gstatic,
-            title: 'MS2World.net - Privacy',
+            title: 'Privacy - ' + constants.title,
             user: req.user,
         });
     });
-    app.get('/contact', (req, res) => {
+    app.get('/contact', async (req, res) => {
+        let messages = await constants.messages()
         res.render('contact', {
+            messages: messages,
             gstatic: constants.gstatic,
-            title: 'MS2World.net - CSontact',
+            title: 'Contact - ' + constants.title,
             user: req.user,
         });
     });

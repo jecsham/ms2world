@@ -1,10 +1,11 @@
 module.exports = (app, constants) => {
-    app.get(['/guides', '/guides/:filter'], (req, res) => {
+    app.get(['/guides', '/guides/:filter'], async (req, res) => {
+        let messages = await constants.messages()
 
-        var query = {};
-        var filter;
-        var reqFilter;
-        var page;
+        let query = {};
+        let filter;
+        let reqFilter;
+        let page;
 
         if (req.query.search != undefined) {
             query = {
@@ -30,11 +31,12 @@ module.exports = (app, constants) => {
         else
             filter = { '_id': -1 }
 
-        constants.Post_guide.paginate(query, { select: 'title author date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
+        constants.Post_guide.paginate(query, { select: 'title author date_create sid voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
             res.render('guides', {
+                messages: messages,
                 gstatic: constants.gstatic,
-                title: 'MS2World.net · Guides',
+                title: 'Guides - ' + constants.title,
                 user: req.user,
                 reqFilter: reqFilter,
                 page: data.page,
@@ -46,9 +48,9 @@ module.exports = (app, constants) => {
         });
     });
 
-    app.get('/guide/:id', (req, res) => {
-        var guideid = constants.sanitize(req.params.id);
-
+    app.get('/guide/:id', async (req, res) => {
+        let messages = await constants.messages()
+        let guideid = constants.sanitize(req.params.id);
 
         constants.Post_guide.findOne({ '_id': guideid }, (err, data) => {
             if (!data) return res.render('404');
@@ -57,19 +59,20 @@ module.exports = (app, constants) => {
             if (req.user) {
                 constants.User_account.findOne({ sid: req.user.steamid, reports: guideid }, '_id', (err, isreported) => {
                     if (err) return res.render('error')
-                    var report = {}
+                    let report = {}
                     report.isreported = false;
                     if (isreported) report.isreported = true;
                     constants.User_account.findOne({ sid: req.user.steamid, votes: guideid }, '_id', (err, hasvote) => {
                         if (err) return res.render('error')
-                        var vote = false;
+                        let vote = false;
                         if (hasvote) vote = true;
                         constants.Report_reason.find({}, (err, reasons) => {
                             if (err) return res.render('404');
                             report.reasons = reasons;
                             res.render('guide', {
+                                messages: messages,
                                 gstatic: constants.gstatic,
-                                title: 'MS2World.net - ' + data.title,
+                                title: data.title + ' - ' + constants.title,
                                 post: data,
                                 report: report,
                                 vote: vote,
@@ -80,8 +83,9 @@ module.exports = (app, constants) => {
                 })
             } else {
                 res.render('guide', {
+                    messages: messages,
                     gstatic: constants.gstatic,
-                    title: 'MS2World.net - ' + data.title,
+                    title: data.title + ' - ' + constants.title,
                     post: data,
                     user: req.user
                 });

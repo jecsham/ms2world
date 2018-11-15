@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <p>Donate</p>
+            <p>Hello! I'm Jecsham, the developer of this site.
+                I made this website with the intention of collecting and offering useful
+                MapleStory2 information for new and advanced users.
+                Currently (and always) everyone can use all site features without any kind of
+                cost, however, as is to be expected, maintaining this site is not free, that's why donations are
+                welcome.<br>
+                In addition, when you make a donation, you can leave me a note with your username, some message and a
+                link 😏<br>
+                <small class="text-muted">If your donation is up to $5 USD, the message and link will be placed at the top of the website*</small></p>
+
+            <a href="/createdonation" class="btn btn-dark" target="blanc"> <span class="mdi mdi-paypal"></span> <span class="mdi mdi-credit-card"></span> Donate</a>
+        </div>
+        <div class="col-lg-6">
+            <div style="height: 80vh"></div>
+        </div>
+        <div class="col">
+            <p class="text-muted small text-center">* The limit of live messages is 3, so, your message will disappear after receiving 3 new messages. The message will not be posted if it aren't related to MapleStory2</p>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#formControlRange').val(1)
+        $('#formControlRange').on('input', function () {
+            $('#amount').val($('#formControlRange').val())
+        })
+    })
+
+</script>
