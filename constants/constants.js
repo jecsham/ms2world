@@ -17,6 +17,16 @@ db.once('open', () => {
 });
 
 // helper functions
+const getMessages = async function () {
+        let docs;
+        let promise = Message.find({}).sort({ ':id': -1 }).limit(3).exec()
+        await promise.then(function (elements) {
+                docs = elements
+        }).catch(function (error) {
+                return false;
+        });
+        return docs
+}
 
 const incView = (id, postType) => {
         if (postType === 'guide')
@@ -43,7 +53,7 @@ const verifyRecaptcha = (key, callback) => {
 }
 
 // Error strings
-var es = {
+const es = {
         internal: "An internal server error has occurred. Please contact an administrator or try later.",
         login: "You must be login.",
         steam_id_match: "User Steam ID don't match. You aren't the post owner.",
@@ -55,12 +65,12 @@ var es = {
 // title
 const title = 'MS2World.net'
 
-// Global statics
-var gstatic = {}
+// Global
+const gstatic = {}
 gstatic.description = 'MS2World.net is the best MapleStory2 fan site to find Guides, Builds, News and More!';
 
 // Schemas
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
         name: String,
         sid: String,
         img: String,
@@ -70,7 +80,7 @@ var userSchema = new mongoose.Schema({
         date_last_login: Date
 });
 
-var guideSchema = new mongoose.Schema({
+const guideSchema = new mongoose.Schema({
         sid: String,
         title: String,
         author: String,
@@ -85,7 +95,7 @@ var guideSchema = new mongoose.Schema({
         date_last_edit: Date
 });
 
-var buildSchema = new mongoose.Schema({
+const buildSchema = new mongoose.Schema({
         sid: String,
         title: String,
         author: String,
@@ -101,7 +111,7 @@ var buildSchema = new mongoose.Schema({
         date_last_edit: Date
 });
 
-var newSchema = new mongoose.Schema({
+const newSchema = new mongoose.Schema({
         title: String,
         tag: String,
         url: String,
@@ -109,25 +119,30 @@ var newSchema = new mongoose.Schema({
         date_create: Date
 });
 
-var classSchema = new mongoose.Schema({
+const classSchema = new mongoose.Schema({
         name: String,
         img: String
 });
 
-var classTypeSchema = new mongoose.Schema({
+const messageSchema = new mongoose.Schema({
+        message: String,
+        link: String
+});
+
+const classTypeSchema = new mongoose.Schema({
         name: String,
 });
 
-var buildTemplateSchema = new mongoose.Schema({
+const buildTemplateSchema = new mongoose.Schema({
         class_name: String,
         data_object: Object
 });
 
-var reportReasonSchema = new mongoose.Schema({
+const reportReasonSchema = new mongoose.Schema({
         name: String,
 })
 
-var reportPostSchema = new mongoose.Schema({
+const reportPostSchema = new mongoose.Schema({
         reason_id: String,
         post_title: String,
         post_type: String,
@@ -142,17 +157,19 @@ buildSchema.index({ sid: 'text', title: 'text', author: 'text', description: 'te
 // paginations
 guideSchema.plugin(mongoosePaginate);
 buildSchema.plugin(mongoosePaginate);
+messageSchema.plugin(mongoosePaginate);
 
 // Models
-var User_account = mongoose.model('User_account', userSchema);
-var Post_guide = mongoose.model('Post_guide ', guideSchema);
-var Post_build = mongoose.model('Post_build', buildSchema);
-var Ms2_new = mongoose.model('Ms2_new', newSchema);
-var Ms2_class = mongoose.model('Ms2_class', classSchema);
-var Ms2_classType = mongoose.model('Ms2_classType ', classTypeSchema);
-var Build_template = mongoose.model('Build_template', buildTemplateSchema);
-var Report_reason = mongoose.model('Report_reason', reportReasonSchema);
-var Report_post = mongoose.model('Report_post', reportPostSchema);
+const User_account = mongoose.model('User_account', userSchema);
+const Post_guide = mongoose.model('Post_guide ', guideSchema);
+const Post_build = mongoose.model('Post_build', buildSchema);
+const Ms2_new = mongoose.model('Ms2_new', newSchema);
+const Ms2_class = mongoose.model('Ms2_class', classSchema);
+const Ms2_classType = mongoose.model('Ms2_classType ', classTypeSchema);
+const Build_template = mongoose.model('Build_template', buildTemplateSchema);
+const Report_reason = mongoose.model('Report_reason', reportReasonSchema);
+const Report_post = mongoose.model('Report_post', reportPostSchema);
+const Message = mongoose.model('Message', messageSchema);
 
 module.exports = {
         gstatic: gstatic,
@@ -168,6 +185,7 @@ module.exports = {
         sanitize: sanitize,
         steamapi: steamapi,
         incView: incView,
+        messages: getMessages,
         title: title,
         verifyRecaptcha: verifyRecaptcha,
         es: es

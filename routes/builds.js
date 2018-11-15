@@ -1,17 +1,19 @@
 
 module.exports = (app, constants) => {
 
-    cstatic = ['<link rel="stylesheet" href="/css/skillbuilder.css">'];
+    let cstatic = ['<link rel="stylesheet" href="/css/skillbuilder.css">'];
 
 
-    app.get(['/builds', '/builds/:filter'], (req, res) => {
+    app.get(['/builds', '/builds/:filter'], async (req, res) => {
 
-        var query = {};
-        var filter;
-        var reqFilter;
-        var page;
-        var classFilter = 'all'
-        var typeFilter = 'all'
+        let messages = await constants.messages()
+
+        let query = {};
+        let filter;
+        let reqFilter;
+        let page;
+        let classFilter = 'all'
+        let typeFilter = 'all'
 
 
         if (req.query.search != undefined) {
@@ -57,6 +59,7 @@ module.exports = (app, constants) => {
                 constants.Ms2_classType.find({}, 'name', (err, types) => {
                     if (err) return res.render('error')
                     res.render('builds', {
+                        messages: messages,
                         gstatic: constants.gstatic,
                         title: 'Builds - ' + constants.title,
                         user: req.user,
@@ -77,8 +80,9 @@ module.exports = (app, constants) => {
         });
     });
 
-    app.get('/build/:id', (req, res) => {
-        var buildid = constants.sanitize(req.params.id);
+    app.get('/build/:id', async (req, res) => {
+        let messages = await constants.messages()
+        let buildid = constants.sanitize(req.params.id);
         constants.Post_build.findOne({ '_id': buildid }, (err, data) => {
             if (!data) return res.render('404');
 
@@ -91,15 +95,16 @@ module.exports = (app, constants) => {
                         if (err) return res.render('404');
                         constants.User_account.findOne({ sid: req.user.steamid, votes: buildid }, '_id', (err, hasvote) => {
                             if (err) return res.render('error')
-                            var vote = false;
+                            let vote = false;
                             if (hasvote) vote = true;
                             constants.User_account.findOne({ sid: req.user.steamid, reports: buildid }, '_id', (err, isreported) => {
                                 if (err) return res.render('error')
-                                var report = {}
+                                let report = {}
                                 report.isreported = false;
                                 if (isreported) report.isreported = true;
                                 report.reasons = reasons;
                                 res.render('build', {
+                                    messages: messages,
                                     gstatic: constants.gstatic,
                                     title: data.title + ' - ' + constants.title,
                                     post: data,
@@ -115,6 +120,7 @@ module.exports = (app, constants) => {
                     })
                 } else {
                     res.render('build', {
+                        messages: messages,
                         gstatic: constants.gstatic,
                         title: data.title + ' - ' + constants.title,
                         post: data,

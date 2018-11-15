@@ -1,9 +1,11 @@
 module.exports = (app, constants) => {
-    var cstatic = ['<link rel="stylesheet" href="/css/simplemde.css">', '<link rel="stylesheet" href="/css/tagify.css">', '<link rel="stylesheet" href="/css/skillbuilder.css">', '<script src="/js/simplemde.js"></script>', '<script src="/js/jQuery.tagify.js"></script>', '<script src="https://www.google.com/recaptcha/api.js"></script>'];
+    let cstatic = ['<link rel="stylesheet" href="/css/simplemde.css">', '<link rel="stylesheet" href="/css/tagify.css">', '<link rel="stylesheet" href="/css/skillbuilder.css">', '<script src="/js/simplemde.js"></script>', '<script src="/js/jQuery.tagify.js"></script>', '<script src="https://www.google.com/recaptcha/api.js"></script>'];
 
-    app.get('/create-guide', (req, res) => {
+    app.get('/create-guide', async (req, res) => {
+        let messages = await constants.messages()
         if (req.user) {
             res.render('create-guide', {
+                messages: messages,
                 gstatic: constants.gstatic,
                 title: 'Create a guide - ' + constants.title,
                 user: req.user,
@@ -20,7 +22,7 @@ module.exports = (app, constants) => {
                 if (success) {
                     if (req.body.title.length >= 5 && req.body.description.length >= 5 && req.body.content.length >= 100 && req.body.tags.length >= 1) {
                         if (req.body.title.length <= 150 && req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
-                            var data = {};
+                            let data = {};
                             data.title = constants.sanitize(req.body.title);
                             data.description = constants.sanitize(req.body.description);
                             data.content = constants.sanitize(req.body.content);
@@ -49,7 +51,7 @@ module.exports = (app, constants) => {
 
     app.post('/create-build/submit', (req, res) => {
         if (req.user) {
-            var data = {};
+            let data = {};
             constants.verifyRecaptcha(req.body["recaptcha"], function (success) {
                 if (success) {
                     if (req.body.title.length >= 5 && req.body.description.length >= 5) {
@@ -81,8 +83,9 @@ module.exports = (app, constants) => {
         }
     });
 
-    app.get(['/create-build', '/create-build/:class'], (req, res) => {
-        var class_name;
+    app.get(['/create-build', '/create-build/:class'], async (req, res) => {
+        let messages = await constants.messages()
+        let class_name;
         if (req.params.class === undefined) class_name = "knight"
         else class_name = constants.sanitize(req.params.class);
 
@@ -91,6 +94,7 @@ module.exports = (app, constants) => {
             constants.Build_template.findOne({ class_name: class_name }, { _id: 0, class_name: 0 }, (err, doc) => {
                 if (!doc) return res.render('404')
                 res.render('create-build', {
+                    messages: messages,
                     gstatic: constants.gstatic,
                     title: 'Create a Build for ' + class_name + ' - ' + constants.title,
                     user: req.user,

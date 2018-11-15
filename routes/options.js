@@ -1,13 +1,13 @@
 module.exports = (app, constants) => {
-    var cstatic = ['<link rel="stylesheet" href="/css/simplemde.css">', '<link rel="stylesheet" href="/css/tagify.css">', '<link rel="stylesheet" href="/css/skillbuilder.css">', '<script src="/js/simplemde.js"></script>', '<script src="/js/jQuery.tagify.js"></script>', '<script src="https://www.google.com/recaptcha/api.js"></script>'];
+    let cstatic = ['<link rel="stylesheet" href="/css/simplemde.css">', '<link rel="stylesheet" href="/css/tagify.css">', '<link rel="stylesheet" href="/css/skillbuilder.css">', '<script src="/js/simplemde.js"></script>', '<script src="/js/jQuery.tagify.js"></script>', '<script src="https://www.google.com/recaptcha/api.js"></script>'];
 
     app.post('/vote', (req, res) => {
         if (req.user) {
-            var usersid = req.user.steamid;
-            var postid = constants.sanitize(req.body.postid)
-            var type = constants.sanitize(req.body.type);
-            var post = constants.sanitize(req.body.post);
-            var option = {};
+            let usersid = req.user.steamid;
+            let postid = constants.sanitize(req.body.postid)
+            let type = constants.sanitize(req.body.type);
+            let post = constants.sanitize(req.body.post);
+            let option = {};
             if (type === 'up') {
                 option.user = { $addToSet: { votes: postid } }
                 option.post = { $addToSet: { votes: usersid } }
@@ -51,9 +51,9 @@ module.exports = (app, constants) => {
     app.post('/delete/post', (req, res) => {
         if (req.user) {
             if (req.user.steamid === req.body.postsid) {
-                var postid = constants.sanitize(req.body.postid)
-                var postsid = constants.sanitize(req.body.postsid)
-                var postType = constants.sanitize(req.body.postType)
+                let postid = constants.sanitize(req.body.postid)
+                let postsid = constants.sanitize(req.body.postsid)
+                let postType = constants.sanitize(req.body.postType)
                 if (postType === 'guide') {
                     constants.Post_guide.deleteOne({ _id: postid, sid: postsid }, (err) => {
                         if (err) return res.status(500).send({ error: constants.es.internal });
@@ -75,10 +75,10 @@ module.exports = (app, constants) => {
 
     app.post('/report/post', (req, res) => {
         if (req.user) {
-            var usersid = req.user.steamid
-            var postid = constants.sanitize(req.body.postid)
-            var reasonid = constants.sanitize(req.body.reportReason)
-            var postType = constants.sanitize(req.body.postType)
+            let usersid = req.user.steamid
+            let postid = constants.sanitize(req.body.postid)
+            let reasonid = constants.sanitize(req.body.reportReason)
+            let postType = constants.sanitize(req.body.postType)
             constants.User_account.findOneAndUpdate({ sid: usersid }, { $addToSet: { reports: postid } }, (err) => {
                 if (err) return res.status(500).send({ error: constants.es.internal });
             });
@@ -92,13 +92,15 @@ module.exports = (app, constants) => {
     });
 
 
-    app.get('/edit-guide/:id', (req, res) => {
+    app.get('/edit-guide/:id', async (req, res) => {
+        let messages = await constants.messages()
         if (req.user) {
-            var guideid = constants.sanitize(req.params.id)
+            let guideid = constants.sanitize(req.params.id)
             constants.Post_guide.findOne({ _id: guideid }, 'title description content sid tags', (err, doc) => {
                 if (err) return res.render('404');
                 if (req.user.steamid === doc.sid) {
                     res.render('edit-guide', {
+                        messages: messages,
                         gstatic: constants.gstatic,
                         title: 'Edit - ' + constants.title,
                         user: req.user,
@@ -120,7 +122,7 @@ module.exports = (app, constants) => {
                 if (success) {
                     if (req.body.description.length >= 5 && req.body.content.length >= 100 && req.body.tags.length >= 1) {
                         if (req.body.description.length <= 300 && req.body.content.length <= 800000 && req.body.tags.length <= 1000) {
-                            var data = {};
+                            let data = {};
                             data.postid = constants.sanitize(req.body.postid);
                             data.description = constants.sanitize(req.body.description);
                             data.content = constants.sanitize(req.body.content);
@@ -146,15 +148,17 @@ module.exports = (app, constants) => {
         }
     });
 
-    app.get('/edit-build/:id', (req, res) => {
+    app.get('/edit-build/:id', async (req, res) => {
+        let messages = await constants.messages()
         if (req.user) {
-            var buildid = constants.sanitize(req.params.id)
+            let buildid = constants.sanitize(req.params.id)
             constants.Post_build.findOne({ _id: buildid }, 'title description class_name type data_object sid', (err, doc) => {
                 if (err) return res.render('404');
                 if (req.user.steamid === doc.sid) {
                     constants.Build_template.findOne({ class_name: doc.class_name }, { _id: 0, class_name: 0 }, (err, data) => {
                         if (err) return res.render('404')
                         res.render('edit-build', {
+                            messages: messages,
                             gstatic: constants.gstatic,
                             title: 'Edit - ' + constants.title,
                             user: req.user,
@@ -179,7 +183,7 @@ module.exports = (app, constants) => {
                 if (success) {
                     if (req.body.description.length >= 5) {
                         if (req.body.description.length <= 300) {
-                            var data = {};
+                            let data = {};
                             data.postid = constants.sanitize(req.body.postid);
                             data.description = constants.sanitize(req.body.description);
                             data.type = constants.sanitize(req.body.type);
