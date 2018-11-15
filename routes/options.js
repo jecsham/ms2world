@@ -13,8 +13,8 @@ module.exports = (app, constants) => {
                 option.post = { $addToSet: { votes: usersid } }
             }
             else if (type === 'down') {
-                option.user = { $unset: { votes: postid } }
-                option.post = { $unset: { votes: usersid } }
+                option.user = { $pull: { votes: postid } }
+                option.post = { $pull: { votes: usersid } }
             }
 
             constants.User_account.findOneAndUpdate({ sid: usersid }, option.user, (err) => {
@@ -23,22 +23,26 @@ module.exports = (app, constants) => {
 
             if (post === 'guide') {
                 constants.Post_guide.findOneAndUpdate({ _id: postid }, option.post, (err) => {
-                    if (err) return console.log(err);
-                    res.send({ error: false });
-                })
-                constants.Post_guide.findOne({ _id: postid }, 'votes', (err, doc) => {
-                    constants.Post_guide.findOneAndUpdate({ _id: postid }, { $set: { voteCount: doc.votes.length } }, err => {
-                        if (err) return res.status(500).send({ error: constants.es.internal });
+                    if (err) return res.status(500).send({ error: constants.es.internal });
+                    constants.Post_guide.findOne({ _id: postid }, 'votes', (err, doc) => {
+                        let count = 0
+                        if (doc.votes) count = doc.votes.length
+                        constants.Post_guide.findOneAndUpdate({ _id: postid }, { $set: { voteCount: count } }, err => {
+                            if (err) return res.status(500).send({ error: constants.es.internal });
+                            res.send({ error: false });
+                        })
                     })
                 })
             } else if (post === 'build') {
                 constants.Post_build.findOneAndUpdate({ _id: postid }, option.post, (err) => {
                     if (err) return res.status(500).send({ error: constants.es.internal });
-                    res.send({ error: false });
-                })
-                constants.Post_build.findOne({ _id: postid }, 'votes', (err, doc) => {
-                    constants.Post_build.findOneAndUpdate({ _id: postid }, { $set: { voteCount: doc.votes.length } }, err => {
-                        if (err) return res.status(500).send({ error: constants.es.internal });
+                    constants.Post_build.findOne({ _id: postid }, 'votes', (err, doc) => {
+                        let count = 0
+                        if (doc.votes) count = doc.votes.length
+                        constants.Post_build.findOneAndUpdate({ _id: postid }, { $set: { voteCount: count } }, err => {
+                            if (err) return res.status(500).send({ error: constants.es.internal });
+                            res.send({ error: false });
+                        })
                     })
                 })
             }
