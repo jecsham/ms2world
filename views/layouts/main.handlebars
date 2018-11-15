@@ -5,18 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{{gstatic.description}}">
-    <meta name="robots" content="noindex">
+    <meta name="robots" content="index, follow">
     <meta http-equiv="X-UA-Compatible">
     <title>{{title}}</title>
+    
     <!--OpenGraph-->
     <meta property="og:title" content="{{title}}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/assets/graph.png" />
     <meta property="og:site_name" content="MS2World" />
-    <meta property="og:description" content="{{#if post}}{{description}}{{else}}{{gstatic.description}}{{/if}}" />
+    <meta property="og:description" content="{{gstatic.description}}" />
 
     <!--Twitter-->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{gstatic.description}}">
+    <meta name="twitter:image" content="/assets/graph.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.css">
