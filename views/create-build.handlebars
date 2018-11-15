@@ -133,6 +133,7 @@
                     }, 3000);
                 },
                 error: (resdata) => {
+                    grecaptcha.reset()
                     $('#status').html('<div class="alert alert-danger" role="alert"><strong>Error:</strong> ' + resdata.responseJSON.error + '</div>');
                     $('#submitbtn').removeAttr('disabled');
                 },
