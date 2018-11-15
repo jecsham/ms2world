@@ -10,11 +10,10 @@
     <title>{{title}}</title>
     <!--OpenGraph-->
     <meta property="og:title" content="{{title}}" />
+    <meta property="og:type" content="website" />
     <meta property="og:image" content="/assets/graph.png" />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="300" />
     <meta property="og:site_name" content="MS2World" />
-    <meta property="og:description" content="{{#if post.description}}{{this}}{{else}}{{gstatic.description}}{{/if}}" />
+    <meta property="og:description" content="{{#if post}}{{description}}{{else}}{{gstatic.description}}{{/if}}" />
 
     <!--Twitter-->
     <meta name="twitter:card" content="summary" />
