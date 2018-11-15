@@ -8,7 +8,7 @@
     <meta name="robots" content="index, follow">
     <meta http-equiv="X-UA-Compatible">
     <title>{{title}}</title>
-    
+
     <!--OpenGraph-->
     <meta property="og:title" content="{{title}}" />
     <meta property="og:type" content="website" />
@@ -63,8 +63,12 @@
 
     <div class="container-fluid p-0">
         <div class="bg-secondary text-center text-white">
+            <div class="donor-messages-loading">
+                <a href="/donate" title="Donor message" class="text-white">📢</a> <a target="blanc" href="/donate"
+                    class="text-white">Loading...</a>
+            </div>
             {{#each messages}}
-            <div class="donor-messages">
+            <div class="donor-messages" style="display:none">
                 <a href="/donate" title="Donor message" class="text-white">📢</a> <a target="blanc" href="{{link}}"
                     class="text-white">{{message}}</a>
             </div>
@@ -200,21 +204,18 @@
             blockAdBlock.setOption({ debug: false });
             blockAdBlock.onDetected(adBlockDetected).onNotDetected(adBlockNotDetected);
         }
-        (function () {
-            $(".donor-messages").hide()
-            var quotes = $(".donor-messages");
-            var quoteIndex = -1;
+        $('.donor-messages-loading').hide()
+        var quotes = $(".donor-messages");
+        var quoteIndex = -1;
 
-            function showNextQuote() {
-                ++quoteIndex;
-                quotes.eq(quoteIndex % quotes.length)
-                    .fadeIn(2000)
-                    .delay(10000)
-                    .fadeOut(2000, showNextQuote);
-            }
-            showNextQuote();
-
-        })();
+        function showNextQuote() {
+            ++quoteIndex;
+            quotes.eq(quoteIndex % quotes.length)
+                .fadeIn(2000)
+                .delay(10000)
+                .fadeOut(2000, showNextQuote);
+        }
+        showNextQuote();
 
     </script>
 </body>
