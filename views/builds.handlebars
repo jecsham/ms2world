@@ -1,0 +1,110 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p>
+                <a href="/builds/popular" class="text-dark">Builds</a>
+            </p>
+        </div>
+        <div class="col-md-2 mb-1">
+            <select id="selectFilter" class="form-control form-control-sm">
+                <option value="popular" selected>Popular</option>
+                <option value="recent">Recent</option>
+            </select>
+        </div>
+        <div class="col-md-2 mb-1">
+            <select id="selectClass" class="form-control form-control-sm">
+                <option value="all" selected>All classes</option>
+                {{#each classes}}
+                <option value="{{name}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-md-2 mb-1">
+            <select id="selectType" class="form-control form-control-sm">
+                <option value="all" selected>All types</option>
+                {{#each classTypes}}
+                <option value="{{name}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group mb-1">
+                <input type="text" class="form-control form-control-sm align-bottom" id="searchInput" aria-describedby="searchInput"
+                    placeholder="Search...">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary btn-sm" type="button"><span class="mdi mdi-magnify"></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="/create-build" class="btn btn-success btn-sm btn-block mb-3 float-right"><span class="mdi mdi-plus"></span>
+                Create</a>
+        </div>
+        <div class="col">
+            {{#unless builds}}
+            <p class="text-center">No results found 😔</p>
+            {{else}}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <tbody>
+                        {{#each builds}}
+                        <tr>
+                            <th class="font-weight-normal align-middle"><a href="/build/{{_id}}">{{title}}</a></th>
+                            <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-eye" title="Views"></span>
+                                {{viewCount}} </th>
+                            <th class="text-muted small text-left align-middle" style="min-width: 80px"><span class="mdi mdi-thumb-up" title="Votes"></span>
+                                {{voteCount}} </th>
+                            <th class="text-muted small text-right align-middle text-truncate" style="max-width: 100px"><a
+                                    class="text-muted" href="/profile/{{sid}}">{{author}}</a><br>
+                                <time class="time" title="{{{date_create}}}"></time>
+                            </th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pagination-sm justify-content-center" id="page_nav">
+                    </ul>
+                </nav>
+            </div>
+            {{/unless}}
+        </div>
+    </div>
+</div>
+<script>
+    'use strict'
+    var page = {{{ page }}}
+    var totalPages = {{{ totalPages }}}
+    var filter = '{{{reqFilter}}}'
+    var pagename = 'builds'
+    var classFilter = "{{classFilter}}"
+    var typeFilter = "{{typeFilter}}"
+
+    $(document).ready(function () {
+
+        var urlParams = new URLSearchParams(window.location.search);
+
+
+        $('#selectClass').val(classFilter)
+        $('#selectType').val(typeFilter)
+
+        $("#selectClass").change(function () {
+            if (urlParams.has('class')) {
+                urlParams.set("class", this.value);
+            } else {
+                urlParams.append("class", this.value);
+            }
+            document.location.href = `/${pagename}/${$('#selectFilter').val()}?${urlParams.toString()}`;
+        })
+        $("#selectType").change(function () {
+            if (urlParams.has('type')) {
+                urlParams.set("type", this.value);
+            } else {
+                urlParams.append("type", this.value);
+            }
+            document.location.href = `/${pagename}/${$('#selectFilter').val()}?${urlParams.toString()}`;
+        })
+    })
+
+</script>
+<script src="/js/ms2w_posts.js"></script>

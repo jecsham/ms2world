@@ -1,10 +1,28 @@
 {
   "name": "ms2world",
   "version": "1.0.0",
-  "description": "ms2world core fan site",
+  "description": "ms2world core",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "all-error-handler": "^1.2.0",
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "cookie-parser": "^1.4.3",
+    "cron": "^1.4.1",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-rate-limit": "^3.2.1",
+    "express-session": "^1.15.6",
+    "handlebars-helpers": "^0.10.0",
+    "mongo-sanitize": "^1.0.0",
+    "mongoose": "^5.3.11",
+    "mongoose-paginate-v2": "^1.0.12",
+    "scrape-it": "^5.1.0",
+    "serve-favicon": "^2.5.0",
+    "steam-login": "^0.1.7",
+    "steamapi": "^2.0.3",
+    "twitch-api-v5": "^2.0.4"
   },
   "devDependencies": {},
   "scripts": {
@@ -18,5 +36,5 @@
     "site"
   ],
   "author": "jecsham",
-  "license": "ISC"
+  "license": "MIT"
 }

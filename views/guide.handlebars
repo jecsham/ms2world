@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="border-left bg-light">
+                <div class="p-3">
+                    <h3>{{{post.title}}}</h3>
+                    <p class="card-text"><small class="text-muted">Created by <a href="/profile/{{post.sid}}" class="text-dark">{{post.author}}</a>,
+                            <time class="time" title="{{post.date_create}}"></time>{{#if post.date_last_edit}}. Last edit: <time class="time" title="{{{post.date_last_edit}}}"></time>{{/if}}
+                        </small></p>
+                    <p>{{post.description}}</p>
+                </div>
+            </div>
+            {{> postbuttons}}
+            <div class="card mb-3">
+                <div class="card-body">
+
+                    <div id="guide-content">
+                        {{#markdown}}{{{post.content}}}{{/markdown}}
+                    </div>
+                </div>
+            </div>
+            {{> postbuttons}}
+            <p>Tags: {{#each (split post.tags ", ") }} <a href="/guides/?search={{this}}">{{this}}</a>&nbsp;&nbsp;{{/each}}</p>
+            <button class="btn btn-dark btn-sm">Comments <span class="badge badge-light">soon</span></button>
+        </div>
+    </div>
+    <div class="d-flex w-100">
+        <a class="btn btn-dark btn-sm ml-auto" id="return-to-top" style="color: #fff; position: fixed; right: 10%; bottom: 10%; display: none;"><span
+                class="mdi mdi-arrow-up"></span></a>
+    </div>
+</div>
+{{> modals/deletemodal}}
+{{> modals/reportmodal}}
+<script>
+    $(window).scroll(() => {
+        if ($(this).scrollTop() >= (100)) {
+            $('#return-to-top').fadeIn(200);
+        } else {
+            $('#return-to-top').fadeOut(200);
+        }
+    });
+    $('#return-to-top').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 500);
+    });
+    $(document).ready(() => {
+        if ($("table").length) {
+            $("table").each((index, value) => {
+                $(value).before("<div id='table-responsive-" + index + "' class='table-responsive'></div>")
+                    .prependTo($("#table-responsive-" + index))
+                    .addClass('table table-bordered');
+            })
+        }
+    });
+
+</script>
+<script src="/js/voting.js"></script>

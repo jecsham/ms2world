@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div id="main">
+                <div>
+                    <p> <a href="https://www.twitch.tv/directory/game/MapleStory%202" class="text-dark">Popular Twitch Livestreams</a></p>
+                </div>
+                <div id="streams" class="d-flex justify-content-between align-items-center flex-wrap">
+                    {{#each lives}}
+                    <div id="stream-item" class="mb-3">
+                        <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+                        <div id="{{_id}}"></div>
+                        <script type="text/javascript">
+                            var options = {
+                                autoplay: false,
+                                width: 308,
+                                height: 173,
+                                channel: "{{channel.name}}"
+                            };
+                            var player = new Twitch.Player("{{_id}}", options);
+                            player.setVolume(0.5);
+                            $(player).on('Twitch.Player.READY', function(){
+                                console.log('loaded')
+                            })
+                        </script>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

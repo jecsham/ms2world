@@ -1,0 +1,31 @@
+<div class="my-3 d-flex justify-content-end">
+        {{#if (compare user.steamid "==" post.sid )}}
+        <div class="btn-group mr-1" role="group">
+                <a href="/edit-{{post.postType}}/{{post.id}}" class="btn btn-dark btn-sm" data-toggle="tooltip"
+                        data-placement="bottom" title="Edit"><span class="mdi mdi-pencil"></span></a>
+                <span data-toggle="modal" data-target="#deletePostModal">
+                        <button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><span
+                                        class="mdi mdi-delete"></span></button>
+                </span>
+        </div>
+        {{/if}}
+        <div class="btn-group" role="group">
+                {{#if user}}
+                {{#if vote}}
+                <button class="btnvote btn btn-dark btn-sm" data-type="down" data-post="{{post.postType}}" data-postid="{{post._id}}"><span
+                                class="mdi mdi-thumb-down"></span></button>
+                {{else}}
+                <button class="btnvote btn btn-dark btn-sm" data-type="up" data-post="{{post.postType}}" data-postid="{{post._id}}"><span
+                                class="mdi mdi-thumb-up"></span></button>
+                {{/if}}
+                {{#unless report.isreported}}
+                <button class="btnreport btn btn-dark btn-sm" data-toggle="modal" data-target="#reportModal"><span
+                                class="mdi mdi-alert-circle" title="Report post"></span></button>
+                {{/unless}}
+                {{else}}
+                <button class="btn btn-dark btn-sm" data-toggle="modal" data-target="#loginModal"><span class="mdi mdi-thumb-up"></span></button>
+                <button class="btn btn-dark btn-sm" data-toggle="modal" data-target="#loginModal"><span class="mdi mdi-alert-circle"
+                                title="Report post"></span></button>
+                {{/if}}
+        </div>
+</div>

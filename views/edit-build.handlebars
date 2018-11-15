@@ -1,0 +1,134 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div>
+                <p>Edit Build</p>
+            </div>
+            <form id="edit">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp"
+                        placeholder="Enter a title (required to publish)" maxlength="150" value="{{post.title}}"
+                        readonly>
+                    <small id="titleHelp" class="form-text text-muted">Max 150 characters</small>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="description" name="description" aria-describedby="titleHelp"
+                        placeholder="Enter a short description (required to publish)" maxlength="150" value="{{post.description}}"
+                        required>
+                    <small id="titleHelp" class="form-text text-muted">Max 300 characters</small>
+                </div>
+                <p class="mb-1">Select type: </p>
+                <div class="form-check ml-3">
+                    <input class="form-check-input" type="radio" name="typeRadio" id="typeRadio1" value="PvX" required
+                        {{#if (compare post.type "==" 'PvX')}} checked {{/if}}>
+                    <label class="form-check-label" for="typeRadio1">
+                        PvX
+                    </label>
+                </div>
+                <div class="form-check ml-3">
+                    <input class="form-check-input" type="radio" name="typeRadio" id="typeRadio2" value="PvP"
+                        {{#if (compare post.type "==" 'PvP')}} checked {{/if}}>
+                    <label class="form-check-label" for="typeRadio2">
+                        PvP
+                    </label>
+                </div>
+                <div class="form-check ml-3">
+                    <input class="form-check-input" type="radio" name="typeRadio" id="typeRadio3" value="PvE"
+                        {{#if (compare post.type "==" 'PvE')}} checked {{/if}}>
+                    <label class="form-check-label" for="typeRadio3">
+                        PvE
+                    </label>
+                </div>
+                <div class="form-check ml-3 mb-3">
+                    <input class="form-check-input" type="radio" name="typeRadio" id="typeRadio4" value="Other"
+                    {{#if (compare post.type "==" 'PvE')}} checked {{/if}}>
+                    <label class="form-check-label" for="typeRadio4">
+                        Other
+                    </label>
+                </div>
+            </form>
+            <div id="render-skill-pane">
+                {{> (whichPartial)}}
+            </div>
+            <div class="mt-3">
+                <form id="edit-build" class="d-inline">
+                    <div class="g-recaptcha" data-sitekey="6LcSWXkUAAAAAJDHLKqCeKkzD14qz9eXuhmkmOpB"></div>
+                    <button id="submitbtn" type="submit" class="btn btn-success btn-sm mt-3">Publicate</button>
+                    <button type="button" class="btn btn-info btn-sm mt-3" data-toggle="modal" id="cmLauncher" data-target="#canvasModal">Save
+                    as PNG</button>
+                </form>
+                <div id="status" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="canvasModal" tabindex="-1" role="dialog" aria-labelledby="canvasModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="canvasModalLabel">Build</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info" role="alert">
+                    <strong>Right click</strong> > <strong>Save image as...</strong>
+                </div>
+                <div id="renderedCanvas">
+                    <p class="text-success">Processing image</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+    var buildTemplate = {{{ JSONstringify class}}}
+    var buildToEdit = {{{ post.data_object }}}
+    var viewMode = false;
+    var editMode = true;
+    var buildid = '{{post.id}}'
+</script>
+<script src="/js/skillbuilder.js"></script>
+<script src="/js/formvalidation.js"></script>
+<script>
+    'use strict'
+    $(document).ready(function () {
+        $('#buildtype').text('{{post.type}}')
+        $('#edit-build').submit(function (event) {
+            if (!checkForm()) {
+                event.preventDefault();
+                return $('#status').html('<div class="alert alert-danger" role="alert"><strong>Error!</strong> Some inputs are empty</div>');
+            }
+            $('#submitbtn').attr('disabled', 'disabled');
+            $('#status').html('<p class="text-success">Please wait...<p>');
+            var formData = {
+                'postid': '{{post.id}}',
+                'description': $('input[name=description]').val(),
+                'type': $('input[name=typeRadio]:checked').val(),
+                'data_object': JSON.stringify(build),
+                'recaptcha': $("#g-recaptcha-response").val()
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/edit/build',
+                data: formData,
+                dataType: 'json',
+                encode: true,
+                success: (resdata) => {
+                    $('#status').html('<div class="alert alert-success" role="alert"><strong>Submited!</strong> Redirecting to your <a href="/build/' + resdata.id + '">post</a>... 😀</div>');
+                    var timer = setTimeout(() => {
+                        window.location = '/build/' + resdata.id;
+                    }, 3000);
+                },
+                error: (resdata) => {
+                    $('#status').html('<div class="alert alert-danger" role="alert"><strong>Error:</strong> ' + resdata.responseJSON.error + '</div>');
+                    $('#submitbtn').removeAttr('disabled');
+                },
+            });
+            event.preventDefault();
+        });
+    });
+</script>
