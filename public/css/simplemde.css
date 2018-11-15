@@ -243,7 +243,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 
 .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
     position: absolute;
-    z-index: 6;
+    z-index: 1031;
     display: none
 }
 
@@ -657,7 +657,7 @@ span.CodeMirror-selectedtext {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 7
+    z-index: 1031
 }
 
 .editor-preview-side {
@@ -666,7 +666,7 @@ span.CodeMirror-selectedtext {
     width: 50%;
     top: 50px;
     right: 0;
-    z-index: 9;
+    z-index: 1031;
     border: 1px solid #ddd
 }
 
