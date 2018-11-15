@@ -6,7 +6,7 @@ const mSteamAPI = require('steamapi');
 const https = require('https');
 const steamapi = new mSteamAPI(process.env.STEAM_KEY);
 
-mongoose.connect(process.env.MDB, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 const db = mongoose.connection;
