@@ -29,6 +29,7 @@ module.exports = new CronJob('0 * * * *', () => {
     var news = constants.sanitize(data.articles);
     news.forEach((element, index) => {
       news[index].img = element.img.match(/(http:\/\/.*\.(jpg|png))/g);
+      news[index].img = news[index].img[0].replace('http', 'https')
     });
     constants.Ms2_new.deleteMany({}, (err) => {
       if (err) return console.log('Error trying remove model at cronjob 1');

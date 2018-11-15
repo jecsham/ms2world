@@ -3,8 +3,8 @@ module.exports = (app, constants) => {
     app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }));
 
     app.use(steam.middleware({
-        realm: 'http://localhost:80/',
-        verify: 'http://localhost:80/verify',
+        realm: process.env.SITE_URL,
+        verify: process.env.SITE_URL + 'verify',
         apiKey: process.env.STEAM_KEY
     }
     ));
