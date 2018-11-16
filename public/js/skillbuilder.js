@@ -56,7 +56,7 @@ function addPoints(skillid) {
 }
 
 function removePoints(skillid) {
-    if (build[skillid].min > buildTemplate[skillid].min && build.max_points <= 58) {
+    if (build[skillid].min > buildTemplate[skillid].min && build.max_points <= buildTemplate.max_points) {
         build[skillid].min--;
         updateMaxPoints();
         pointsAction(skillid)
