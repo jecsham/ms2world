@@ -7,6 +7,7 @@ $(document).ready(() => {
     $("[name='-btn']").remove()
     $("#resetbuildbtn").remove()
     $("#buildtype").text(class_type)
+    $('#as').text('')
 
     var renderedCanvas;
 

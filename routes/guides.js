@@ -25,11 +25,11 @@ module.exports = (app, constants) => {
             reqFilter = constants.sanitize(req.params.filter)
 
         if (reqFilter === 'recent')
-            filter = { '_id': -1 }
+            filter = { 'date_create': -1 }
         else if (reqFilter === 'popular')
             filter = { 'voteCount': -1 }
         else
-            filter = { '_id': -1 }
+            filter = { 'date_create': -1 }
 
         constants.Post_guide.paginate(query, { select: 'title author date_create sid voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')

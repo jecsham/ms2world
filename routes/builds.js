@@ -46,11 +46,11 @@ module.exports = (app, constants) => {
             reqFilter = constants.sanitize(req.params.filter)
 
         if (reqFilter === 'recent')
-            filter = { '_id': -1 }
+            filter = { 'date_create': -1 }
         else if (reqFilter === 'popular')
             filter = { 'voteCount': -1 }
         else
-            filter = { '_id': -1 }
+            filter = { 'date_create': -1 }
 
         constants.Post_build.paginate(query, { select: 'title author sid date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
