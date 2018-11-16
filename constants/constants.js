@@ -67,7 +67,7 @@ const title = 'MS2World.net'
 
 // Global
 const gstatic = {}
-gstatic.description = 'MS2World.net is the best MapleStory2 fan site to find Guides, Builds, News and More!';
+gstatic.description = 'MS2World is the best MapleStory2 fan site to find Guides, Builds, News and More!';
 
 // Schemas
 const userSchema = new mongoose.Schema({
