@@ -155,6 +155,13 @@ function toggleButtons() {
 
 }
 
+function removeCookie(){
+    if (editMode)
+        Cookies.remove('ms2-build-' + class_name + '-' + buildid);
+    else
+        Cookies.remove("ms2-build-" + class_name);
+}
+
 function resetBuild() {
     build = JSON.parse(JSON.stringify(buildTemplate))
     loadBuild()
@@ -162,9 +169,9 @@ function resetBuild() {
 
 function saveInCookie() {
     if (editMode)
-        Cookies.set('ms2-build-' + class_name + '-' + buildid, JSON.stringify(build), { expires: 2 });
+        Cookies.set('ms2-build-' + class_name + '-' + buildid, JSON.stringify(build), { expires: 1 });
     else
-        Cookies.set("ms2-build-" + class_name, JSON.stringify(build), { expires: 2 });
+        Cookies.set("ms2-build-" + class_name, JSON.stringify(build), { expires: 1 });
 }
 
 function editElements(canvasPNG) {

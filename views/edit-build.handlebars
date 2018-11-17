@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-check ml-3 mb-3">
                     <input class="form-check-input" type="radio" name="typeRadio" id="typeRadio4" value="Other"
-                    {{#if (compare post.type "==" 'PvE')}} checked {{/if}}>
+                    {{#if (compare post.type "==" 'Other')}} checked {{/if}}>
                     <label class="form-check-label" for="typeRadio4">
                         Other
                     </label>
@@ -118,6 +118,7 @@
                 dataType: 'json',
                 encode: true,
                 success: (resdata) => {
+                    removeCookie();
                     $('#status').html('<div class="alert alert-success" role="alert"><strong>Submited!</strong> Redirecting to your <a href="/build/' + resdata.id + '">post</a>... 😀</div>');
                     var timer = setTimeout(() => {
                         window.location = '/build/' + resdata.id;
