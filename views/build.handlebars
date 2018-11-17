@@ -4,8 +4,9 @@
             <div class="border-left bg-light">
                 <div class="p-3">
                     <h3>{{{post.title}}}</h3>
-                   <p class="card-text"><small class="text-muted">Created by <a href="/profile/{{post.sid}}" class="text-dark">{{post.author}}</a>,
-                            <time class="time" title="{{post.date_create}}"></time>{{#if post.date_last_edit}}. Last edit: <time class="time" title="{{{post.date_last_edit}}}"></time>{{/if}}
+                    <p class="card-text"><small class="text-muted">Created by <a href="/profile/{{post.sid}}" class="text-dark">{{post.author}}</a>,
+                            <time class="time" title="{{post.date_create}}"></time>{{#if post.date_last_edit}}. Last
+                            edit: <time class="time" title="{{{post.date_last_edit}}}"></time>{{/if}}
                         </small></p>
                     <p>{{post.description}}</p>
                 </div>
@@ -16,6 +17,7 @@
             </div>
             <button type="button" class="btn btn-info btn-sm mt-3" data-toggle="modal" id="cmLauncher" data-target="#canvasModal">Save
                 as PNG</button>
+            {{> postsharebuttons}}
 
             <button class="btn btn-dark btn-sm d-block mt-5">Comments <span class="badge badge-light">soon</span></button>
         </div>
