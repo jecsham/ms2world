@@ -30,6 +30,7 @@ module.exports = (app, constants) => {
             classFilter = 'all'
         else if (req.query.class != 'all') {
             classFilter = constants.sanitize(req.query.class)
+            classFilter = classFilter.replace(' ','_')
             query.class_name = classFilter.toLowerCase()
         }
 
