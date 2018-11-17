@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{{gstatic.description}}">
+    <meta name="description" content="{{#if post}}MapleStory2 {{ capitalize post.postType}}: {{post.description}} - {{gstatic.description}}{{else}}{{gstatic.description}}{{/if}}">
     <meta name="robots" content="index, follow">
     <meta http-equiv="X-UA-Compatible">
     <title>{{title}}</title>
@@ -21,12 +21,12 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/assets/graph.png" />
     <meta property="og:site_name" content="MS2World" />
-    <meta property="og:description" content="{{gstatic.description}}" />
+    <meta property="og:description" content="{{#if post}}MapleStory2 {{ capitalize post.postType}}: {{post.description}}{{else}}{{gstatic.description}}{{/if}}" />
 
     <!--Twitter-->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{title}}">
-    <meta name="twitter:description" content="{{gstatic.description}}">
+    <meta name="twitter:description" content="{{#if post}}MapleStory2 {{ capitalize post.postType}}: {{post.description}}{{else}}{{gstatic.description}}{{/if}}">
     <meta name="twitter:image" content="/assets/graphtwitter.png">
 
     <!-- Bootstrap CSS -->
