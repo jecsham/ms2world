@@ -21,6 +21,7 @@
             </div>
             {{> postbuttons}}
             <p>Tags: {{#each (split post.tags ", ") }} <a href="/guides/?search={{this}}">{{this}}</a>&nbsp;&nbsp;{{/each}}</p>
+            {{> postsharebuttons}}
             <button class="btn btn-dark btn-sm">Comments <span class="badge badge-light">soon</span></button>
         </div>
     </div>
