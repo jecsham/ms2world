@@ -30,7 +30,7 @@ module.exports = (app, constants) => {
             classFilter = 'all'
         else if (req.query.class != 'all') {
             classFilter = constants.sanitize(req.query.class)
-            classFilter = classFilter.replace(' ','_')
+            classFilter = classFilter.replace(' ', '_')
             query.class_name = classFilter.toLowerCase()
         }
 
@@ -55,7 +55,7 @@ module.exports = (app, constants) => {
 
         constants.Post_build.paginate(query, { select: 'title author sid date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
-            constants.Ms2_class.find({}, 'name', (err, classes) => {
+            constants.Ms2_class.find({}, 'name', { sort: { 'name': 1 } }, (err, classes) => {
                 if (err) return res.render('error')
                 constants.Ms2_classType.find({}, 'name', (err, types) => {
                     if (err) return res.render('error')
