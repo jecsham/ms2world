@@ -53,6 +53,11 @@
                     .addClass('table table-bordered');
             })
         }
+        if($('img').length) {
+            $('img').each((index, value)=>{
+                $(value).addClass('img-fluid rounded mx-auto d-block')
+            })
+        }
     });
 
 </script>
