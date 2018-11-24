@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
-const chalk = require('chalk');
 const sanitize = require('mongo-sanitize');
 const mSteamAPI = require('steamapi');
 const https = require('https');
 const steamapi = new mSteamAPI(process.env.STEAM_KEY);
+const logEvent = require('../events');
 
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
@@ -13,7 +13,8 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-        console.log(chalk.green('MongoDB connected'));
+        logEvent.emit('mongodb-connected')
+        logEvent.emit('server-ready')
 });
 
 // helper functions
@@ -188,5 +189,6 @@ module.exports = {
         messages: getMessages,
         title: title,
         verifyRecaptcha: verifyRecaptcha,
-        es: es
+        es: es,
+        logEvent: logEvent
 };
