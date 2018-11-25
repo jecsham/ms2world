@@ -4,85 +4,81 @@ module.exports = (app, constants) => {
     let cstatic = ['<link rel="stylesheet" href="/css/skillbuilder.css">'];
 
 
-    app.get(['/builds', '/builds/:filter'], (req, res) => {
-        const start = async () => {
-            let messages = await constants.messages()
+    app.get(['/builds', '/builds/:filter'], async (req, res) => {
+        let messages = await constants.messages()
+        let query = {};
+        let filter;
+        let reqFilter;
+        let page;
+        let classFilter = 'all'
+        let typeFilter = 'all'
 
-            let query = {};
-            let filter;
-            let reqFilter;
-            let page;
-            let classFilter = 'all'
-            let typeFilter = 'all'
-
-            if (req.query.search != undefined) {
-                query.$text = {
-                    $search: constants.sanitize(req.query.search)
-                }
+        if (req.query.search != undefined) {
+            query.$text = {
+                $search: constants.sanitize(req.query.search)
             }
-            if (req.query.page === undefined)
-                page = 1
-            else
-                page = constants.sanitize(req.query.page)
-
-            if (req.query.class === undefined)
-                classFilter = 'all'
-            else if (req.query.class != 'all') {
-                classFilter = constants.sanitize(req.query.class)
-                classFilter = classFilter.replace(' ', '_')
-                query.class_name = classFilter.toLowerCase()
-            }
-
-            if (req.query.type === undefined)
-                typeFilter = 'all'
-            else if (req.query.type != 'all') {
-                typeFilter = constants.sanitize(req.query.type)
-                query.type = typeFilter
-            }
-
-            if (req.params.filter === undefined)
-                reqFilter = 'popular'
-            else
-                reqFilter = constants.sanitize(req.params.filter)
-
-            if (reqFilter === 'recent')
-                filter = { 'date_create': -1 }
-            else if (reqFilter === 'popular')
-                filter = { 'voteCount': -1 }
-            else
-                filter = { 'date_create': -1 }
-
-            let obj = {}
-            await constants.Post_build.paginate(query, { select: 'title author sid date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
-                if (err) return res.render('error')
-                obj.data = data
-            })
-            await constants.Ms2_class.find({}, 'name', { sort: { 'name': 1 } }, (err, classes) => {
-                if (err) return res.render('error')
-                obj.classes = classes
-            })
-            await constants.Ms2_classType.find({}, 'name', (err, types) => {
-                if (err) return res.render('error')
-                obj.types = types
-            })
-            res.render('builds', {
-                messages: messages,
-                gstatic: constants.gstatic,
-                title: 'Builds - ' + constants.title,
-                user: req.user,
-                reqFilter: reqFilter,
-                page: obj.data.page,
-                totalPages: obj.data.totalPages,
-                nextPage: obj.data.nextPage,
-                prevPage: obj.data.hasPrevPage,
-                builds: obj.data.docs,
-                classes: obj.classes,
-                classTypes: obj.types,
-                classFilter: classFilter,
-                typeFilter: typeFilter
-            });
         }
-        start()
+        if (req.query.page === undefined)
+            page = 1
+        else
+            page = constants.sanitize(req.query.page)
+
+        if (req.query.class === undefined)
+            classFilter = 'all'
+        else if (req.query.class != 'all') {
+            classFilter = constants.sanitize(req.query.class)
+            classFilter = classFilter.replace(' ', '_')
+            query.class_name = classFilter.toLowerCase()
+        }
+
+        if (req.query.type === undefined)
+            typeFilter = 'all'
+        else if (req.query.type != 'all') {
+            typeFilter = constants.sanitize(req.query.type)
+            query.type = typeFilter
+        }
+
+        if (req.params.filter === undefined)
+            reqFilter = 'popular'
+        else
+            reqFilter = constants.sanitize(req.params.filter)
+
+        if (reqFilter === 'recent')
+            filter = { 'date_create': -1 }
+        else if (reqFilter === 'popular')
+            filter = { 'voteCount': -1 }
+        else
+            filter = { 'date_create': -1 }
+
+        let obj = {}
+        await constants.Post_build.paginate(query, { select: 'title author sid date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
+            if (err) return res.render('error')
+            obj.data = data
+        })
+        await constants.Ms2_class.find({}, 'name', { sort: { 'name': 1 } }, (err, classes) => {
+            if (err) return res.render('error')
+            obj.classes = classes
+        })
+        await constants.Ms2_classType.find({}, 'name', (err, types) => {
+            if (err) return res.render('error')
+            obj.types = types
+        })
+        res.render('builds', {
+            messages: messages,
+            gstatic: constants.gstatic,
+            title: 'Builds - ' + constants.title,
+            user: req.user,
+            reqFilter: reqFilter,
+            page: obj.data.page,
+            totalPages: obj.data.totalPages,
+            nextPage: obj.data.nextPage,
+            prevPage: obj.data.hasPrevPage,
+            builds: obj.data.docs,
+            classes: obj.classes,
+            classTypes: obj.types,
+            classFilter: classFilter,
+            typeFilter: typeFilter
+        });
     });
 
 
