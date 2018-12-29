@@ -5,16 +5,13 @@ module.exports = (app, constants) => {
 
 
     app.get(['/builds', '/builds/:filter'], async (req, res) => {
-
         let messages = await constants.messages()
-
         let query = {};
         let filter;
         let reqFilter;
         let page;
         let classFilter = 'all'
         let typeFilter = 'all'
-
 
         if (req.query.search != undefined) {
             query.$text = {
@@ -53,33 +50,37 @@ module.exports = (app, constants) => {
         else
             filter = { 'date_create': -1 }
 
-        constants.Post_build.paginate(query, { select: 'title author sid date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
+        let obj = {}
+        await constants.Post_build.paginate(query, { select: 'title author sid date_create voteCount viewCount', page: page, limit: 10, sort: filter }, (err, data) => {
             if (err) return res.render('error')
-            constants.Ms2_class.find({}, 'name', { sort: { 'name': 1 } }, (err, classes) => {
-                if (err) return res.render('error')
-                constants.Ms2_classType.find({}, 'name', (err, types) => {
-                    if (err) return res.render('error')
-                    res.render('builds', {
-                        messages: messages,
-                        gstatic: constants.gstatic,
-                        title: 'Builds - ' + constants.title,
-                        user: req.user,
-                        reqFilter: reqFilter,
-                        page: data.page,
-                        totalPages: data.totalPages,
-                        nextPage: data.nextPage,
-                        prevPage: data.hasPrevPage,
-                        builds: data.docs,
-                        classes: classes,
-                        classTypes: types,
-                        classFilter: classFilter,
-                        typeFilter: typeFilter
-
-                    });
-                });
-            })
+            obj.data = data
+        })
+        await constants.Ms2_class.find({}, 'name', { sort: { 'name': 1 } }, (err, classes) => {
+            if (err) return res.render('error')
+            obj.classes = classes
+        })
+        await constants.Ms2_classType.find({}, 'name', (err, types) => {
+            if (err) return res.render('error')
+            obj.types = types
+        })
+        res.render('builds', {
+            messages: messages,
+            gstatic: constants.gstatic,
+            title: 'Builds - ' + constants.title,
+            user: req.user,
+            reqFilter: reqFilter,
+            page: obj.data.page,
+            totalPages: obj.data.totalPages,
+            nextPage: obj.data.nextPage,
+            prevPage: obj.data.hasPrevPage,
+            builds: obj.data.docs,
+            classes: obj.classes,
+            classTypes: obj.types,
+            classFilter: classFilter,
+            typeFilter: typeFilter
         });
     });
+
 
     app.get('/build/:id', async (req, res) => {
         let messages = await constants.messages()

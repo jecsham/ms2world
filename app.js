@@ -7,8 +7,7 @@ const path = require('path');
 require('dotenv').config();
 const app = express();
 const rateLimit = require("express-rate-limit");
-const chalk = require('chalk');
-var favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
 
 
 app.enable("trust proxy");
@@ -54,6 +53,6 @@ require('./routes')(app, constants);
 require('./cronjobs/cron.js');
 
 app.listen(process.env.PORT || 80, () => {
-	console.log(chalk.green('Server loaded'));
+	constants.logEvent.emit('server-started')
 });
 
