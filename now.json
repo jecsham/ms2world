@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "name": "ms2world",
+    "builds": [
+        {
+            "src": "app.js",
+            "use": "@now/node"
+        }
+    ],
+    "routes": [
+        {
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET",
+                "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+            },
+            "src": "/.*",
+            "dest": "/app.js"
+        }
+    ],
+    "env": {
+        "MONGODB_URL": "@mongodb-uri-ms2world",
+        "RECAPTCHA_SECRET": "@google-recaptcha-secret",
+        "SITE_URL": "@ms2world-domain",
+        "STEAM_KEY": "@steam-key"
+    }
+}

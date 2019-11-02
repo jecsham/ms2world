@@ -6,7 +6,7 @@ const https = require('https');
 const steamapi = new mSteamAPI(process.env.STEAM_KEY);
 const logEvent = require('../events');
 
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 const db = mongoose.connection;
