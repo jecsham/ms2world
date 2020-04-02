@@ -6,7 +6,7 @@
   "dependencies": {
     "all-error-handler": "^1.2.0",
     "body-parser": "^1.19.0",
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "cookie-parser": "^1.4.4",
     "cron": "^1.4.1",
     "dotenv": "^8.2.0",
